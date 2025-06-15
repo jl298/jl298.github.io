@@ -1,0 +1,2724 @@
+country,year,pr,cl,status,total
+Abkhazia,2013,4,5,PF,40
+Abkhazia,2014,4,5,PF,40
+Abkhazia,2015,4,5,PF,41
+Abkhazia,2016,4,5,PF,42
+Abkhazia,2017,4,5,PF,41
+Abkhazia,2018,4,5,PF,41
+Abkhazia,2019,4,5,PF,41
+Abkhazia,2020,5,5,PF,40
+Abkhazia,2021,5,5,PF,40
+Abkhazia,2022,5,5,PF,40
+Abkhazia,2023,5,5,PF,39
+Abkhazia,2024,5,5,PF,39
+Abkhazia,2025,5,5,PF,39
+Afghanistan,2013,6,6,NF,27
+Afghanistan,2014,6,6,NF,26
+Afghanistan,2015,6,6,NF,24
+Afghanistan,2016,6,6,NF,24
+Afghanistan,2017,6,6,NF,24
+Afghanistan,2018,5,6,NF,26
+Afghanistan,2019,5,6,NF,27
+Afghanistan,2020,5,6,NF,27
+Afghanistan,2021,5,6,NF,27
+Afghanistan,2022,7,6,NF,10
+Afghanistan,2023,7,7,NF,8
+Afghanistan,2024,7,7,NF,6
+Afghanistan,2025,7,7,NF,6
+Albania,2013,3,3,PF,63
+Albania,2014,3,3,PF,67
+Albania,2015,3,3,PF,67
+Albania,2016,3,3,PF,67
+Albania,2017,3,3,PF,68
+Albania,2018,3,3,PF,68
+Albania,2019,3,3,PF,68
+Albania,2020,3,3,PF,67
+Albania,2021,3,3,PF,66
+Albania,2022,3,3,PF,67
+Albania,2023,3,3,PF,67
+Albania,2024,3,3,PF,68
+Albania,2025,3,3,PF,68
+Algeria,2013,6,5,NF,35
+Algeria,2014,6,5,NF,34
+Algeria,2015,6,5,NF,34
+Algeria,2016,6,5,NF,35
+Algeria,2017,6,5,NF,35
+Algeria,2018,6,5,NF,35
+Algeria,2019,6,5,NF,34
+Algeria,2020,6,5,NF,34
+Algeria,2021,6,5,NF,32
+Algeria,2022,6,5,NF,32
+Algeria,2023,6,5,NF,32
+Algeria,2024,6,5,NF,32
+Algeria,2025,6,5,NF,31
+Andorra,2013,1,1,F,96
+Andorra,2014,1,1,F,96
+Andorra,2015,1,1,F,96
+Andorra,2016,1,1,F,96
+Andorra,2017,1,1,F,95
+Andorra,2018,1,1,F,96
+Andorra,2019,1,1,F,94
+Andorra,2020,1,1,F,94
+Andorra,2021,1,1,F,93
+Andorra,2022,1,1,F,93
+Andorra,2023,1,1,F,93
+Andorra,2024,1,1,F,93
+Andorra,2025,1,1,F,93
+Angola,2013,6,5,NF,30
+Angola,2014,6,5,NF,29
+Angola,2015,6,5,NF,28
+Angola,2016,6,6,NF,24
+Angola,2017,6,6,NF,24
+Angola,2018,6,6,NF,26
+Angola,2019,6,5,NF,31
+Angola,2020,6,5,NF,32
+Angola,2021,6,5,NF,31
+Angola,2022,6,5,NF,30
+Angola,2023,6,5,NF,28
+Angola,2024,6,5,NF,28
+Angola,2025,6,5,NF,28
+Antigua and Barbuda,2013,2,2,F,80
+Antigua and Barbuda,2014,2,2,F,80
+Antigua and Barbuda,2015,2,2,F,80
+Antigua and Barbuda,2016,2,2,F,82
+Antigua and Barbuda,2017,2,2,F,83
+Antigua and Barbuda,2018,2,2,F,83
+Antigua and Barbuda,2019,2,2,F,84
+Antigua and Barbuda,2020,2,2,F,85
+Antigua and Barbuda,2021,2,2,F,85
+Antigua and Barbuda,2022,2,2,F,85
+Antigua and Barbuda,2023,2,2,F,85
+Antigua and Barbuda,2024,2,2,F,85
+Antigua and Barbuda,2025,2,2,F,83
+Argentina,2013,2,2,F,80
+Argentina,2014,2,2,F,80
+Argentina,2015,2,2,F,80
+Argentina,2016,2,2,F,79
+Argentina,2017,2,2,F,82
+Argentina,2018,2,2,F,83
+Argentina,2019,2,2,F,84
+Argentina,2020,2,2,F,85
+Argentina,2021,2,2,F,84
+Argentina,2022,2,2,F,84
+Argentina,2023,2,2,F,85
+Argentina,2024,2,2,F,85
+Argentina,2025,2,2,F,85
+Armenia,2013,5,4,PF,42
+Armenia,2014,5,4,PF,43
+Armenia,2015,5,4,PF,46
+Armenia,2016,5,4,PF,46
+Armenia,2017,5,4,PF,45
+Armenia,2018,5,4,PF,45
+Armenia,2019,4,4,PF,51
+Armenia,2020,4,4,PF,53
+Armenia,2021,4,4,PF,55
+Armenia,2022,4,4,PF,55
+Armenia,2023,4,4,PF,54
+Armenia,2024,4,4,PF,54
+Armenia,2025,4,4,PF,54
+Australia,2013,1,1,F,97
+Australia,2014,1,1,F,97
+Australia,2015,1,1,F,97
+Australia,2016,1,1,F,98
+Australia,2017,1,1,F,98
+Australia,2018,1,1,F,98
+Australia,2019,1,1,F,98
+Australia,2020,1,1,F,97
+Australia,2021,1,1,F,97
+Australia,2022,1,1,F,95
+Australia,2023,1,1,F,95
+Australia,2024,1,1,F,95
+Australia,2025,1,1,F,95
+Austria,2013,1,1,F,96
+Austria,2014,1,1,F,96
+Austria,2015,1,1,F,96
+Austria,2016,1,1,F,95
+Austria,2017,1,1,F,95
+Austria,2018,1,1,F,94
+Austria,2019,1,1,F,93
+Austria,2020,1,1,F,93
+Austria,2021,1,1,F,93
+Austria,2022,1,1,F,93
+Austria,2023,1,1,F,93
+Austria,2024,1,1,F,93
+Austria,2025,1,1,F,93
+Azerbaijan,2013,6,5,NF,23
+Azerbaijan,2014,6,6,NF,22
+Azerbaijan,2015,6,6,NF,20
+Azerbaijan,2016,7,6,NF,16
+Azerbaijan,2017,7,6,NF,14
+Azerbaijan,2018,7,6,NF,12
+Azerbaijan,2019,7,6,NF,11
+Azerbaijan,2020,7,6,NF,10
+Azerbaijan,2021,7,6,NF,10
+Azerbaijan,2022,7,7,NF,9
+Azerbaijan,2023,7,7,NF,9
+Azerbaijan,2024,7,7,NF,7
+Azerbaijan,2025,7,7,NF,7
+Bahamas,2013,1,1,F,96
+Bahamas,2014,1,1,F,96
+Bahamas,2015,1,1,F,96
+Bahamas,2016,1,1,F,92
+Bahamas,2017,1,1,F,91
+Bahamas,2018,1,1,F,91
+Bahamas,2019,1,1,F,91
+Bahamas,2020,1,1,F,91
+Bahamas,2021,1,1,F,91
+Bahamas,2022,1,1,F,91
+Bahamas,2023,1,1,F,91
+Bahamas,2024,1,1,F,91
+Bahamas,2025,1,2,F,90
+Bahrain,2013,6,6,NF,18
+Bahrain,2014,6,6,NF,16
+Bahrain,2015,7,6,NF,15
+Bahrain,2016,7,6,NF,14
+Bahrain,2017,7,6,NF,12
+Bahrain,2018,7,6,NF,12
+Bahrain,2019,7,6,NF,12
+Bahrain,2020,7,6,NF,11
+Bahrain,2021,7,6,NF,12
+Bahrain,2022,7,6,NF,12
+Bahrain,2023,7,6,NF,12
+Bahrain,2024,7,6,NF,12
+Bahrain,2025,7,6,NF,12
+Bangladesh,2013,3,4,PF,56
+Bangladesh,2014,3,4,PF,53
+Bangladesh,2015,4,4,PF,50
+Bangladesh,2016,4,4,PF,49
+Bangladesh,2017,4,4,PF,47
+Bangladesh,2018,4,4,PF,45
+Bangladesh,2019,5,5,PF,41
+Bangladesh,2020,5,5,PF,39
+Bangladesh,2021,5,5,PF,39
+Bangladesh,2022,5,5,PF,39
+Bangladesh,2023,5,5,PF,40
+Bangladesh,2024,5,5,PF,40
+Bangladesh,2025,5,4,PF,45
+Barbados,2013,1,1,F,99
+Barbados,2014,1,1,F,99
+Barbados,2015,1,1,F,99
+Barbados,2016,1,1,F,98
+Barbados,2017,1,1,F,98
+Barbados,2018,1,1,F,96
+Barbados,2019,1,1,F,96
+Barbados,2020,1,1,F,95
+Barbados,2021,1,1,F,95
+Barbados,2022,1,1,F,95
+Barbados,2023,1,1,F,94
+Barbados,2024,1,1,F,94
+Barbados,2025,1,1,F,94
+Belarus,2013,7,6,NF,14
+Belarus,2014,7,6,NF,14
+Belarus,2015,7,6,NF,14
+Belarus,2016,7,6,NF,17
+Belarus,2017,7,6,NF,20
+Belarus,2018,6,6,NF,21
+Belarus,2019,7,6,NF,19
+Belarus,2020,7,6,NF,19
+Belarus,2021,7,6,NF,11
+Belarus,2022,7,7,NF,8
+Belarus,2023,7,7,NF,8
+Belarus,2024,7,7,NF,8
+Belarus,2025,7,7,NF,7
+Belgium,2013,1,1,F,97
+Belgium,2014,1,1,F,97
+Belgium,2015,1,1,F,97
+Belgium,2016,1,1,F,96
+Belgium,2017,1,1,F,95
+Belgium,2018,1,1,F,95
+Belgium,2019,1,1,F,96
+Belgium,2020,1,1,F,96
+Belgium,2021,1,1,F,96
+Belgium,2022,1,1,F,96
+Belgium,2023,1,1,F,96
+Belgium,2024,1,1,F,96
+Belgium,2025,1,1,F,96
+Belize,2013,1,2,F,88
+Belize,2014,1,2,F,87
+Belize,2015,1,2,F,87
+Belize,2016,1,2,F,87
+Belize,2017,1,2,F,87
+Belize,2018,1,2,F,86
+Belize,2019,1,2,F,86
+Belize,2020,2,2,F,86
+Belize,2021,2,1,F,87
+Belize,2022,2,1,F,87
+Belize,2023,2,1,F,87
+Belize,2024,2,1,F,87
+Belize,2025,2,1,F,88
+Benin,2013,2,2,F,82
+Benin,2014,2,2,F,80
+Benin,2015,2,2,F,81
+Benin,2016,2,2,F,82
+Benin,2017,2,2,F,82
+Benin,2018,2,2,F,82
+Benin,2019,2,2,F,79
+Benin,2020,4,2,PF,66
+Benin,2021,4,2,PF,65
+Benin,2022,5,3,PF,59
+Benin,2023,5,3,PF,59
+Benin,2024,4,3,PF,61
+Benin,2025,4,3,PF,60
+Bhutan,2013,4,5,PF,46
+Bhutan,2014,3,4,PF,55
+Bhutan,2015,3,4,PF,56
+Bhutan,2016,3,4,PF,56
+Bhutan,2017,3,4,PF,55
+Bhutan,2018,3,4,PF,55
+Bhutan,2019,3,4,PF,59
+Bhutan,2020,3,4,PF,59
+Bhutan,2021,2,4,PF,61
+Bhutan,2022,3,4,PF,61
+Bhutan,2023,3,4,PF,61
+Bhutan,2024,2,4,PF,63
+Bhutan,2025,2,3,F,68
+Bolivia,2013,3,3,PF,69
+Bolivia,2014,3,3,PF,67
+Bolivia,2015,3,3,PF,68
+Bolivia,2016,3,3,PF,68
+Bolivia,2017,3,3,PF,68
+Bolivia,2018,3,3,PF,67
+Bolivia,2019,3,3,PF,67
+Bolivia,2020,3,3,PF,63
+Bolivia,2021,3,3,PF,66
+Bolivia,2022,3,3,PF,66
+Bolivia,2023,3,3,PF,66
+Bolivia,2024,3,3,PF,66
+Bolivia,2025,3,3,PF,65
+Bosnia and Herzegovina,2013,3,3,PF,62
+Bosnia and Herzegovina,2014,3,3,PF,61
+Bosnia and Herzegovina,2015,4,3,PF,60
+Bosnia and Herzegovina,2016,4,3,PF,57
+Bosnia and Herzegovina,2017,4,4,PF,55
+Bosnia and Herzegovina,2018,4,4,PF,55
+Bosnia and Herzegovina,2019,4,4,PF,53
+Bosnia and Herzegovina,2020,4,4,PF,53
+Bosnia and Herzegovina,2021,4,4,PF,53
+Bosnia and Herzegovina,2022,4,4,PF,53
+Bosnia and Herzegovina,2023,4,4,PF,52
+Bosnia and Herzegovina,2024,5,4,PF,51
+Bosnia and Herzegovina,2025,5,3,PF,52
+Botswana,2013,3,2,F,74
+Botswana,2014,3,2,F,74
+Botswana,2015,3,2,F,73
+Botswana,2016,3,2,F,73
+Botswana,2017,3,2,F,72
+Botswana,2018,3,2,F,72
+Botswana,2019,3,2,F,72
+Botswana,2020,3,2,F,72
+Botswana,2021,3,2,F,72
+Botswana,2022,3,2,F,72
+Botswana,2023,3,2,F,72
+Botswana,2024,3,2,F,72
+Botswana,2025,2,2,F,75
+Brazil,2013,2,2,F,81
+Brazil,2014,2,2,F,81
+Brazil,2015,2,2,F,81
+Brazil,2016,2,2,F,81
+Brazil,2017,2,2,F,79
+Brazil,2018,2,2,F,78
+Brazil,2019,2,2,F,75
+Brazil,2020,2,2,F,75
+Brazil,2021,2,3,F,74
+Brazil,2022,2,3,F,73
+Brazil,2023,2,3,F,72
+Brazil,2024,2,3,F,72
+Brazil,2025,2,3,F,72
+Brunei,2013,6,5,NF,30
+Brunei,2014,6,5,NF,30
+Brunei,2015,6,5,NF,30
+Brunei,2016,6,5,NF,29
+Brunei,2017,6,5,NF,29
+Brunei,2018,6,5,NF,28
+Brunei,2019,6,5,NF,29
+Brunei,2020,6,5,NF,28
+Brunei,2021,6,5,NF,28
+Brunei,2022,6,5,NF,28
+Brunei,2023,6,5,NF,28
+Brunei,2024,6,5,NF,28
+Brunei,2025,6,5,NF,27
+Bulgaria,2013,2,2,F,81
+Bulgaria,2014,2,2,F,78
+Bulgaria,2015,2,2,F,79
+Bulgaria,2016,2,2,F,80
+Bulgaria,2017,2,2,F,80
+Bulgaria,2018,2,2,F,80
+Bulgaria,2019,2,2,F,80
+Bulgaria,2020,2,2,F,80
+Bulgaria,2021,2,2,F,78
+Bulgaria,2022,2,2,F,79
+Bulgaria,2023,2,2,F,79
+Bulgaria,2024,2,2,F,78
+Bulgaria,2025,2,2,F,77
+Burkina Faso,2013,5,3,PF,53
+Burkina Faso,2014,5,3,PF,53
+Burkina Faso,2015,6,3,PF,45
+Burkina Faso,2016,4,3,PF,59
+Burkina Faso,2017,4,3,PF,63
+Burkina Faso,2018,4,3,PF,60
+Burkina Faso,2019,4,3,PF,60
+Burkina Faso,2020,4,4,PF,56
+Burkina Faso,2021,4,4,PF,54
+Burkina Faso,2022,4,4,PF,53
+Burkina Faso,2023,7,4,NF,30
+Burkina Faso,2024,7,5,NF,27
+Burkina Faso,2025,7,5,NF,25
+Burundi,2013,5,5,PF,34
+Burundi,2014,5,5,PF,34
+Burundi,2015,6,5,NF,32
+Burundi,2016,7,6,NF,19
+Burundi,2017,7,6,NF,19
+Burundi,2018,7,6,NF,18
+Burundi,2019,7,6,NF,14
+Burundi,2020,7,6,NF,13
+Burundi,2021,7,6,NF,14
+Burundi,2022,7,6,NF,14
+Burundi,2023,7,6,NF,14
+Burundi,2024,7,6,NF,14
+Burundi,2025,7,6,NF,15
+Cabo Verde,2013,1,1,F,90
+Cabo Verde,2014,1,1,F,90
+Cabo Verde,2015,1,1,F,90
+Cabo Verde,2016,1,1,F,90
+Cabo Verde,2017,1,1,F,90
+Cabo Verde,2018,1,1,F,90
+Cabo Verde,2019,1,1,F,90
+Cabo Verde,2020,1,1,F,92
+Cabo Verde,2021,1,1,F,92
+Cabo Verde,2022,1,1,F,92
+Cabo Verde,2023,1,1,F,92
+Cabo Verde,2024,1,1,F,92
+Cabo Verde,2025,1,1,F,92
+Cambodia,2013,6,5,NF,29
+Cambodia,2014,6,5,NF,30
+Cambodia,2015,6,5,NF,31
+Cambodia,2016,6,5,NF,32
+Cambodia,2017,6,5,NF,31
+Cambodia,2018,6,5,NF,30
+Cambodia,2019,6,5,NF,26
+Cambodia,2020,7,5,NF,25
+Cambodia,2021,7,5,NF,24
+Cambodia,2022,7,5,NF,24
+Cambodia,2023,7,5,NF,24
+Cambodia,2024,7,5,NF,23
+Cambodia,2025,7,5,NF,23
+Cameroon,2013,6,6,NF,23
+Cameroon,2014,6,6,NF,24
+Cameroon,2015,6,6,NF,25
+Cameroon,2016,6,6,NF,24
+Cameroon,2017,6,6,NF,24
+Cameroon,2018,6,6,NF,22
+Cameroon,2019,6,6,NF,19
+Cameroon,2020,6,6,NF,18
+Cameroon,2021,6,6,NF,16
+Cameroon,2022,6,6,NF,15
+Cameroon,2023,6,6,NF,15
+Cameroon,2024,6,6,NF,15
+Cameroon,2025,6,6,NF,15
+Canada,2013,1,1,F,98
+Canada,2014,1,1,F,98
+Canada,2015,1,1,F,98
+Canada,2016,1,1,F,99
+Canada,2017,1,1,F,99
+Canada,2018,1,1,F,99
+Canada,2019,1,1,F,99
+Canada,2020,1,1,F,98
+Canada,2021,1,1,F,98
+Canada,2022,1,1,F,98
+Canada,2023,1,1,F,98
+Canada,2024,1,1,F,97
+Canada,2025,1,1,F,97
+Central African Republic,2013,5,5,PF,35
+Central African Republic,2014,7,7,NF,6
+Central African Republic,2015,7,7,NF,6
+Central African Republic,2016,7,7,NF,7
+Central African Republic,2017,7,7,NF,10
+Central African Republic,2018,7,7,NF,9
+Central African Republic,2019,7,7,NF,9
+Central African Republic,2020,7,7,NF,10
+Central African Republic,2021,7,7,NF,9
+Central African Republic,2022,7,7,NF,7
+Central African Republic,2023,7,7,NF,7
+Central African Republic,2024,7,7,NF,5
+Central African Republic,2025,7,7,NF,5
+Chad,2013,7,6,NF,21
+Chad,2014,7,6,NF,21
+Chad,2015,7,6,NF,21
+Chad,2016,7,6,NF,20
+Chad,2017,7,6,NF,18
+Chad,2018,7,6,NF,18
+Chad,2019,7,6,NF,17
+Chad,2020,7,6,NF,17
+Chad,2021,7,6,NF,17
+Chad,2022,7,6,NF,15
+Chad,2023,7,6,NF,15
+Chad,2024,7,6,NF,15
+Chad,2025,7,6,NF,15
+Chile,2013,1,1,F,96
+Chile,2014,1,1,F,95
+Chile,2015,1,1,F,95
+Chile,2016,1,1,F,95
+Chile,2017,1,1,F,94
+Chile,2018,1,1,F,94
+Chile,2019,1,1,F,94
+Chile,2020,1,2,F,90
+Chile,2021,1,1,F,93
+Chile,2022,1,1,F,94
+Chile,2023,1,1,F,94
+Chile,2024,1,1,F,94
+Chile,2025,1,1,F,95
+China,2013,7,6,NF,17
+China,2014,7,6,NF,17
+China,2015,7,6,NF,17
+China,2016,7,6,NF,16
+China,2017,7,6,NF,15
+China,2018,7,6,NF,14
+China,2019,7,6,NF,11
+China,2020,7,6,NF,10
+China,2021,7,6,NF,9
+China,2022,7,6,NF,9
+China,2023,7,6,NF,9
+China,2024,7,6,NF,9
+China,2025,7,6,NF,9
+Colombia,2013,3,4,PF,61
+Colombia,2014,3,4,PF,62
+Colombia,2015,3,4,PF,63
+Colombia,2016,3,4,PF,63
+Colombia,2017,3,3,PF,64
+Colombia,2018,3,3,PF,65
+Colombia,2019,3,3,PF,66
+Colombia,2020,3,3,PF,66
+Colombia,2021,3,3,PF,65
+Colombia,2022,3,3,PF,64
+Colombia,2023,2,3,F,70
+Colombia,2024,2,3,F,70
+Colombia,2025,2,3,F,70
+Comoros,2013,3,4,PF,55
+Comoros,2014,3,4,PF,55
+Comoros,2015,3,4,PF,55
+Comoros,2016,3,4,PF,55
+Comoros,2017,3,4,PF,55
+Comoros,2018,3,4,PF,55
+Comoros,2019,4,4,PF,50
+Comoros,2020,4,4,PF,44
+Comoros,2021,5,4,PF,42
+Comoros,2022,5,4,PF,42
+Comoros,2023,5,4,PF,42
+Comoros,2024,5,4,PF,42
+Comoros,2025,5,4,PF,42
+Congo (Brazzaville),2013,6,5,NF,29
+Congo (Brazzaville),2014,6,5,NF,30
+Congo (Brazzaville),2015,6,5,NF,30
+Congo (Brazzaville),2016,6,5,NF,28
+Congo (Brazzaville),2017,7,5,NF,27
+Congo (Brazzaville),2018,7,5,NF,21
+Congo (Brazzaville),2019,7,5,NF,21
+Congo (Brazzaville),2020,7,5,NF,20
+Congo (Brazzaville),2021,7,5,NF,20
+Congo (Brazzaville),2022,7,6,NF,17
+Congo (Brazzaville),2023,7,6,NF,17
+Congo (Brazzaville),2024,7,6,NF,17
+Congo (Brazzaville),2025,7,6,NF,17
+Congo (Kinshasa),2013,6,6,NF,20
+Congo (Kinshasa),2014,6,6,NF,20
+Congo (Kinshasa),2015,6,6,NF,25
+Congo (Kinshasa),2016,6,6,NF,25
+Congo (Kinshasa),2017,7,6,NF,19
+Congo (Kinshasa),2018,7,6,NF,17
+Congo (Kinshasa),2019,7,6,NF,15
+Congo (Kinshasa),2020,7,6,NF,18
+Congo (Kinshasa),2021,7,6,NF,20
+Congo (Kinshasa),2022,7,6,NF,19
+Congo (Kinshasa),2023,7,6,NF,19
+Congo (Kinshasa),2024,7,6,NF,19
+Congo (Kinshasa),2025,7,6,NF,18
+Costa Rica,2013,1,1,F,91
+Costa Rica,2014,1,1,F,90
+Costa Rica,2015,1,1,F,90
+Costa Rica,2016,1,1,F,90
+Costa Rica,2017,1,1,F,91
+Costa Rica,2018,1,1,F,91
+Costa Rica,2019,1,1,F,91
+Costa Rica,2020,1,1,F,91
+Costa Rica,2021,1,1,F,91
+Costa Rica,2022,1,1,F,91
+Costa Rica,2023,1,1,F,91
+Costa Rica,2024,1,1,F,91
+Costa Rica,2025,1,1,F,91
+Cote d'Ivoire,2013,5,5,PF,34
+Cote d'Ivoire,2014,5,4,PF,45
+Cote d'Ivoire,2015,5,4,PF,46
+Cote d'Ivoire,2016,4,4,PF,51
+Cote d'Ivoire,2017,4,4,PF,52
+Cote d'Ivoire,2018,4,4,PF,51
+Cote d'Ivoire,2019,4,4,PF,51
+Cote d'Ivoire,2020,4,4,PF,51
+Cote d'Ivoire,2021,5,4,PF,44
+Cote d'Ivoire,2022,4,4,PF,49
+Cote d'Ivoire,2023,4,4,PF,49
+Cote d'Ivoire,2024,4,4,PF,49
+Cote d'Ivoire,2025,4,4,PF,49
+Crimea,2015,7,6,NF,10
+Crimea,2016,7,6,NF,9
+Crimea,2017,7,6,NF,9
+Crimea,2018,7,6,NF,9
+Crimea,2019,7,6,NF,8
+Crimea,2020,7,6,NF,8
+Crimea,2021,7,6,NF,7
+Crimea,2022,7,6,NF,7
+Crimea,2023,7,7,NF,4
+Crimea,2024,7,7,NF,2
+Croatia,2013,1,2,F,86
+Croatia,2014,1,2,F,86
+Croatia,2015,1,2,F,86
+Croatia,2016,1,2,F,87
+Croatia,2017,1,2,F,87
+Croatia,2018,1,2,F,86
+Croatia,2019,1,2,F,85
+Croatia,2020,1,2,F,85
+Croatia,2021,1,2,F,85
+Croatia,2022,1,2,F,85
+Croatia,2023,2,2,F,84
+Croatia,2024,2,2,F,83
+Croatia,2025,2,2,F,82
+Cuba,2013,7,6,NF,11
+Cuba,2014,7,6,NF,12
+Cuba,2015,7,6,NF,14
+Cuba,2016,7,6,NF,15
+Cuba,2017,7,6,NF,15
+Cuba,2018,7,6,NF,14
+Cuba,2019,7,6,NF,14
+Cuba,2020,7,6,NF,14
+Cuba,2021,7,6,NF,13
+Cuba,2022,7,6,NF,12
+Cuba,2023,7,6,NF,12
+Cuba,2024,7,6,NF,12
+Cuba,2025,7,6,NF,10
+Cyprus,2013,1,1,F,93
+Cyprus,2014,1,1,F,92
+Cyprus,2015,1,1,F,93
+Cyprus,2016,1,1,F,94
+Cyprus,2017,1,1,F,94
+Cyprus,2018,1,1,F,94
+Cyprus,2019,1,1,F,94
+Cyprus,2020,1,1,F,94
+Cyprus,2021,1,1,F,94
+Cyprus,2022,1,1,F,93
+Cyprus,2023,1,1,F,92
+Cyprus,2024,1,1,F,92
+Cyprus,2025,1,1,F,91
+Czech Republic,2013,1,1,F,95
+Czech Republic,2014,1,1,F,94
+Czech Republic,2015,1,1,F,95
+Czech Republic,2016,1,1,F,95
+Czech Republic,2017,1,1,F,94
+Czech Republic,2018,1,1,F,93
+Czech Republic,2019,1,1,F,91
+Czech Republic,2020,1,1,F,91
+Czech Republic,2021,1,1,F,91
+Czech Republic,2022,1,1,F,91
+Czech Republic,2023,1,1,F,92
+Czech Republic,2024,1,1,F,94
+Czech Republic,2025,1,1,F,95
+Denmark,2013,1,1,F,98
+Denmark,2014,1,1,F,98
+Denmark,2015,1,1,F,98
+Denmark,2016,1,1,F,98
+Denmark,2017,1,1,F,97
+Denmark,2018,1,1,F,97
+Denmark,2019,1,1,F,97
+Denmark,2020,1,1,F,97
+Denmark,2021,1,1,F,97
+Denmark,2022,1,1,F,97
+Denmark,2023,1,1,F,97
+Denmark,2024,1,1,F,97
+Denmark,2025,1,1,F,97
+Djibouti,2013,6,5,NF,29
+Djibouti,2014,6,5,NF,29
+Djibouti,2015,6,5,NF,28
+Djibouti,2016,6,5,NF,28
+Djibouti,2017,6,5,NF,26
+Djibouti,2018,6,5,NF,26
+Djibouti,2019,6,5,NF,26
+Djibouti,2020,7,5,NF,24
+Djibouti,2021,7,5,NF,24
+Djibouti,2022,7,5,NF,24
+Djibouti,2023,7,5,NF,24
+Djibouti,2024,7,5,NF,24
+Djibouti,2025,7,5,NF,24
+Dominica,2013,1,1,F,95
+Dominica,2014,1,1,F,95
+Dominica,2015,1,1,F,95
+Dominica,2016,1,1,F,95
+Dominica,2017,1,1,F,95
+Dominica,2018,1,1,F,93
+Dominica,2019,1,1,F,93
+Dominica,2020,1,1,F,93
+Dominica,2021,1,1,F,93
+Dominica,2022,1,1,F,93
+Dominica,2023,1,1,F,93
+Dominica,2024,1,1,F,93
+Dominica,2025,1,1,F,92
+Dominican Republic,2013,2,2,F,75
+Dominican Republic,2014,2,3,F,73
+Dominican Republic,2015,2,3,F,73
+Dominican Republic,2016,3,3,PF,70
+Dominican Republic,2017,3,3,PF,68
+Dominican Republic,2018,3,3,PF,67
+Dominican Republic,2019,3,3,PF,67
+Dominican Republic,2020,3,3,PF,67
+Dominican Republic,2021,3,3,PF,67
+Dominican Republic,2022,3,3,PF,68
+Dominican Republic,2023,3,3,PF,68
+Dominican Republic,2024,3,3,PF,68
+Dominican Republic,2025,3,3,PF,68
+Eastern Donbas,2020,7,7,NF,5
+Eastern Donbas,2021,7,7,NF,4
+Eastern Donbas,2022,7,7,NF,4
+Eastern Donbas,2023,7,7,NF,3
+Eastern Donbas,2024,7,7,NF,2
+Ecuador,2013,3,3,PF,60
+Ecuador,2014,3,3,PF,60
+Ecuador,2015,3,3,PF,59
+Ecuador,2016,3,3,PF,59
+Ecuador,2017,3,4,PF,57
+Ecuador,2018,3,3,PF,60
+Ecuador,2019,3,3,PF,63
+Ecuador,2020,3,3,PF,65
+Ecuador,2021,3,3,PF,67
+Ecuador,2022,2,3,F,71
+Ecuador,2023,2,3,F,70
+Ecuador,2024,3,3,PF,67
+Ecuador,2025,3,3,PF,65
+Egypt,2013,5,5,PF,41
+Egypt,2014,6,5,NF,31
+Egypt,2015,6,5,NF,26
+Egypt,2016,6,5,NF,27
+Egypt,2017,6,5,NF,26
+Egypt,2018,6,6,NF,26
+Egypt,2019,6,6,NF,22
+Egypt,2020,6,6,NF,21
+Egypt,2021,6,6,NF,18
+Egypt,2022,6,6,NF,18
+Egypt,2023,6,6,NF,18
+Egypt,2024,6,6,NF,18
+Egypt,2025,6,6,NF,18
+El Salvador,2013,2,3,F,77
+El Salvador,2014,2,3,F,77
+El Salvador,2015,2,3,F,75
+El Salvador,2016,2,3,F,69
+El Salvador,2017,2,3,F,70
+El Salvador,2018,2,3,F,70
+El Salvador,2019,2,3,F,67
+El Salvador,2020,2,4,PF,66
+El Salvador,2021,2,4,PF,63
+El Salvador,2022,3,4,PF,59
+El Salvador,2023,3,4,PF,56
+El Salvador,2024,4,4,PF,53
+El Salvador,2025,5,4,PF,47
+Equatorial Guinea,2013,7,7,NF,8
+Equatorial Guinea,2014,7,7,NF,8
+Equatorial Guinea,2015,7,7,NF,8
+Equatorial Guinea,2016,7,7,NF,8
+Equatorial Guinea,2017,7,7,NF,8
+Equatorial Guinea,2018,7,7,NF,7
+Equatorial Guinea,2019,7,7,NF,6
+Equatorial Guinea,2020,7,7,NF,6
+Equatorial Guinea,2021,7,7,NF,5
+Equatorial Guinea,2022,7,7,NF,5
+Equatorial Guinea,2023,7,7,NF,5
+Equatorial Guinea,2024,7,7,NF,5
+Equatorial Guinea,2025,7,7,NF,5
+Eritrea,2013,7,7,NF,3
+Eritrea,2014,7,7,NF,3
+Eritrea,2015,7,7,NF,3
+Eritrea,2016,7,7,NF,3
+Eritrea,2017,7,7,NF,3
+Eritrea,2018,7,7,NF,3
+Eritrea,2019,7,7,NF,2
+Eritrea,2020,7,7,NF,2
+Eritrea,2021,7,7,NF,2
+Eritrea,2022,7,7,NF,3
+Eritrea,2023,7,7,NF,3
+Eritrea,2024,7,7,NF,3
+Eritrea,2025,7,7,NF,3
+Estonia,2013,1,1,F,95
+Estonia,2014,1,1,F,95
+Estonia,2015,1,1,F,95
+Estonia,2016,1,1,F,94
+Estonia,2017,1,1,F,94
+Estonia,2018,1,1,F,94
+Estonia,2019,1,1,F,94
+Estonia,2020,1,1,F,94
+Estonia,2021,1,1,F,94
+Estonia,2022,1,1,F,94
+Estonia,2023,1,1,F,94
+Estonia,2024,1,1,F,95
+Estonia,2025,1,1,F,96
+Eswatini,2013,7,5,NF,21
+Eswatini,2014,7,5,NF,20
+Eswatini,2015,7,5,NF,18
+Eswatini,2016,7,5,NF,18
+Eswatini,2017,7,5,NF,18
+Eswatini,2018,7,6,NF,16
+Eswatini,2019,7,6,NF,16
+Eswatini,2020,7,5,NF,19
+Eswatini,2021,7,5,NF,19
+Eswatini,2022,7,6,NF,17
+Eswatini,2023,7,6,NF,17
+Eswatini,2024,7,6,NF,17
+Eswatini,2025,7,6,NF,17
+Ethiopia,2013,6,6,NF,18
+Ethiopia,2014,6,6,NF,18
+Ethiopia,2015,6,6,NF,18
+Ethiopia,2016,7,6,NF,15
+Ethiopia,2017,7,6,NF,12
+Ethiopia,2018,7,6,NF,12
+Ethiopia,2019,6,6,NF,19
+Ethiopia,2020,6,6,NF,24
+Ethiopia,2021,6,6,NF,22
+Ethiopia,2022,5,6,NF,23
+Ethiopia,2023,6,6,NF,21
+Ethiopia,2024,6,6,NF,20
+Ethiopia,2025,6,6,NF,18
+Fiji,2013,6,4,PF,37
+Fiji,2014,6,4,PF,37
+Fiji,2015,3,4,PF,60
+Fiji,2016,3,3,PF,62
+Fiji,2017,3,4,PF,59
+Fiji,2018,3,3,PF,59
+Fiji,2019,3,3,PF,61
+Fiji,2020,3,3,PF,60
+Fiji,2021,3,3,PF,60
+Fiji,2022,4,3,PF,58
+Fiji,2023,3,3,PF,59
+Fiji,2024,3,3,PF,66
+Fiji,2025,3,3,PF,69
+Finland,2013,1,1,F,100
+Finland,2014,1,1,F,100
+Finland,2015,1,1,F,100
+Finland,2016,1,1,F,100
+Finland,2017,1,1,F,100
+Finland,2018,1,1,F,100
+Finland,2019,1,1,F,100
+Finland,2020,1,1,F,100
+Finland,2021,1,1,F,100
+Finland,2022,1,1,F,100
+Finland,2023,1,1,F,100
+Finland,2024,1,1,F,100
+Finland,2025,1,1,F,100
+France,2013,1,1,F,95
+France,2014,1,1,F,95
+France,2015,1,1,F,95
+France,2016,1,1,F,91
+France,2017,1,2,F,90
+France,2018,1,2,F,90
+France,2019,1,2,F,90
+France,2020,1,2,F,90
+France,2021,1,2,F,90
+France,2022,1,2,F,89
+France,2023,1,2,F,89
+France,2024,1,2,F,89
+France,2025,1,2,F,89
+Gabon,2013,6,5,NF,34
+Gabon,2014,6,5,NF,34
+Gabon,2015,6,5,NF,34
+Gabon,2016,6,5,NF,34
+Gabon,2017,6,5,NF,32
+Gabon,2018,7,5,NF,23
+Gabon,2019,7,5,NF,23
+Gabon,2020,7,5,NF,22
+Gabon,2021,7,5,NF,22
+Gabon,2022,7,5,NF,21
+Gabon,2023,7,5,NF,20
+Gabon,2024,7,5,NF,20
+Gabon,2025,7,5,NF,21
+Gaza Strip,2013,6,6,NF,19
+Gaza Strip,2014,7,6,NF,15
+Gaza Strip,2015,7,6,NF,15
+Gaza Strip,2016,7,6,NF,12
+Gaza Strip,2017,7,6,NF,12
+Gaza Strip,2018,7,6,NF,12
+Gaza Strip,2019,7,6,NF,11
+Gaza Strip,2020,7,6,NF,11
+Gaza Strip,2021,7,6,NF,11
+Gaza Strip,2022,7,6,NF,11
+Gaza Strip,2023,7,6,NF,11
+Gaza Strip,2024,7,7,NF,8
+Gaza Strip,2025,7,7,NF,2
+Georgia,2013,3,3,PF,60
+Georgia,2014,3,3,PF,63
+Georgia,2015,3,3,PF,64
+Georgia,2016,3,3,PF,64
+Georgia,2017,3,3,PF,64
+Georgia,2018,3,3,PF,64
+Georgia,2019,3,3,PF,63
+Georgia,2020,3,3,PF,61
+Georgia,2021,4,3,PF,60
+Georgia,2022,4,3,PF,58
+Georgia,2023,4,3,PF,58
+Georgia,2024,4,3,PF,58
+Georgia,2025,4,4,PF,55
+Germany,2013,1,1,F,96
+Germany,2014,1,1,F,96
+Germany,2015,1,1,F,96
+Germany,2016,1,1,F,95
+Germany,2017,1,1,F,95
+Germany,2018,1,1,F,94
+Germany,2019,1,1,F,94
+Germany,2020,1,1,F,94
+Germany,2021,1,1,F,94
+Germany,2022,1,1,F,94
+Germany,2023,1,1,F,94
+Germany,2024,1,1,F,93
+Germany,2025,1,1,F,95
+Ghana,2013,1,2,F,84
+Ghana,2014,1,2,F,84
+Ghana,2015,1,2,F,84
+Ghana,2016,1,2,F,83
+Ghana,2017,1,2,F,83
+Ghana,2018,1,2,F,83
+Ghana,2019,1,2,F,83
+Ghana,2020,2,2,F,82
+Ghana,2021,2,2,F,82
+Ghana,2022,2,2,F,80
+Ghana,2023,2,2,F,80
+Ghana,2024,2,2,F,80
+Ghana,2025,2,2,F,80
+Greece,2013,2,2,F,83
+Greece,2014,2,2,F,83
+Greece,2015,2,2,F,83
+Greece,2016,2,2,F,83
+Greece,2017,2,2,F,84
+Greece,2018,2,2,F,85
+Greece,2019,1,2,F,87
+Greece,2020,1,2,F,88
+Greece,2021,1,2,F,87
+Greece,2022,1,2,F,87
+Greece,2023,2,2,F,86
+Greece,2024,2,2,F,85
+Greece,2025,2,2,F,85
+Grenada,2013,1,2,F,89
+Grenada,2014,1,2,F,89
+Grenada,2015,1,2,F,89
+Grenada,2016,1,2,F,89
+Grenada,2017,1,2,F,89
+Grenada,2018,1,2,F,88
+Grenada,2019,1,2,F,89
+Grenada,2020,1,2,F,89
+Grenada,2021,1,2,F,89
+Grenada,2022,1,2,F,89
+Grenada,2023,1,2,F,89
+Grenada,2024,1,2,F,89
+Grenada,2025,1,2,F,89
+Guatemala,2013,3,4,PF,57
+Guatemala,2014,3,4,PF,56
+Guatemala,2015,3,4,PF,55
+Guatemala,2016,4,4,PF,54
+Guatemala,2017,4,4,PF,54
+Guatemala,2018,4,4,PF,56
+Guatemala,2019,4,4,PF,53
+Guatemala,2020,4,4,PF,52
+Guatemala,2021,4,4,PF,52
+Guatemala,2022,4,4,PF,51
+Guatemala,2023,4,4,PF,49
+Guatemala,2024,5,4,PF,46
+Guatemala,2025,4,4,PF,48
+Guinea,2013,5,5,PF,39
+Guinea,2014,5,5,PF,41
+Guinea,2015,5,5,PF,41
+Guinea,2016,5,5,PF,40
+Guinea,2017,5,5,PF,41
+Guinea,2018,5,5,PF,41
+Guinea,2019,5,4,PF,43
+Guinea,2020,5,5,PF,40
+Guinea,2021,5,5,PF,38
+Guinea,2022,6,5,NF,34
+Guinea,2023,6,5,NF,30
+Guinea,2024,6,5,NF,30
+Guinea,2025,6,5,NF,30
+Guinea-Bissau,2013,6,5,NF,30
+Guinea-Bissau,2014,6,5,NF,32
+Guinea-Bissau,2015,5,5,PF,40
+Guinea-Bissau,2016,5,5,PF,39
+Guinea-Bissau,2017,5,5,PF,40
+Guinea-Bissau,2018,5,5,PF,41
+Guinea-Bissau,2019,5,4,PF,42
+Guinea-Bissau,2020,5,4,PF,46
+Guinea-Bissau,2021,5,4,PF,44
+Guinea-Bissau,2022,5,4,PF,43
+Guinea-Bissau,2023,5,4,PF,43
+Guinea-Bissau,2024,5,4,PF,43
+Guinea-Bissau,2025,5,4,PF,41
+Guyana,2013,2,3,F,71
+Guyana,2014,2,3,F,72
+Guyana,2015,2,3,F,71
+Guyana,2016,2,3,F,74
+Guyana,2017,2,3,F,74
+Guyana,2018,2,3,F,74
+Guyana,2019,2,3,F,75
+Guyana,2020,2,3,F,74
+Guyana,2021,2,3,F,73
+Guyana,2022,2,3,F,73
+Guyana,2023,2,3,F,73
+Guyana,2024,2,3,F,73
+Guyana,2025,2,2,F,74
+Haiti,2013,4,5,PF,43
+Haiti,2014,4,5,PF,43
+Haiti,2015,5,5,PF,41
+Haiti,2016,5,5,PF,41
+Haiti,2017,5,5,PF,39
+Haiti,2018,5,5,PF,41
+Haiti,2019,5,5,PF,41
+Haiti,2020,5,5,PF,38
+Haiti,2021,5,5,PF,37
+Haiti,2022,6,5,NF,33
+Haiti,2023,6,5,NF,31
+Haiti,2024,6,5,NF,30
+Haiti,2025,6,5,NF,24
+Honduras,2013,4,4,PF,51
+Honduras,2014,4,4,PF,51
+Honduras,2015,4,4,PF,49
+Honduras,2016,4,4,PF,45
+Honduras,2017,4,4,PF,46
+Honduras,2018,4,4,PF,46
+Honduras,2019,4,4,PF,46
+Honduras,2020,4,4,PF,45
+Honduras,2021,4,5,PF,44
+Honduras,2022,4,4,PF,47
+Honduras,2023,4,4,PF,48
+Honduras,2024,4,4,PF,48
+Honduras,2025,4,4,PF,48
+Hong Kong,2013,5,2,PF,67
+Hong Kong,2014,5,2,PF,67
+Hong Kong,2015,5,2,PF,65
+Hong Kong,2016,5,2,PF,63
+Hong Kong,2017,5,2,PF,61
+Hong Kong,2018,5,2,PF,59
+Hong Kong,2019,5,2,PF,59
+Hong Kong,2020,5,3,PF,55
+Hong Kong,2021,5,3,PF,52
+Hong Kong,2022,6,4,PF,43
+Hong Kong,2023,6,4,PF,42
+Hong Kong,2024,6,4,PF,41
+Hong Kong,2025,6,4,PF,40
+Hungary,2013,1,2,F,88
+Hungary,2014,1,2,F,88
+Hungary,2015,2,2,F,82
+Hungary,2016,2,2,F,79
+Hungary,2017,3,2,F,76
+Hungary,2018,3,2,F,72
+Hungary,2019,3,3,PF,70
+Hungary,2020,3,3,PF,70
+Hungary,2021,3,3,PF,69
+Hungary,2022,3,3,PF,69
+Hungary,2023,3,3,PF,66
+Hungary,2024,3,3,PF,65
+Hungary,2025,3,3,PF,65
+Iceland,2013,1,1,F,100
+Iceland,2014,1,1,F,100
+Iceland,2015,1,1,F,99
+Iceland,2016,1,1,F,100
+Iceland,2017,1,1,F,97
+Iceland,2018,1,1,F,95
+Iceland,2019,1,1,F,94
+Iceland,2020,1,1,F,94
+Iceland,2021,1,1,F,94
+Iceland,2022,1,1,F,94
+Iceland,2023,1,1,F,94
+Iceland,2024,1,1,F,94
+Iceland,2025,1,1,F,95
+India,2013,2,3,F,76
+India,2014,2,3,F,77
+India,2015,2,3,F,78
+India,2016,2,3,F,77
+India,2017,2,3,F,77
+India,2018,2,3,F,77
+India,2019,2,3,F,75
+India,2020,2,3,F,71
+India,2021,2,4,PF,67
+India,2022,2,4,PF,66
+India,2023,2,4,PF,66
+India,2024,2,4,PF,66
+India,2025,2,4,PF,63
+Indian Kashmir,2013,4,4,PF,49
+Indian Kashmir,2014,4,4,PF,49
+Indian Kashmir,2015,4,4,PF,51
+Indian Kashmir,2016,4,4,PF,51
+Indian Kashmir,2017,4,4,PF,50
+Indian Kashmir,2018,4,4,PF,49
+Indian Kashmir,2019,4,4,PF,49
+Indian Kashmir,2020,6,5,NF,28
+Indian Kashmir,2021,6,5,NF,27
+Indian Kashmir,2022,6,5,NF,27
+Indian Kashmir,2023,6,5,NF,27
+Indian Kashmir,2024,6,5,NF,26
+Indian Kashmir,2025,5,5,PF,38
+Indonesia,2013,2,3,F,65
+Indonesia,2014,2,4,PF,64
+Indonesia,2015,2,4,PF,64
+Indonesia,2016,2,4,PF,65
+Indonesia,2017,2,4,PF,65
+Indonesia,2018,2,4,PF,64
+Indonesia,2019,2,4,PF,62
+Indonesia,2020,2,4,PF,61
+Indonesia,2021,2,4,PF,59
+Indonesia,2022,2,4,PF,59
+Indonesia,2023,2,4,PF,58
+Indonesia,2024,3,4,PF,57
+Indonesia,2025,3,4,PF,56
+Iran,2013,6,6,NF,16
+Iran,2014,6,6,NF,17
+Iran,2015,6,6,NF,17
+Iran,2016,6,6,NF,17
+Iran,2017,6,6,NF,17
+Iran,2018,6,6,NF,18
+Iran,2019,6,6,NF,18
+Iran,2020,6,6,NF,17
+Iran,2021,6,6,NF,16
+Iran,2022,7,6,NF,14
+Iran,2023,7,6,NF,12
+Iran,2024,7,7,NF,11
+Iran,2025,7,7,NF,11
+Iraq,2013,6,6,NF,24
+Iraq,2014,5,6,NF,25
+Iraq,2015,6,6,NF,24
+Iraq,2016,5,6,NF,27
+Iraq,2017,5,6,NF,27
+Iraq,2018,5,6,NF,31
+Iraq,2019,5,6,NF,32
+Iraq,2020,5,6,NF,31
+Iraq,2021,5,6,NF,29
+Iraq,2022,5,6,NF,29
+Iraq,2023,5,6,NF,29
+Iraq,2024,5,6,NF,30
+Iraq,2025,5,6,NF,31
+Ireland,2013,1,1,F,97
+Ireland,2014,1,1,F,97
+Ireland,2015,1,1,F,97
+Ireland,2016,1,1,F,96
+Ireland,2017,1,1,F,96
+Ireland,2018,1,1,F,96
+Ireland,2019,1,1,F,97
+Ireland,2020,1,1,F,97
+Ireland,2021,1,1,F,97
+Ireland,2022,1,1,F,97
+Ireland,2023,1,1,F,97
+Ireland,2024,1,1,F,97
+Ireland,2025,1,1,F,97
+Israel,2013,1,2,F,81
+Israel,2014,1,2,F,81
+Israel,2015,1,2,F,80
+Israel,2016,1,2,F,80
+Israel,2017,1,2,F,80
+Israel,2018,1,3,F,79
+Israel,2019,2,3,F,78
+Israel,2020,2,3,F,76
+Israel,2021,2,3,F,76
+Israel,2022,2,3,F,76
+Israel,2023,2,3,F,77
+Israel,2024,2,3,F,74
+Israel,2025,2,3,F,73
+Italy,2013,2,1,F,88
+Italy,2014,1,1,F,90
+Italy,2015,1,1,F,89
+Italy,2016,1,1,F,89
+Italy,2017,1,1,F,89
+Italy,2018,1,1,F,89
+Italy,2019,1,1,F,89
+Italy,2020,1,1,F,89
+Italy,2021,1,1,F,90
+Italy,2022,1,1,F,90
+Italy,2023,1,1,F,90
+Italy,2024,1,1,F,90
+Italy,2025,1,1,F,89
+Jamaica,2013,2,3,F,73
+Jamaica,2014,2,3,F,74
+Jamaica,2015,2,3,F,74
+Jamaica,2016,2,3,F,75
+Jamaica,2017,2,3,F,75
+Jamaica,2018,2,3,F,77
+Jamaica,2019,2,2,F,78
+Jamaica,2020,2,2,F,78
+Jamaica,2021,2,2,F,80
+Jamaica,2022,2,2,F,80
+Jamaica,2023,2,2,F,80
+Jamaica,2024,2,2,F,80
+Jamaica,2025,2,2,F,80
+Japan,2013,1,2,F,88
+Japan,2014,1,1,F,90
+Japan,2015,1,1,F,94
+Japan,2016,1,1,F,96
+Japan,2017,1,1,F,96
+Japan,2018,1,1,F,96
+Japan,2019,1,1,F,96
+Japan,2020,1,1,F,96
+Japan,2021,1,1,F,96
+Japan,2022,1,1,F,96
+Japan,2023,1,1,F,96
+Japan,2024,1,1,F,96
+Japan,2025,1,1,F,96
+Jordan,2013,6,5,NF,34
+Jordan,2014,6,5,NF,35
+Jordan,2015,6,5,NF,36
+Jordan,2016,6,5,NF,36
+Jordan,2017,5,5,PF,37
+Jordan,2018,5,5,PF,37
+Jordan,2019,5,5,PF,37
+Jordan,2020,5,5,PF,37
+Jordan,2021,6,5,NF,34
+Jordan,2022,6,5,NF,33
+Jordan,2023,6,5,NF,33
+Jordan,2024,6,5,NF,33
+Jordan,2025,5,5,PF,34
+Kazakhstan,2013,6,5,NF,26
+Kazakhstan,2014,6,5,NF,25
+Kazakhstan,2015,6,5,NF,24
+Kazakhstan,2016,6,5,NF,24
+Kazakhstan,2017,7,5,NF,22
+Kazakhstan,2018,7,5,NF,22
+Kazakhstan,2019,7,5,NF,22
+Kazakhstan,2020,7,5,NF,23
+Kazakhstan,2021,7,5,NF,23
+Kazakhstan,2022,7,5,NF,23
+Kazakhstan,2023,7,5,NF,23
+Kazakhstan,2024,7,5,NF,23
+Kazakhstan,2025,7,5,NF,23
+Kenya,2013,4,4,PF,55
+Kenya,2014,4,4,PF,53
+Kenya,2015,4,4,PF,51
+Kenya,2016,4,4,PF,51
+Kenya,2017,4,4,PF,51
+Kenya,2018,4,4,PF,48
+Kenya,2019,4,4,PF,48
+Kenya,2020,4,4,PF,48
+Kenya,2021,4,4,PF,48
+Kenya,2022,4,4,PF,48
+Kenya,2023,4,4,PF,52
+Kenya,2024,4,4,PF,52
+Kenya,2025,4,4,PF,51
+Kiribati,2013,1,1,F,91
+Kiribati,2014,1,1,F,91
+Kiribati,2015,1,1,F,91
+Kiribati,2016,1,1,F,91
+Kiribati,2017,1,1,F,92
+Kiribati,2018,1,1,F,93
+Kiribati,2019,1,1,F,93
+Kiribati,2020,1,1,F,93
+Kiribati,2021,1,1,F,93
+Kiribati,2022,1,1,F,93
+Kiribati,2023,1,1,F,91
+Kiribati,2024,1,1,F,90
+Kiribati,2025,1,1,F,89
+Kosovo,2013,5,4,PF,42
+Kosovo,2014,5,4,PF,43
+Kosovo,2015,4,4,PF,52
+Kosovo,2016,3,4,PF,52
+Kosovo,2017,3,4,PF,52
+Kosovo,2018,3,4,PF,52
+Kosovo,2019,3,4,PF,54
+Kosovo,2020,3,4,PF,56
+Kosovo,2021,4,4,PF,54
+Kosovo,2022,3,4,PF,56
+Kosovo,2023,3,4,PF,60
+Kosovo,2024,3,4,PF,60
+Kosovo,2025,3,4,PF,60
+Kuwait,2013,5,5,PF,41
+Kuwait,2014,5,5,PF,39
+Kuwait,2015,5,5,PF,37
+Kuwait,2016,5,5,PF,36
+Kuwait,2017,5,5,PF,36
+Kuwait,2018,5,5,PF,36
+Kuwait,2019,5,5,PF,36
+Kuwait,2020,5,5,PF,36
+Kuwait,2021,5,5,PF,37
+Kuwait,2022,5,5,PF,37
+Kuwait,2023,5,5,PF,37
+Kuwait,2024,5,5,PF,38
+Kuwait,2025,6,5,NF,31
+Kyrgyzstan,2013,5,5,PF,39
+Kyrgyzstan,2014,5,5,PF,39
+Kyrgyzstan,2015,5,5,PF,38
+Kyrgyzstan,2016,5,5,PF,38
+Kyrgyzstan,2017,5,5,PF,37
+Kyrgyzstan,2018,5,5,PF,37
+Kyrgyzstan,2019,5,4,PF,38
+Kyrgyzstan,2020,5,4,PF,39
+Kyrgyzstan,2021,7,5,NF,28
+Kyrgyzstan,2022,7,5,NF,27
+Kyrgyzstan,2023,7,5,NF,27
+Kyrgyzstan,2024,7,5,NF,27
+Kyrgyzstan,2025,7,5,NF,26
+Laos,2013,7,6,NF,11
+Laos,2014,7,6,NF,12
+Laos,2015,7,6,NF,12
+Laos,2016,7,6,NF,12
+Laos,2017,7,6,NF,12
+Laos,2018,7,6,NF,12
+Laos,2019,7,6,NF,14
+Laos,2020,7,6,NF,14
+Laos,2021,7,6,NF,13
+Laos,2022,7,6,NF,13
+Laos,2023,7,6,NF,13
+Laos,2024,7,6,NF,13
+Laos,2025,7,6,NF,13
+Latvia,2013,2,2,F,84
+Latvia,2014,2,2,F,84
+Latvia,2015,2,2,F,85
+Latvia,2016,2,2,F,86
+Latvia,2017,1,2,F,87
+Latvia,2018,2,2,F,87
+Latvia,2019,2,2,F,87
+Latvia,2020,1,2,F,89
+Latvia,2021,1,2,F,89
+Latvia,2022,1,2,F,88
+Latvia,2023,1,2,F,88
+Latvia,2024,1,2,F,88
+Latvia,2025,1,2,F,89
+Lebanon,2013,5,4,PF,49
+Lebanon,2014,5,4,PF,48
+Lebanon,2015,5,4,PF,44
+Lebanon,2016,5,4,PF,43
+Lebanon,2017,5,4,PF,44
+Lebanon,2018,6,4,PF,43
+Lebanon,2019,5,4,PF,45
+Lebanon,2020,5,4,PF,44
+Lebanon,2021,5,4,PF,43
+Lebanon,2022,5,4,PF,42
+Lebanon,2023,5,4,PF,43
+Lebanon,2024,5,4,PF,42
+Lebanon,2025,5,4,PF,39
+Lesotho,2013,2,3,F,72
+Lesotho,2014,2,3,F,72
+Lesotho,2015,2,3,F,71
+Lesotho,2016,3,3,PF,67
+Lesotho,2017,3,3,PF,64
+Lesotho,2018,3,3,PF,64
+Lesotho,2019,3,3,PF,63
+Lesotho,2020,3,3,PF,63
+Lesotho,2021,3,3,PF,63
+Lesotho,2022,3,3,PF,63
+Lesotho,2023,2,3,F,66
+Lesotho,2024,2,3,F,66
+Lesotho,2025,2,3,F,66
+Liberia,2013,3,4,PF,60
+Liberia,2014,3,4,PF,59
+Liberia,2015,3,4,PF,56
+Liberia,2016,3,4,PF,61
+Liberia,2017,3,4,PF,62
+Liberia,2018,3,3,PF,62
+Liberia,2019,3,3,PF,62
+Liberia,2020,3,4,PF,60
+Liberia,2021,3,4,PF,60
+Liberia,2022,3,4,PF,60
+Liberia,2023,3,4,PF,60
+Liberia,2024,2,4,PF,64
+Liberia,2025,2,4,PF,64
+Libya,2013,4,5,PF,43
+Libya,2014,4,5,PF,41
+Libya,2015,6,6,NF,23
+Libya,2016,6,6,NF,20
+Libya,2017,7,6,NF,13
+Libya,2018,7,6,NF,9
+Libya,2019,7,6,NF,9
+Libya,2020,7,6,NF,9
+Libya,2021,7,6,NF,9
+Libya,2022,7,6,NF,9
+Libya,2023,7,6,NF,10
+Libya,2024,7,6,NF,9
+Libya,2025,7,6,NF,10
+Liechtenstein,2013,1,1,F,98
+Liechtenstein,2014,1,1,F,98
+Liechtenstein,2015,1,1,F,98
+Liechtenstein,2016,1,1,F,98
+Liechtenstein,2017,2,1,F,91
+Liechtenstein,2018,2,1,F,90
+Liechtenstein,2019,2,1,F,90
+Liechtenstein,2020,2,1,F,90
+Liechtenstein,2021,2,1,F,90
+Liechtenstein,2022,2,1,F,90
+Liechtenstein,2023,2,1,F,90
+Liechtenstein,2024,2,1,F,90
+Liechtenstein,2025,2,1,F,90
+Lithuania,2013,1,1,F,90
+Lithuania,2014,1,1,F,90
+Lithuania,2015,1,1,F,91
+Lithuania,2016,1,1,F,91
+Lithuania,2017,1,1,F,91
+Lithuania,2018,1,1,F,91
+Lithuania,2019,1,1,F,91
+Lithuania,2020,1,1,F,91
+Lithuania,2021,1,2,F,90
+Lithuania,2022,1,2,F,89
+Lithuania,2023,1,2,F,89
+Lithuania,2024,1,2,F,89
+Lithuania,2025,1,2,F,89
+Luxembourg,2013,1,1,F,100
+Luxembourg,2014,1,1,F,99
+Luxembourg,2015,1,1,F,98
+Luxembourg,2016,1,1,F,98
+Luxembourg,2017,1,1,F,98
+Luxembourg,2018,1,1,F,98
+Luxembourg,2019,1,1,F,98
+Luxembourg,2020,1,1,F,98
+Luxembourg,2021,1,1,F,97
+Luxembourg,2022,1,1,F,97
+Luxembourg,2023,1,1,F,97
+Luxembourg,2024,1,1,F,97
+Luxembourg,2025,1,1,F,97
+Madagascar,2013,6,4,PF,35
+Madagascar,2014,5,4,PF,43
+Madagascar,2015,4,4,PF,52
+Madagascar,2016,3,4,PF,56
+Madagascar,2017,3,4,PF,56
+Madagascar,2018,3,4,PF,56
+Madagascar,2019,3,4,PF,56
+Madagascar,2020,3,3,PF,61
+Madagascar,2021,3,4,PF,60
+Madagascar,2022,3,4,PF,61
+Madagascar,2023,3,4,PF,61
+Madagascar,2024,3,4,PF,58
+Madagascar,2025,4,4,PF,55
+Malawi,2013,3,4,PF,60
+Malawi,2014,3,4,PF,60
+Malawi,2015,3,4,PF,61
+Malawi,2016,3,3,PF,64
+Malawi,2017,3,3,PF,63
+Malawi,2018,3,3,PF,63
+Malawi,2019,3,3,PF,64
+Malawi,2020,3,3,PF,62
+Malawi,2021,3,3,PF,66
+Malawi,2022,3,3,PF,66
+Malawi,2023,3,3,PF,66
+Malawi,2024,3,3,PF,66
+Malawi,2025,3,3,PF,65
+Malaysia,2013,4,4,PF,48
+Malaysia,2014,4,4,PF,47
+Malaysia,2015,4,4,PF,46
+Malaysia,2016,4,4,PF,45
+Malaysia,2017,4,4,PF,44
+Malaysia,2018,4,4,PF,45
+Malaysia,2019,4,4,PF,52
+Malaysia,2020,4,4,PF,52
+Malaysia,2021,4,4,PF,51
+Malaysia,2022,4,4,PF,50
+Malaysia,2023,4,4,PF,53
+Malaysia,2024,4,4,PF,53
+Malaysia,2025,4,4,PF,53
+Maldives,2013,5,4,PF,46
+Maldives,2014,4,4,PF,48
+Maldives,2015,4,4,PF,48
+Maldives,2016,4,5,PF,43
+Maldives,2017,5,5,PF,40
+Maldives,2018,5,5,PF,35
+Maldives,2019,5,5,PF,35
+Maldives,2020,4,5,PF,40
+Maldives,2021,4,5,PF,40
+Maldives,2022,4,5,PF,40
+Maldives,2023,4,5,PF,41
+Maldives,2024,4,5,PF,44
+Maldives,2025,4,5,PF,43
+Mali,2013,7,5,NF,24
+Mali,2014,5,4,PF,44
+Mali,2015,5,4,PF,44
+Mali,2016,5,4,PF,45
+Mali,2017,5,4,PF,45
+Mali,2018,5,4,PF,44
+Mali,2019,4,4,PF,44
+Mali,2020,5,5,PF,41
+Mali,2021,6,5,NF,33
+Mali,2022,6,5,NF,32
+Mali,2023,6,5,NF,29
+Mali,2024,6,5,NF,26
+Mali,2025,6,5,NF,24
+Malta,2013,1,1,F,97
+Malta,2014,1,1,F,97
+Malta,2015,1,1,F,97
+Malta,2016,1,1,F,96
+Malta,2017,1,1,F,96
+Malta,2018,1,1,F,92
+Malta,2019,2,1,F,91
+Malta,2020,2,1,F,90
+Malta,2021,2,1,F,90
+Malta,2022,2,1,F,89
+Malta,2023,2,1,F,89
+Malta,2024,2,2,F,87
+Malta,2025,2,2,F,87
+Marshall Islands,2013,1,1,F,91
+Marshall Islands,2014,1,1,F,91
+Marshall Islands,2015,1,1,F,91
+Marshall Islands,2016,1,1,F,92
+Marshall Islands,2017,1,1,F,92
+Marshall Islands,2018,1,1,F,92
+Marshall Islands,2019,1,1,F,93
+Marshall Islands,2020,1,1,F,93
+Marshall Islands,2021,1,1,F,93
+Marshall Islands,2022,1,1,F,93
+Marshall Islands,2023,1,1,F,93
+Marshall Islands,2024,1,1,F,93
+Marshall Islands,2025,1,1,F,93
+Mauritania,2013,6,5,NF,34
+Mauritania,2014,6,5,NF,34
+Mauritania,2015,6,5,NF,31
+Mauritania,2016,6,5,NF,30
+Mauritania,2017,6,5,NF,30
+Mauritania,2018,6,5,NF,30
+Mauritania,2019,6,5,NF,32
+Mauritania,2020,5,5,PF,34
+Mauritania,2021,5,5,PF,35
+Mauritania,2022,5,5,PF,35
+Mauritania,2023,5,5,PF,36
+Mauritania,2024,5,5,PF,39
+Mauritania,2025,5,5,PF,39
+Mauritius,2013,1,2,F,90
+Mauritius,2014,1,2,F,90
+Mauritius,2015,1,2,F,90
+Mauritius,2016,1,2,F,90
+Mauritius,2017,1,2,F,89
+Mauritius,2018,1,2,F,89
+Mauritius,2019,1,2,F,89
+Mauritius,2020,1,2,F,89
+Mauritius,2021,1,2,F,87
+Mauritius,2022,1,2,F,86
+Mauritius,2023,2,2,F,85
+Mauritius,2024,2,2,F,85
+Mauritius,2025,2,2,F,86
+Mexico,2013,3,3,PF,65
+Mexico,2014,3,3,PF,65
+Mexico,2015,3,3,PF,64
+Mexico,2016,3,3,PF,65
+Mexico,2017,3,3,PF,65
+Mexico,2018,3,3,PF,62
+Mexico,2019,3,3,PF,63
+Mexico,2020,3,3,PF,62
+Mexico,2021,3,4,PF,61
+Mexico,2022,3,4,PF,60
+Mexico,2023,3,4,PF,60
+Mexico,2024,3,4,PF,60
+Mexico,2025,3,4,PF,59
+Micronesia,2013,1,1,F,93
+Micronesia,2014,1,1,F,93
+Micronesia,2015,1,1,F,93
+Micronesia,2016,1,1,F,93
+Micronesia,2017,1,1,F,93
+Micronesia,2018,1,1,F,93
+Micronesia,2019,1,1,F,92
+Micronesia,2020,1,1,F,92
+Micronesia,2021,1,1,F,92
+Micronesia,2022,1,1,F,92
+Micronesia,2023,1,1,F,92
+Micronesia,2024,1,1,F,92
+Micronesia,2025,1,1,F,92
+Moldova,2013,3,3,PF,65
+Moldova,2014,3,3,PF,64
+Moldova,2015,3,3,PF,63
+Moldova,2016,3,3,PF,60
+Moldova,2017,3,3,PF,62
+Moldova,2018,3,3,PF,61
+Moldova,2019,3,4,PF,58
+Moldova,2020,3,4,PF,60
+Moldova,2021,3,3,PF,61
+Moldova,2022,3,3,PF,62
+Moldova,2023,3,3,PF,62
+Moldova,2024,3,3,PF,61
+Moldova,2025,3,3,PF,60
+Monaco,2013,2,1,F,87
+Monaco,2014,2,1,F,88
+Monaco,2015,2,1,F,88
+Monaco,2016,2,1,F,88
+Monaco,2017,3,1,F,84
+Monaco,2018,3,1,F,82
+Monaco,2019,3,1,F,82
+Monaco,2020,3,1,F,83
+Monaco,2021,3,1,F,83
+Monaco,2022,3,1,F,84
+Monaco,2023,3,1,F,84
+Monaco,2024,3,1,F,82
+Monaco,2025,3,1,F,82
+Mongolia,2013,1,2,F,86
+Mongolia,2014,1,2,F,86
+Mongolia,2015,1,2,F,86
+Mongolia,2016,1,2,F,86
+Mongolia,2017,1,2,F,85
+Mongolia,2018,1,2,F,85
+Mongolia,2019,1,2,F,85
+Mongolia,2020,1,2,F,84
+Mongolia,2021,1,2,F,84
+Mongolia,2022,1,2,F,84
+Mongolia,2023,1,2,F,84
+Mongolia,2024,1,2,F,84
+Mongolia,2025,1,2,F,84
+Montenegro,2013,3,2,F,72
+Montenegro,2014,3,2,F,72
+Montenegro,2015,3,2,F,71
+Montenegro,2016,3,3,PF,70
+Montenegro,2017,3,3,PF,69
+Montenegro,2018,3,3,PF,67
+Montenegro,2019,4,3,PF,65
+Montenegro,2020,4,3,PF,62
+Montenegro,2021,3,3,PF,63
+Montenegro,2022,3,3,PF,67
+Montenegro,2023,3,3,PF,67
+Montenegro,2024,3,3,PF,69
+Montenegro,2025,3,3,PF,69
+Morocco,2013,5,4,PF,43
+Morocco,2014,5,4,PF,42
+Morocco,2015,5,4,PF,42
+Morocco,2016,5,4,PF,41
+Morocco,2017,5,4,PF,41
+Morocco,2018,5,5,PF,39
+Morocco,2019,5,5,PF,39
+Morocco,2020,5,5,PF,37
+Morocco,2021,5,5,PF,37
+Morocco,2022,5,5,PF,37
+Morocco,2023,5,5,PF,37
+Morocco,2024,5,5,PF,37
+Morocco,2025,5,5,PF,37
+Mozambique,2013,4,3,PF,59
+Mozambique,2014,4,3,PF,58
+Mozambique,2015,4,3,PF,58
+Mozambique,2016,4,4,PF,56
+Mozambique,2017,4,4,PF,53
+Mozambique,2018,4,4,PF,52
+Mozambique,2019,4,4,PF,51
+Mozambique,2020,5,4,PF,45
+Mozambique,2021,5,4,PF,43
+Mozambique,2022,5,4,PF,43
+Mozambique,2023,5,4,PF,45
+Mozambique,2024,5,4,PF,44
+Mozambique,2025,5,4,PF,41
+Myanmar,2013,6,5,NF,26
+Myanmar,2014,6,5,NF,26
+Myanmar,2015,6,6,NF,25
+Myanmar,2016,6,5,NF,28
+Myanmar,2017,5,5,PF,32
+Myanmar,2018,5,5,PF,31
+Myanmar,2019,5,5,PF,30
+Myanmar,2020,5,6,NF,30
+Myanmar,2021,5,6,NF,28
+Myanmar,2022,7,6,NF,9
+Myanmar,2023,7,6,NF,9
+Myanmar,2024,7,6,NF,8
+Myanmar,2025,7,7,NF,7
+Nagorno-Karabakh,2013,5,5,PF,31
+Nagorno-Karabakh,2014,5,5,PF,31
+Nagorno-Karabakh,2015,5,5,PF,30
+Nagorno-Karabakh,2016,5,5,PF,33
+Nagorno-Karabakh,2017,5,5,PF,33
+Nagorno-Karabakh,2018,5,5,PF,30
+Nagorno-Karabakh,2019,5,5,PF,31
+Nagorno-Karabakh,2020,5,5,PF,34
+Nagorno-Karabakh,2021,5,5,PF,35
+Nagorno-Karabakh,2022,5,5,PF,36
+Nagorno-Karabakh,2023,5,5,PF,37
+Nagorno-Karabakh,2024,7,7,NF,-3
+Namibia,2013,2,2,F,76
+Namibia,2014,2,2,F,76
+Namibia,2015,2,2,F,76
+Namibia,2016,2,2,F,77
+Namibia,2017,2,2,F,77
+Namibia,2018,2,2,F,77
+Namibia,2019,3,2,F,75
+Namibia,2020,2,2,F,77
+Namibia,2021,2,2,F,77
+Namibia,2022,2,2,F,77
+Namibia,2023,2,2,F,77
+Namibia,2024,2,2,F,77
+Namibia,2025,3,2,F,73
+Nauru,2013,1,1,F,93
+Nauru,2014,1,1,F,92
+Nauru,2015,1,2,F,88
+Nauru,2016,2,2,F,84
+Nauru,2017,2,2,F,81
+Nauru,2018,2,2,F,81
+Nauru,2019,2,2,F,78
+Nauru,2020,2,3,F,77
+Nauru,2021,2,3,F,77
+Nauru,2022,2,3,F,77
+Nauru,2023,2,3,F,77
+Nauru,2024,2,3,F,77
+Nauru,2025,2,3,F,75
+Nepal,2013,4,4,PF,47
+Nepal,2014,4,4,PF,50
+Nepal,2015,3,4,PF,51
+Nepal,2016,3,4,PF,51
+Nepal,2017,3,4,PF,52
+Nepal,2018,3,4,PF,55
+Nepal,2019,3,4,PF,54
+Nepal,2020,3,4,PF,56
+Nepal,2021,3,4,PF,56
+Nepal,2022,3,4,PF,57
+Nepal,2023,3,4,PF,58
+Nepal,2024,3,4,PF,62
+Nepal,2025,3,4,PF,62
+Netherlands,2013,1,1,F,99
+Netherlands,2014,1,1,F,99
+Netherlands,2015,1,1,F,99
+Netherlands,2016,1,1,F,99
+Netherlands,2017,1,1,F,99
+Netherlands,2018,1,1,F,99
+Netherlands,2019,1,1,F,99
+Netherlands,2020,1,1,F,99
+Netherlands,2021,1,1,F,98
+Netherlands,2022,1,1,F,97
+Netherlands,2023,1,1,F,97
+Netherlands,2024,1,1,F,97
+Netherlands,2025,1,1,F,97
+New Zealand,2013,1,1,F,97
+New Zealand,2014,1,1,F,97
+New Zealand,2015,1,1,F,97
+New Zealand,2016,1,1,F,98
+New Zealand,2017,1,1,F,98
+New Zealand,2018,1,1,F,98
+New Zealand,2019,1,1,F,98
+New Zealand,2020,1,1,F,97
+New Zealand,2021,1,1,F,99
+New Zealand,2022,1,1,F,99
+New Zealand,2023,1,1,F,99
+New Zealand,2024,1,1,F,99
+New Zealand,2025,1,1,F,99
+Nicaragua,2013,5,4,PF,51
+Nicaragua,2014,4,3,PF,54
+Nicaragua,2015,4,3,PF,54
+Nicaragua,2016,4,3,PF,54
+Nicaragua,2017,5,4,PF,47
+Nicaragua,2018,5,4,PF,44
+Nicaragua,2019,6,5,NF,32
+Nicaragua,2020,6,5,NF,31
+Nicaragua,2021,6,5,NF,30
+Nicaragua,2022,7,5,NF,23
+Nicaragua,2023,7,6,NF,19
+Nicaragua,2024,7,6,NF,16
+Nicaragua,2025,7,6,NF,14
+Niger,2013,3,4,PF,56
+Niger,2014,3,4,PF,56
+Niger,2015,3,4,PF,56
+Niger,2016,3,4,PF,52
+Niger,2017,4,4,PF,49
+Niger,2018,4,4,PF,49
+Niger,2019,4,4,PF,49
+Niger,2020,4,4,PF,48
+Niger,2021,4,4,PF,48
+Niger,2022,4,4,PF,51
+Niger,2023,4,4,PF,51
+Niger,2024,6,4,PF,33
+Niger,2025,7,5,NF,30
+Nigeria,2013,4,4,PF,46
+Nigeria,2014,4,4,PF,46
+Nigeria,2015,4,5,PF,43
+Nigeria,2016,4,5,PF,48
+Nigeria,2017,3,5,PF,50
+Nigeria,2018,3,5,PF,50
+Nigeria,2019,3,5,PF,50
+Nigeria,2020,4,5,PF,47
+Nigeria,2021,4,5,PF,45
+Nigeria,2022,4,5,PF,43
+Nigeria,2023,4,5,PF,43
+Nigeria,2024,4,5,PF,44
+Nigeria,2025,4,5,PF,44
+North Korea,2013,7,7,NF,3
+North Korea,2014,7,7,NF,3
+North Korea,2015,7,7,NF,3
+North Korea,2016,7,7,NF,3
+North Korea,2017,7,7,NF,3
+North Korea,2018,7,7,NF,3
+North Korea,2019,7,7,NF,3
+North Korea,2020,7,7,NF,3
+North Korea,2021,7,7,NF,3
+North Korea,2022,7,7,NF,3
+North Korea,2023,7,7,NF,3
+North Korea,2024,7,7,NF,3
+North Korea,2025,7,7,NF,3
+North Macedonia,2013,3,3,PF,64
+North Macedonia,2014,3,3,PF,64
+North Macedonia,2015,4,3,PF,60
+North Macedonia,2016,4,3,PF,57
+North Macedonia,2017,4,3,PF,57
+North Macedonia,2018,4,3,PF,58
+North Macedonia,2019,4,3,PF,59
+North Macedonia,2020,3,3,PF,63
+North Macedonia,2021,3,3,PF,66
+North Macedonia,2022,3,3,PF,67
+North Macedonia,2023,3,3,PF,68
+North Macedonia,2024,3,3,PF,67
+North Macedonia,2025,3,3,PF,67
+Northern Cyprus,2013,2,2,F,78
+Northern Cyprus,2014,2,2,F,79
+Northern Cyprus,2015,2,2,F,79
+Northern Cyprus,2016,2,2,F,79
+Northern Cyprus,2017,2,2,F,80
+Northern Cyprus,2018,2,2,F,81
+Northern Cyprus,2019,2,2,F,81
+Northern Cyprus,2020,2,2,F,81
+Northern Cyprus,2021,3,2,F,78
+Northern Cyprus,2022,3,2,F,77
+Northern Cyprus,2023,3,2,F,76
+Northern Cyprus,2024,3,2,F,76
+Northern Cyprus,2025,3,2,F,76
+Norway,2013,1,1,F,100
+Norway,2014,1,1,F,100
+Norway,2015,1,1,F,100
+Norway,2016,1,1,F,100
+Norway,2017,1,1,F,100
+Norway,2018,1,1,F,100
+Norway,2019,1,1,F,100
+Norway,2020,1,1,F,100
+Norway,2021,1,1,F,100
+Norway,2022,1,1,F,100
+Norway,2023,1,1,F,100
+Norway,2024,1,1,F,98
+Norway,2025,1,1,F,99
+Oman,2013,6,5,NF,26
+Oman,2014,6,5,NF,26
+Oman,2015,6,5,NF,26
+Oman,2016,6,5,NF,25
+Oman,2017,6,5,NF,25
+Oman,2018,6,5,NF,23
+Oman,2019,6,5,NF,23
+Oman,2020,6,5,NF,23
+Oman,2021,6,5,NF,23
+Oman,2022,6,5,NF,24
+Oman,2023,6,5,NF,24
+Oman,2024,6,5,NF,24
+Oman,2025,6,5,NF,24
+Pakistan,2013,4,5,PF,42
+Pakistan,2014,4,5,PF,42
+Pakistan,2015,4,5,PF,42
+Pakistan,2016,4,5,PF,41
+Pakistan,2017,4,5,PF,43
+Pakistan,2018,4,5,PF,43
+Pakistan,2019,5,5,PF,39
+Pakistan,2020,5,5,PF,38
+Pakistan,2021,5,5,PF,37
+Pakistan,2022,5,5,PF,37
+Pakistan,2023,5,5,PF,37
+Pakistan,2024,5,5,PF,35
+Pakistan,2025,5,5,PF,32
+Pakistani Kashmir,2013,6,5,NF,29
+Pakistani Kashmir,2014,6,5,NF,29
+Pakistani Kashmir,2015,6,5,NF,29
+Pakistani Kashmir,2016,6,5,NF,28
+Pakistani Kashmir,2017,6,5,NF,28
+Pakistani Kashmir,2018,6,5,NF,28
+Pakistani Kashmir,2019,6,5,NF,28
+Pakistani Kashmir,2020,6,5,NF,28
+Pakistani Kashmir,2021,6,5,NF,28
+Pakistani Kashmir,2022,6,5,NF,29
+Pakistani Kashmir,2023,6,5,NF,29
+Pakistani Kashmir,2024,6,5,NF,29
+Pakistani Kashmir,2025,6,5,NF,30
+Palau,2013,1,1,F,92
+Palau,2014,1,1,F,92
+Palau,2015,1,1,F,92
+Palau,2016,1,1,F,92
+Palau,2017,1,1,F,92
+Palau,2018,1,1,F,92
+Palau,2019,1,1,F,92
+Palau,2020,1,1,F,92
+Palau,2021,1,1,F,92
+Palau,2022,1,1,F,92
+Palau,2023,1,1,F,92
+Palau,2024,1,1,F,92
+Palau,2025,1,1,F,92
+Panama,2013,1,2,F,82
+Panama,2014,2,2,F,82
+Panama,2015,2,2,F,82
+Panama,2016,2,2,F,83
+Panama,2017,2,2,F,83
+Panama,2018,2,2,F,83
+Panama,2019,1,2,F,84
+Panama,2020,1,2,F,84
+Panama,2021,2,2,F,83
+Panama,2022,2,2,F,83
+Panama,2023,2,2,F,83
+Panama,2024,2,2,F,83
+Panama,2025,2,2,F,83
+Papua New Guinea,2013,4,3,PF,59
+Papua New Guinea,2014,3,3,PF,60
+Papua New Guinea,2015,4,3,PF,59
+Papua New Guinea,2016,4,3,PF,59
+Papua New Guinea,2017,3,3,PF,64
+Papua New Guinea,2018,3,3,PF,63
+Papua New Guinea,2019,4,3,PF,64
+Papua New Guinea,2020,4,3,PF,62
+Papua New Guinea,2021,4,3,PF,62
+Papua New Guinea,2022,4,3,PF,62
+Papua New Guinea,2023,4,3,PF,61
+Papua New Guinea,2024,4,3,PF,61
+Papua New Guinea,2025,4,3,PF,61
+Paraguay,2013,3,3,PF,62
+Paraguay,2014,3,3,PF,61
+Paraguay,2015,3,3,PF,65
+Paraguay,2016,3,3,PF,64
+Paraguay,2017,3,3,PF,64
+Paraguay,2018,3,3,PF,64
+Paraguay,2019,3,3,PF,65
+Paraguay,2020,3,3,PF,65
+Paraguay,2021,3,3,PF,65
+Paraguay,2022,3,3,PF,65
+Paraguay,2023,3,3,PF,65
+Paraguay,2024,3,3,PF,63
+Paraguay,2025,3,3,PF,63
+Peru,2013,2,3,F,71
+Peru,2014,2,3,F,71
+Peru,2015,2,3,F,71
+Peru,2016,2,3,F,71
+Peru,2017,2,3,F,72
+Peru,2018,2,3,F,73
+Peru,2019,2,3,F,73
+Peru,2020,2,3,F,72
+Peru,2021,3,3,PF,71
+Peru,2022,2,3,F,72
+Peru,2023,3,3,PF,70
+Peru,2024,3,3,PF,66
+Peru,2025,3,3,PF,67
+Philippines,2013,3,3,PF,63
+Philippines,2014,3,3,PF,63
+Philippines,2015,3,3,PF,63
+Philippines,2016,3,3,PF,65
+Philippines,2017,3,3,PF,63
+Philippines,2018,3,3,PF,62
+Philippines,2019,3,3,PF,61
+Philippines,2020,3,4,PF,59
+Philippines,2021,3,4,PF,56
+Philippines,2022,3,4,PF,55
+Philippines,2023,3,4,PF,58
+Philippines,2024,3,4,PF,58
+Philippines,2025,3,4,PF,58
+Poland,2013,1,1,F,93
+Poland,2014,1,1,F,93
+Poland,2015,1,1,F,93
+Poland,2016,1,1,F,93
+Poland,2017,1,2,F,89
+Poland,2018,1,2,F,85
+Poland,2019,2,2,F,84
+Poland,2020,2,2,F,84
+Poland,2021,2,2,F,82
+Poland,2022,2,2,F,81
+Poland,2023,2,2,F,81
+Poland,2024,2,2,F,80
+Poland,2025,2,2,F,82
+Portugal,2013,1,1,F,97
+Portugal,2014,1,1,F,97
+Portugal,2015,1,1,F,97
+Portugal,2016,1,1,F,97
+Portugal,2017,1,1,F,97
+Portugal,2018,1,1,F,97
+Portugal,2019,1,1,F,96
+Portugal,2020,1,1,F,96
+Portugal,2021,1,1,F,96
+Portugal,2022,1,1,F,95
+Portugal,2023,1,1,F,96
+Portugal,2024,1,1,F,96
+Portugal,2025,1,1,F,96
+Puerto Rico,2013,1,2,F,89
+Puerto Rico,2014,1,2,F,89
+Puerto Rico,2015,1,2,F,89
+Puerto Rico,2016,1,1,F,90
+Qatar,2013,6,5,NF,28
+Qatar,2014,6,5,NF,28
+Qatar,2015,6,5,NF,28
+Qatar,2016,6,5,NF,27
+Qatar,2017,6,5,NF,26
+Qatar,2018,6,5,NF,24
+Qatar,2019,6,5,NF,25
+Qatar,2020,6,5,NF,25
+Qatar,2021,6,5,NF,25
+Qatar,2022,6,5,NF,25
+Qatar,2023,6,5,NF,25
+Qatar,2024,6,5,NF,25
+Qatar,2025,6,5,NF,25
+Romania,2013,2,2,F,81
+Romania,2014,2,2,F,84
+Romania,2015,2,2,F,83
+Romania,2016,2,2,F,83
+Romania,2017,2,2,F,84
+Romania,2018,2,2,F,84
+Romania,2019,2,2,F,81
+Romania,2020,2,2,F,83
+Romania,2021,2,2,F,83
+Romania,2022,2,2,F,83
+Romania,2023,2,2,F,83
+Romania,2024,2,2,F,83
+Romania,2025,2,2,F,82
+Russia,2013,6,5,NF,27
+Russia,2014,6,5,NF,26
+Russia,2015,6,6,NF,23
+Russia,2016,6,6,NF,22
+Russia,2017,7,6,NF,20
+Russia,2018,7,6,NF,20
+Russia,2019,7,6,NF,20
+Russia,2020,7,6,NF,20
+Russia,2021,7,6,NF,20
+Russia,2022,7,6,NF,19
+Russia,2023,7,6,NF,16
+Russia,2024,7,6,NF,13
+Russia,2025,7,6,NF,12
+Russian-Occupied Territories of Ukraine,2025,7,7,NF,-1
+Rwanda,2013,6,6,NF,24
+Rwanda,2014,6,5,NF,26
+Rwanda,2015,6,6,NF,25
+Rwanda,2016,6,6,NF,24
+Rwanda,2017,6,6,NF,24
+Rwanda,2018,6,6,NF,23
+Rwanda,2019,6,6,NF,23
+Rwanda,2020,6,6,NF,22
+Rwanda,2021,6,6,NF,21
+Rwanda,2022,6,6,NF,22
+Rwanda,2023,6,6,NF,23
+Rwanda,2024,6,6,NF,23
+Rwanda,2025,6,6,NF,21
+Samoa,2013,2,2,F,81
+Samoa,2014,2,2,F,81
+Samoa,2015,2,2,F,81
+Samoa,2016,2,2,F,80
+Samoa,2017,2,2,F,80
+Samoa,2018,2,2,F,80
+Samoa,2019,2,2,F,81
+Samoa,2020,2,2,F,81
+Samoa,2021,2,2,F,81
+Samoa,2022,2,2,F,83
+Samoa,2023,2,2,F,83
+Samoa,2024,2,2,F,84
+Samoa,2025,2,2,F,84
+San Marino,2013,1,1,F,100
+San Marino,2014,1,1,F,100
+San Marino,2015,1,1,F,100
+San Marino,2016,1,1,F,100
+San Marino,2017,1,1,F,97
+San Marino,2018,1,1,F,97
+San Marino,2019,1,1,F,95
+San Marino,2020,1,1,F,95
+San Marino,2021,1,1,F,93
+San Marino,2022,1,1,F,93
+San Marino,2023,1,1,F,97
+San Marino,2024,1,1,F,97
+San Marino,2025,1,1,F,97
+Sao Tome and Principe,2013,2,2,F,81
+Sao Tome and Principe,2014,2,2,F,81
+Sao Tome and Principe,2015,2,2,F,81
+Sao Tome and Principe,2016,2,2,F,81
+Sao Tome and Principe,2017,2,2,F,81
+Sao Tome and Principe,2018,2,2,F,82
+Sao Tome and Principe,2019,2,2,F,83
+Sao Tome and Principe,2020,2,2,F,84
+Sao Tome and Principe,2021,2,2,F,84
+Sao Tome and Principe,2022,2,2,F,84
+Sao Tome and Principe,2023,2,2,F,84
+Sao Tome and Principe,2024,2,2,F,84
+Sao Tome and Principe,2025,2,2,F,84
+Saudi Arabia,2013,7,7,NF,10
+Saudi Arabia,2014,7,7,NF,10
+Saudi Arabia,2015,7,7,NF,10
+Saudi Arabia,2016,7,7,NF,10
+Saudi Arabia,2017,7,7,NF,10
+Saudi Arabia,2018,7,7,NF,7
+Saudi Arabia,2019,7,7,NF,7
+Saudi Arabia,2020,7,7,NF,7
+Saudi Arabia,2021,7,7,NF,7
+Saudi Arabia,2022,7,7,NF,7
+Saudi Arabia,2023,7,7,NF,8
+Saudi Arabia,2024,7,7,NF,8
+Saudi Arabia,2025,7,6,NF,9
+Senegal,2013,2,3,F,75
+Senegal,2014,2,2,F,79
+Senegal,2015,2,2,F,78
+Senegal,2016,2,2,F,78
+Senegal,2017,2,2,F,78
+Senegal,2018,2,2,F,75
+Senegal,2019,2,3,F,72
+Senegal,2020,3,3,PF,71
+Senegal,2021,3,3,PF,71
+Senegal,2022,3,3,PF,68
+Senegal,2023,3,3,PF,68
+Senegal,2024,3,3,PF,67
+Senegal,2025,2,3,F,69
+Serbia,2013,2,2,F,78
+Serbia,2014,2,2,F,78
+Serbia,2015,2,2,F,80
+Serbia,2016,2,2,F,78
+Serbia,2017,3,2,F,76
+Serbia,2018,3,2,F,73
+Serbia,2019,3,3,PF,67
+Serbia,2020,4,3,PF,66
+Serbia,2021,4,3,PF,64
+Serbia,2022,4,3,PF,62
+Serbia,2023,4,3,PF,60
+Serbia,2024,4,3,PF,57
+Serbia,2025,4,3,PF,56
+Seychelles,2013,3,3,PF,67
+Seychelles,2014,3,3,PF,67
+Seychelles,2015,3,3,PF,67
+Seychelles,2016,3,3,PF,68
+Seychelles,2017,3,3,PF,71
+Seychelles,2018,3,3,PF,71
+Seychelles,2019,3,3,PF,71
+Seychelles,2020,3,3,PF,72
+Seychelles,2021,2,3,F,77
+Seychelles,2022,2,2,F,79
+Seychelles,2023,2,2,F,79
+Seychelles,2024,2,2,F,79
+Seychelles,2025,2,2,F,80
+Sierra Leone,2013,2,3,F,70
+Sierra Leone,2014,3,3,PF,67
+Sierra Leone,2015,3,3,PF,65
+Sierra Leone,2016,3,3,PF,65
+Sierra Leone,2017,3,3,PF,66
+Sierra Leone,2018,3,3,PF,66
+Sierra Leone,2019,3,3,PF,65
+Sierra Leone,2020,3,3,PF,65
+Sierra Leone,2021,3,3,PF,65
+Sierra Leone,2022,3,3,PF,65
+Sierra Leone,2023,3,3,PF,63
+Sierra Leone,2024,3,3,PF,60
+Sierra Leone,2025,4,3,PF,59
+Singapore,2013,4,4,PF,52
+Singapore,2014,4,4,PF,51
+Singapore,2015,4,4,PF,51
+Singapore,2016,4,4,PF,51
+Singapore,2017,4,4,PF,51
+Singapore,2018,4,4,PF,52
+Singapore,2019,4,4,PF,51
+Singapore,2020,4,4,PF,50
+Singapore,2021,4,4,PF,48
+Singapore,2022,4,4,PF,47
+Singapore,2023,4,4,PF,47
+Singapore,2024,4,4,PF,48
+Singapore,2025,4,4,PF,48
+Slovakia,2013,1,1,F,92
+Slovakia,2014,1,1,F,91
+Slovakia,2015,1,1,F,90
+Slovakia,2016,1,1,F,89
+Slovakia,2017,1,1,F,89
+Slovakia,2018,1,1,F,89
+Slovakia,2019,1,2,F,88
+Slovakia,2020,1,2,F,88
+Slovakia,2021,1,1,F,90
+Slovakia,2022,1,1,F,90
+Slovakia,2023,1,1,F,90
+Slovakia,2024,1,1,F,90
+Slovakia,2025,1,1,F,89
+Slovenia,2013,1,1,F,91
+Slovenia,2014,1,1,F,91
+Slovenia,2015,1,1,F,91
+Slovenia,2016,1,1,F,92
+Slovenia,2017,1,1,F,92
+Slovenia,2018,1,1,F,93
+Slovenia,2019,1,1,F,94
+Slovenia,2020,1,1,F,94
+Slovenia,2021,1,1,F,95
+Slovenia,2022,1,2,F,90
+Slovenia,2023,1,1,F,95
+Slovenia,2024,1,1,F,96
+Slovenia,2025,1,1,F,96
+Solomon Islands,2013,4,3,PF,65
+Solomon Islands,2014,4,3,PF,65
+Solomon Islands,2015,3,3,PF,68
+Solomon Islands,2016,3,3,PF,68
+Solomon Islands,2017,3,2,F,71
+Solomon Islands,2018,3,2,F,72
+Solomon Islands,2019,2,2,F,79
+Solomon Islands,2020,2,2,F,79
+Solomon Islands,2021,2,2,F,79
+Solomon Islands,2022,2,2,F,79
+Solomon Islands,2023,3,2,F,76
+Solomon Islands,2024,3,2,F,75
+Solomon Islands,2025,3,2,F,75
+Somalia,2013,7,7,NF,2
+Somalia,2014,7,7,NF,2
+Somalia,2015,7,7,NF,2
+Somalia,2016,7,7,NF,2
+Somalia,2017,7,7,NF,5
+Somalia,2018,7,7,NF,7
+Somalia,2019,7,7,NF,7
+Somalia,2020,7,7,NF,7
+Somalia,2021,7,7,NF,7
+Somalia,2022,7,7,NF,7
+Somalia,2023,7,7,NF,8
+Somalia,2024,7,7,NF,8
+Somalia,2025,7,7,NF,8
+Somaliland,2013,4,5,PF,46
+Somaliland,2014,4,5,PF,46
+Somaliland,2015,4,5,PF,46
+Somaliland,2016,5,5,PF,40
+Somaliland,2017,5,5,PF,40
+Somaliland,2018,4,5,PF,44
+Somaliland,2019,4,5,PF,43
+Somaliland,2020,5,5,PF,41
+Somaliland,2021,4,5,PF,42
+Somaliland,2022,4,4,PF,49
+Somaliland,2023,4,4,PF,44
+Somaliland,2024,5,4,PF,43
+Somaliland,2025,4,4,PF,47
+South Africa,2013,2,2,F,81
+South Africa,2014,2,2,F,81
+South Africa,2015,2,2,F,81
+South Africa,2016,2,2,F,79
+South Africa,2017,2,2,F,78
+South Africa,2018,2,2,F,78
+South Africa,2019,2,2,F,79
+South Africa,2020,2,2,F,79
+South Africa,2021,2,2,F,79
+South Africa,2022,2,2,F,79
+South Africa,2023,2,2,F,79
+South Africa,2024,2,2,F,79
+South Africa,2025,2,2,F,81
+South Korea,2013,1,2,F,86
+South Korea,2014,2,2,F,85
+South Korea,2015,2,2,F,84
+South Korea,2016,2,2,F,83
+South Korea,2017,2,2,F,82
+South Korea,2018,2,2,F,84
+South Korea,2019,2,2,F,83
+South Korea,2020,2,2,F,83
+South Korea,2021,2,2,F,83
+South Korea,2022,2,2,F,83
+South Korea,2023,2,2,F,83
+South Korea,2024,2,2,F,83
+South Korea,2025,2,2,F,81
+South Ossetia,2013,7,6,NF,5
+South Ossetia,2014,7,6,NF,5
+South Ossetia,2015,7,6,NF,10
+South Ossetia,2016,7,6,NF,11
+South Ossetia,2017,7,6,NF,11
+South Ossetia,2018,7,6,NF,10
+South Ossetia,2019,7,6,NF,10
+South Ossetia,2020,7,6,NF,10
+South Ossetia,2021,7,6,NF,10
+South Ossetia,2022,7,6,NF,11
+South Ossetia,2023,7,6,NF,12
+South Ossetia,2024,7,6,NF,12
+South Ossetia,2025,7,6,NF,12
+South Sudan,2013,6,5,NF,31
+South Sudan,2014,6,6,NF,24
+South Sudan,2015,7,6,NF,15
+South Sudan,2016,7,6,NF,14
+South Sudan,2017,7,7,NF,4
+South Sudan,2018,7,7,NF,2
+South Sudan,2019,7,7,NF,2
+South Sudan,2020,7,7,NF,2
+South Sudan,2021,7,7,NF,2
+South Sudan,2022,7,7,NF,1
+South Sudan,2023,7,7,NF,1
+South Sudan,2024,7,7,NF,1
+South Sudan,2025,7,7,NF,1
+Spain,2013,1,1,F,96
+Spain,2014,1,1,F,96
+Spain,2015,1,1,F,96
+Spain,2016,1,1,F,95
+Spain,2017,1,1,F,94
+Spain,2018,1,1,F,94
+Spain,2019,1,1,F,94
+Spain,2020,1,1,F,92
+Spain,2021,1,1,F,90
+Spain,2022,1,1,F,90
+Spain,2023,1,1,F,90
+Spain,2024,1,1,F,90
+Spain,2025,1,1,F,90
+Sri Lanka,2013,5,4,PF,43
+Sri Lanka,2014,5,4,PF,42
+Sri Lanka,2015,5,5,PF,41
+Sri Lanka,2016,4,4,PF,55
+Sri Lanka,2017,3,4,PF,56
+Sri Lanka,2018,3,4,PF,55
+Sri Lanka,2019,3,4,PF,56
+Sri Lanka,2020,4,4,PF,56
+Sri Lanka,2021,4,4,PF,56
+Sri Lanka,2022,4,4,PF,55
+Sri Lanka,2023,4,4,PF,54
+Sri Lanka,2024,4,4,PF,54
+Sri Lanka,2025,3,4,PF,58
+St. Kitts and Nevis,2013,1,1,F,91
+St. Kitts and Nevis,2014,1,1,F,90
+St. Kitts and Nevis,2015,1,1,F,90
+St. Kitts and Nevis,2016,2,1,F,88
+St. Kitts and Nevis,2017,1,1,F,89
+St. Kitts and Nevis,2018,1,1,F,89
+St. Kitts and Nevis,2019,1,1,F,89
+St. Kitts and Nevis,2020,1,1,F,89
+St. Kitts and Nevis,2021,2,1,F,89
+St. Kitts and Nevis,2022,2,1,F,89
+St. Kitts and Nevis,2023,2,1,F,89
+St. Kitts and Nevis,2024,2,1,F,89
+St. Kitts and Nevis,2025,2,1,F,89
+St. Lucia,2013,1,1,F,93
+St. Lucia,2014,1,1,F,92
+St. Lucia,2015,1,1,F,92
+St. Lucia,2016,1,1,F,92
+St. Lucia,2017,1,1,F,92
+St. Lucia,2018,1,1,F,91
+St. Lucia,2019,1,1,F,92
+St. Lucia,2020,1,1,F,92
+St. Lucia,2021,1,1,F,91
+St. Lucia,2022,1,1,F,92
+St. Lucia,2023,1,1,F,92
+St. Lucia,2024,1,1,F,92
+St. Lucia,2025,1,1,F,91
+St. Vincent and the Grenadines,2013,1,1,F,89
+St. Vincent and the Grenadines,2014,1,1,F,89
+St. Vincent and the Grenadines,2015,1,1,F,90
+St. Vincent and the Grenadines,2016,1,1,F,91
+St. Vincent and the Grenadines,2017,1,1,F,91
+St. Vincent and the Grenadines,2018,1,1,F,90
+St. Vincent and the Grenadines,2019,1,1,F,91
+St. Vincent and the Grenadines,2020,1,1,F,91
+St. Vincent and the Grenadines,2021,1,1,F,91
+St. Vincent and the Grenadines,2022,1,1,F,91
+St. Vincent and the Grenadines,2023,1,1,F,91
+St. Vincent and the Grenadines,2024,1,1,F,90
+St. Vincent and the Grenadines,2025,1,1,F,90
+Sudan,2013,7,7,NF,7
+Sudan,2014,7,7,NF,7
+Sudan,2015,7,7,NF,6
+Sudan,2016,7,7,NF,6
+Sudan,2017,7,7,NF,6
+Sudan,2018,7,7,NF,8
+Sudan,2019,7,7,NF,7
+Sudan,2020,7,6,NF,12
+Sudan,2021,7,6,NF,17
+Sudan,2022,7,6,NF,10
+Sudan,2023,7,6,NF,10
+Sudan,2024,7,6,NF,6
+Sudan,2025,7,7,NF,2
+Suriname,2013,2,2,F,77
+Suriname,2014,2,2,F,77
+Suriname,2015,2,2,F,77
+Suriname,2016,2,3,F,77
+Suriname,2017,2,3,F,77
+Suriname,2018,2,2,F,78
+Suriname,2019,2,3,F,77
+Suriname,2020,2,3,F,75
+Suriname,2021,2,2,F,79
+Suriname,2022,2,2,F,79
+Suriname,2023,2,2,F,79
+Suriname,2024,2,2,F,79
+Suriname,2025,2,2,F,80
+Sweden,2013,1,1,F,100
+Sweden,2014,1,1,F,99
+Sweden,2015,1,1,F,99
+Sweden,2016,1,1,F,100
+Sweden,2017,1,1,F,100
+Sweden,2018,1,1,F,100
+Sweden,2019,1,1,F,100
+Sweden,2020,1,1,F,100
+Sweden,2021,1,1,F,100
+Sweden,2022,1,1,F,100
+Sweden,2023,1,1,F,100
+Sweden,2024,1,1,F,99
+Sweden,2025,1,1,F,99
+Switzerland,2013,1,1,F,96
+Switzerland,2014,1,1,F,96
+Switzerland,2015,1,1,F,96
+Switzerland,2016,1,1,F,96
+Switzerland,2017,1,1,F,96
+Switzerland,2018,1,1,F,96
+Switzerland,2019,1,1,F,96
+Switzerland,2020,1,1,F,96
+Switzerland,2021,1,1,F,96
+Switzerland,2022,1,1,F,96
+Switzerland,2023,1,1,F,96
+Switzerland,2024,1,1,F,96
+Switzerland,2025,1,1,F,96
+Syria,2013,7,7,NF,5
+Syria,2014,7,7,NF,1
+Syria,2015,7,7,NF,-1
+Syria,2016,7,7,NF,-1
+Syria,2017,7,7,NF,-1
+Syria,2018,7,7,NF,-1
+Syria,2019,7,7,NF,0
+Syria,2020,7,7,NF,0
+Syria,2021,7,7,NF,1
+Syria,2022,7,7,NF,1
+Syria,2023,7,7,NF,1
+Syria,2024,7,7,NF,1
+Syria,2025,7,6,NF,5
+Taiwan,2013,1,2,F,88
+Taiwan,2014,1,2,F,88
+Taiwan,2015,1,2,F,88
+Taiwan,2016,1,2,F,89
+Taiwan,2017,1,1,F,91
+Taiwan,2018,1,1,F,93
+Taiwan,2019,1,1,F,93
+Taiwan,2020,1,1,F,93
+Taiwan,2021,1,1,F,94
+Taiwan,2022,1,1,F,94
+Taiwan,2023,1,1,F,94
+Taiwan,2024,1,1,F,94
+Taiwan,2025,1,1,F,94
+Tajikistan,2013,6,6,NF,24
+Tajikistan,2014,6,6,NF,24
+Tajikistan,2015,6,6,NF,22
+Tajikistan,2016,7,6,NF,16
+Tajikistan,2017,7,6,NF,11
+Tajikistan,2018,7,6,NF,11
+Tajikistan,2019,7,6,NF,9
+Tajikistan,2020,7,6,NF,9
+Tajikistan,2021,7,6,NF,8
+Tajikistan,2022,7,6,NF,8
+Tajikistan,2023,7,7,NF,7
+Tajikistan,2024,7,7,NF,5
+Tajikistan,2025,7,7,NF,5
+Tanzania,2013,3,3,PF,66
+Tanzania,2014,3,3,PF,64
+Tanzania,2015,3,3,PF,63
+Tanzania,2016,3,4,PF,60
+Tanzania,2017,3,4,PF,58
+Tanzania,2018,4,4,PF,52
+Tanzania,2019,4,5,PF,45
+Tanzania,2020,5,5,PF,40
+Tanzania,2021,5,5,PF,34
+Tanzania,2022,5,5,PF,34
+Tanzania,2023,5,5,PF,36
+Tanzania,2024,5,5,PF,36
+Tanzania,2025,6,5,NF,35
+Thailand,2013,4,4,PF,53
+Thailand,2014,4,4,PF,54
+Thailand,2015,6,5,NF,33
+Thailand,2016,6,5,NF,32
+Thailand,2017,6,5,NF,32
+Thailand,2018,6,5,NF,31
+Thailand,2019,7,5,NF,30
+Thailand,2020,6,4,PF,32
+Thailand,2021,7,5,NF,30
+Thailand,2022,7,5,NF,29
+Thailand,2023,6,5,NF,30
+Thailand,2024,5,5,PF,36
+Thailand,2025,6,5,NF,34
+The Gambia,2013,6,6,NF,23
+The Gambia,2014,6,6,NF,21
+The Gambia,2015,6,6,NF,20
+The Gambia,2016,7,6,NF,18
+The Gambia,2017,6,6,NF,20
+The Gambia,2018,4,5,PF,41
+The Gambia,2019,4,5,PF,45
+The Gambia,2020,4,4,PF,46
+The Gambia,2021,4,4,PF,46
+The Gambia,2022,4,4,PF,47
+The Gambia,2023,4,4,PF,48
+The Gambia,2024,4,4,PF,50
+The Gambia,2025,4,4,PF,50
+Tibet,2013,7,7,NF,1
+Tibet,2014,7,7,NF,1
+Tibet,2015,7,7,NF,1
+Tibet,2016,7,7,NF,1
+Tibet,2017,7,7,NF,1
+Tibet,2018,7,7,NF,1
+Tibet,2019,7,7,NF,1
+Tibet,2020,7,7,NF,1
+Tibet,2021,7,7,NF,1
+Tibet,2022,7,7,NF,1
+Tibet,2023,7,7,NF,1
+Tibet,2024,7,7,NF,0
+Tibet,2025,7,7,NF,0
+Timor-Leste,2013,3,4,PF,63
+Timor-Leste,2014,3,4,PF,63
+Timor-Leste,2015,3,3,PF,65
+Timor-Leste,2016,3,3,PF,65
+Timor-Leste,2017,3,3,PF,65
+Timor-Leste,2018,2,3,F,69
+Timor-Leste,2019,2,3,F,70
+Timor-Leste,2020,2,3,F,71
+Timor-Leste,2021,2,3,F,72
+Timor-Leste,2022,2,3,F,72
+Timor-Leste,2023,2,3,F,72
+Timor-Leste,2024,2,3,F,72
+Timor-Leste,2025,2,3,F,72
+Togo,2013,5,4,PF,43
+Togo,2014,4,4,PF,47
+Togo,2015,4,4,PF,47
+Togo,2016,4,4,PF,48
+Togo,2017,4,4,PF,48
+Togo,2018,4,4,PF,47
+Togo,2019,5,4,PF,43
+Togo,2020,5,4,PF,44
+Togo,2021,5,4,PF,43
+Togo,2022,5,4,PF,42
+Togo,2023,5,4,PF,42
+Togo,2024,5,4,PF,42
+Togo,2025,5,4,PF,41
+Tonga,2013,3,2,F,73
+Tonga,2014,2,2,F,75
+Tonga,2015,2,2,F,75
+Tonga,2016,2,2,F,75
+Tonga,2017,2,2,F,74
+Tonga,2018,2,2,F,75
+Tonga,2019,2,2,F,79
+Tonga,2020,2,2,F,79
+Tonga,2021,2,2,F,79
+Tonga,2022,2,2,F,79
+Tonga,2023,2,2,F,81
+Tonga,2024,2,2,F,81
+Tonga,2025,2,2,F,80
+Transnistria,2013,6,6,NF,25
+Transnistria,2014,6,6,NF,24
+Transnistria,2015,6,6,NF,24
+Transnistria,2016,6,6,NF,24
+Transnistria,2017,6,6,NF,24
+Transnistria,2018,6,6,NF,24
+Transnistria,2019,6,6,NF,24
+Transnistria,2020,6,6,NF,22
+Transnistria,2021,6,6,NF,20
+Transnistria,2022,6,6,NF,18
+Transnistria,2023,6,6,NF,18
+Transnistria,2024,7,6,NF,17
+Transnistria,2025,7,6,NF,17
+Trinidad and Tobago,2013,2,2,F,81
+Trinidad and Tobago,2014,2,2,F,81
+Trinidad and Tobago,2015,2,2,F,81
+Trinidad and Tobago,2016,2,2,F,81
+Trinidad and Tobago,2017,2,2,F,81
+Trinidad and Tobago,2018,2,2,F,81
+Trinidad and Tobago,2019,2,2,F,82
+Trinidad and Tobago,2020,2,2,F,82
+Trinidad and Tobago,2021,2,2,F,82
+Trinidad and Tobago,2022,2,2,F,82
+Trinidad and Tobago,2023,2,2,F,82
+Trinidad and Tobago,2024,2,2,F,82
+Trinidad and Tobago,2025,2,2,F,82
+Tunisia,2013,3,4,PF,59
+Tunisia,2014,3,3,PF,63
+Tunisia,2015,1,3,F,79
+Tunisia,2016,1,3,F,79
+Tunisia,2017,1,3,F,78
+Tunisia,2018,2,3,F,70
+Tunisia,2019,2,3,F,69
+Tunisia,2020,2,3,F,70
+Tunisia,2021,2,3,F,71
+Tunisia,2022,3,3,PF,64
+Tunisia,2023,4,3,PF,56
+Tunisia,2024,5,3,PF,51
+Tunisia,2025,6,4,PF,44
+Turkey,2013,3,4,PF,61
+Turkey,2014,3,4,PF,60
+Turkey,2015,3,4,PF,55
+Turkey,2016,3,4,PF,53
+Turkey,2017,4,5,PF,38
+Turkey,2018,5,6,NF,32
+Turkey,2019,5,6,NF,31
+Turkey,2020,5,6,NF,32
+Turkey,2021,5,6,NF,32
+Turkey,2022,5,6,NF,32
+Turkey,2023,5,6,NF,32
+Turkey,2024,5,6,NF,33
+Turkey,2025,5,6,NF,33
+Turkmenistan,2013,7,7,NF,7
+Turkmenistan,2014,7,7,NF,7
+Turkmenistan,2015,7,7,NF,6
+Turkmenistan,2016,7,7,NF,4
+Turkmenistan,2017,7,7,NF,4
+Turkmenistan,2018,7,7,NF,4
+Turkmenistan,2019,7,7,NF,2
+Turkmenistan,2020,7,7,NF,2
+Turkmenistan,2021,7,7,NF,2
+Turkmenistan,2022,7,7,NF,2
+Turkmenistan,2023,7,7,NF,2
+Turkmenistan,2024,7,7,NF,2
+Turkmenistan,2025,7,7,NF,1
+Tuvalu,2013,1,1,F,94
+Tuvalu,2014,1,1,F,94
+Tuvalu,2015,1,1,F,94
+Tuvalu,2016,1,1,F,94
+Tuvalu,2017,1,1,F,94
+Tuvalu,2018,1,1,F,94
+Tuvalu,2019,1,1,F,93
+Tuvalu,2020,1,1,F,93
+Tuvalu,2021,1,1,F,93
+Tuvalu,2022,1,1,F,93
+Tuvalu,2023,1,1,F,93
+Tuvalu,2024,1,1,F,93
+Tuvalu,2025,1,1,F,93
+Uganda,2013,5,4,PF,40
+Uganda,2014,6,4,PF,37
+Uganda,2015,6,5,NF,36
+Uganda,2016,6,5,NF,36
+Uganda,2017,6,5,NF,35
+Uganda,2018,6,4,PF,37
+Uganda,2019,6,5,NF,36
+Uganda,2020,6,5,NF,34
+Uganda,2021,6,5,NF,34
+Uganda,2022,6,5,NF,34
+Uganda,2023,6,5,NF,35
+Uganda,2024,6,5,NF,34
+Uganda,2025,6,5,NF,34
+Ukraine,2013,4,3,PF,57
+Ukraine,2014,4,3,PF,55
+Ukraine,2015,3,3,PF,62
+Ukraine,2016,3,3,PF,61
+Ukraine,2017,3,3,PF,61
+Ukraine,2018,3,3,PF,62
+Ukraine,2019,3,4,PF,60
+Ukraine,2020,3,3,PF,62
+Ukraine,2021,3,4,PF,60
+Ukraine,2022,3,3,PF,61
+Ukraine,2023,4,4,PF,50
+Ukraine,2024,4,4,PF,49
+Ukraine,2025,4,4,PF,51
+United Arab Emirates,2013,6,6,NF,22
+United Arab Emirates,2014,6,6,NF,21
+United Arab Emirates,2015,6,6,NF,21
+United Arab Emirates,2016,6,6,NF,20
+United Arab Emirates,2017,6,6,NF,20
+United Arab Emirates,2018,7,6,NF,17
+United Arab Emirates,2019,7,6,NF,17
+United Arab Emirates,2020,7,6,NF,17
+United Arab Emirates,2021,7,6,NF,17
+United Arab Emirates,2022,7,6,NF,17
+United Arab Emirates,2023,7,6,NF,18
+United Arab Emirates,2024,7,6,NF,18
+United Arab Emirates,2025,7,6,NF,18
+United Kingdom,2013,1,1,F,97
+United Kingdom,2014,1,1,F,97
+United Kingdom,2015,1,1,F,97
+United Kingdom,2016,1,1,F,95
+United Kingdom,2017,1,1,F,95
+United Kingdom,2018,1,1,F,94
+United Kingdom,2019,1,1,F,93
+United Kingdom,2020,1,1,F,94
+United Kingdom,2021,1,1,F,93
+United Kingdom,2022,1,1,F,93
+United Kingdom,2023,1,1,F,93
+United Kingdom,2024,1,1,F,91
+United Kingdom,2025,1,1,F,92
+United States,2013,1,1,F,93
+United States,2014,1,1,F,92
+United States,2015,1,1,F,92
+United States,2016,1,1,F,90
+United States,2017,1,1,F,89
+United States,2018,2,1,F,86
+United States,2019,2,1,F,86
+United States,2020,2,1,F,86
+United States,2021,2,2,F,83
+United States,2022,2,2,F,83
+United States,2023,2,2,F,83
+United States,2024,2,2,F,83
+United States,2025,2,2,F,84
+Uruguay,2013,1,1,F,97
+Uruguay,2014,1,1,F,98
+Uruguay,2015,1,1,F,98
+Uruguay,2016,1,1,F,98
+Uruguay,2017,1,1,F,98
+Uruguay,2018,1,1,F,98
+Uruguay,2019,1,1,F,98
+Uruguay,2020,1,1,F,98
+Uruguay,2021,1,1,F,98
+Uruguay,2022,1,1,F,97
+Uruguay,2023,1,1,F,96
+Uruguay,2024,1,1,F,96
+Uruguay,2025,1,1,F,96
+Uzbekistan,2013,7,7,NF,4
+Uzbekistan,2014,7,7,NF,4
+Uzbekistan,2015,7,7,NF,4
+Uzbekistan,2016,7,7,NF,3
+Uzbekistan,2017,7,7,NF,3
+Uzbekistan,2018,7,7,NF,7
+Uzbekistan,2019,7,6,NF,9
+Uzbekistan,2020,7,6,NF,10
+Uzbekistan,2021,7,6,NF,11
+Uzbekistan,2022,7,6,NF,11
+Uzbekistan,2023,7,6,NF,12
+Uzbekistan,2024,7,6,NF,12
+Uzbekistan,2025,7,6,NF,12
+Vanuatu,2013,2,2,F,79
+Vanuatu,2014,2,2,F,79
+Vanuatu,2015,2,2,F,79
+Vanuatu,2016,2,2,F,78
+Vanuatu,2017,2,2,F,80
+Vanuatu,2018,2,2,F,81
+Vanuatu,2019,2,2,F,82
+Vanuatu,2020,2,2,F,82
+Vanuatu,2021,2,2,F,82
+Vanuatu,2022,2,2,F,82
+Vanuatu,2023,2,2,F,82
+Vanuatu,2024,2,2,F,82
+Vanuatu,2025,2,2,F,82
+Venezuela,2013,5,5,PF,39
+Venezuela,2014,5,5,PF,38
+Venezuela,2015,5,5,PF,35
+Venezuela,2016,5,5,PF,35
+Venezuela,2017,6,5,NF,30
+Venezuela,2018,6,5,NF,26
+Venezuela,2019,7,6,NF,19
+Venezuela,2020,7,6,NF,16
+Venezuela,2021,7,6,NF,14
+Venezuela,2022,7,6,NF,14
+Venezuela,2023,7,6,NF,15
+Venezuela,2024,7,6,NF,15
+Venezuela,2025,7,6,NF,13
+Vietnam,2013,7,5,NF,19
+Vietnam,2014,7,5,NF,20
+Vietnam,2015,7,5,NF,20
+Vietnam,2016,7,5,NF,20
+Vietnam,2017,7,5,NF,20
+Vietnam,2018,7,5,NF,20
+Vietnam,2019,7,5,NF,20
+Vietnam,2020,7,5,NF,20
+Vietnam,2021,7,6,NF,19
+Vietnam,2022,7,6,NF,19
+Vietnam,2023,7,6,NF,19
+Vietnam,2024,7,6,NF,19
+Vietnam,2025,7,6,NF,20
+West Bank,2013,6,5,NF,30
+West Bank,2014,6,5,NF,31
+West Bank,2015,6,5,NF,31
+West Bank,2016,6,5,NF,30
+West Bank,2017,7,5,NF,28
+West Bank,2018,7,5,NF,28
+West Bank,2019,7,5,NF,25
+West Bank,2020,7,5,NF,25
+West Bank,2021,7,5,NF,25
+West Bank,2022,7,5,NF,23
+West Bank,2023,7,5,NF,22
+West Bank,2024,7,5,NF,22
+West Bank,2025,7,5,NF,22
+Western Sahara,2013,7,7,NF,5
+Western Sahara,2014,7,7,NF,5
+Western Sahara,2015,7,7,NF,5
+Western Sahara,2016,7,7,NF,4
+Western Sahara,2017,7,7,NF,4
+Western Sahara,2018,7,7,NF,4
+Western Sahara,2019,7,7,NF,4
+Western Sahara,2020,7,7,NF,4
+Western Sahara,2021,7,7,NF,4
+Western Sahara,2022,7,7,NF,4
+Western Sahara,2023,7,7,NF,4
+Western Sahara,2024,7,7,NF,4
+Western Sahara,2025,7,7,NF,4
+Yemen,2013,6,6,NF,25
+Yemen,2014,6,6,NF,26
+Yemen,2015,6,6,NF,25
+Yemen,2016,7,6,NF,17
+Yemen,2017,7,6,NF,14
+Yemen,2018,7,6,NF,13
+Yemen,2019,7,6,NF,11
+Yemen,2020,7,6,NF,11
+Yemen,2021,7,6,NF,11
+Yemen,2022,7,6,NF,9
+Yemen,2023,7,6,NF,9
+Yemen,2024,7,6,NF,10
+Yemen,2025,7,6,NF,10
+Zambia,2013,3,4,PF,62
+Zambia,2014,3,4,PF,59
+Zambia,2015,3,4,PF,60
+Zambia,2016,3,4,PF,60
+Zambia,2017,4,4,PF,56
+Zambia,2018,4,4,PF,55
+Zambia,2019,4,4,PF,54
+Zambia,2020,4,4,PF,54
+Zambia,2021,4,4,PF,52
+Zambia,2022,4,4,PF,51
+Zambia,2023,4,4,PF,54
+Zambia,2024,4,4,PF,54
+Zambia,2025,4,4,PF,53
+Zimbabwe,2013,6,6,NF,25
+Zimbabwe,2014,5,6,NF,28
+Zimbabwe,2015,5,6,NF,28
+Zimbabwe,2016,5,5,PF,32
+Zimbabwe,2017,5,5,PF,32
+Zimbabwe,2018,6,5,NF,30
+Zimbabwe,2019,5,5,PF,31
+Zimbabwe,2020,5,5,PF,29
+Zimbabwe,2021,6,5,NF,28
+Zimbabwe,2022,6,5,NF,28
+Zimbabwe,2023,6,5,NF,28
+Zimbabwe,2024,6,5,NF,27
+Zimbabwe,2025,6,5,NF,26
