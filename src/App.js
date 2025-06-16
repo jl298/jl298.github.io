@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Sidebar from './components/Sidebar';
 import Overview from './components/Overview';
 import WorldMap from './components/WorldMap';
@@ -13,6 +13,9 @@ function App() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [dashboardState, setDashboardState] = useState(DEFAULT_STATE);
+  const [showScrollIndicator, setShowScrollIndicator] = useState(false);
+  const [sidebarVisible, setSidebarVisible] = useState(true);
+  const mainContentRef = useRef(null);
 
   useEffect(() => {
     const initializeData = async () => {
@@ -23,8 +26,8 @@ function App() {
         setData(loadedData);
         
         window.dashboardData = loadedData;
-        console.log('✅ Dashboard data loaded successfully and debugging ready');
-        console.log('🛠️ Run DashboardDebugger.diagnose() in browser console');
+        console.log('[V] Dashboard data loaded successfully and debugging ready');
+        console.log('[#] Run DashboardDebugger.diagnose() in browser console');
         
       } catch (err) {
         console.error('Error loading data:', err);
@@ -36,6 +39,20 @@ function App() {
 
     initializeData();
   }, []);
+
+  useEffect(() => {
+    const checkScrollable = () => {
+      if (mainContentRef.current) {
+        const { scrollHeight, clientHeight } = mainContentRef.current;
+        setShowScrollIndicator(scrollHeight > clientHeight);
+      }
+    };
+
+    checkScrollable();
+    window.addEventListener('resize', checkScrollable);
+
+    return () => window.removeEventListener('resize', checkScrollable);
+  }, [data, dashboardState]);
 
   const updateState = (updates) => {
     setDashboardState(prev => ({ ...prev, ...updates }));
@@ -67,6 +84,14 @@ function App() {
 
   const toggleCaseStudy = () => {
     updateState({ showCaseStudy: !dashboardState.showCaseStudy });
+  };
+
+  const toggleSidebar = () => {
+    setSidebarVisible(!sidebarVisible);
+    
+    setTimeout(() => {
+      window.dispatchEvent(new Event('resize'));
+    }, 300);
   };
 
   if (loading) {
@@ -134,13 +159,53 @@ function App() {
         onCountrySelection={handleCountrySelection}
         onToggleCaseStudy={toggleCaseStudy}
         data={data}
+        className={sidebarVisible ? '' : 'hidden'}
+        onToggleSidebar={toggleSidebar}
       />
       
-      <main className="main-content">
+      {/* 사이드바 토글 버튼 (사이드바가 숨겨진 상태일 때만) */}
+      {!sidebarVisible && (
+        <button
+          onClick={toggleSidebar}
+          className="sidebar-toggle"
+          title="Show Sidebar"
+        >
+          ▶
+        </button>
+      )}
+      
+      <main className={`main-content ${!sidebarVisible ? 'expanded' : ''}`} ref={mainContentRef}>
+        {showScrollIndicator && (
+          <div 
+            style={{
+              position: 'absolute',
+              right: '16px',
+              top: '50%',
+              transform: 'translateY(-50%)',
+              background: 'rgba(59, 130, 246, 0.1)',
+              color: '#3b82f6',
+              padding: '8px',
+              borderRadius: '50%',
+              fontSize: '12px',
+              zIndex: 10,
+              animation: 'bounce 2s infinite',
+              cursor: 'pointer'
+            }}
+            onClick={() => {
+              mainContentRef.current?.scrollTo({
+                top: mainContentRef.current.scrollTop + 300,
+                behavior: 'smooth'
+              });
+            }}
+            title="Scroll down to see more charts"
+          >
+            ↓
+          </div>
+        )}
         <header className="dashboard-header">
-          <h1 className="dashboard-title">Authoritarianism vs Democracy Analysis Dashboard</h1>
+          <h1 className="dashboard-title">Political Freedom Analysis Dashboard</h1>
           <p className="dashboard-subtitle">
-            Global Political System Trends Analysis and Composite Indicators (1945-2025)
+            Global Political System Trends Analysis and Composite Indicators (2000-2024)
           </p>
         </header>
         
@@ -155,6 +220,7 @@ function App() {
                 data={data} 
                 state={dashboardState} 
                 onCountryClick={handleCountrySelection}
+                sidebarVisible={sidebarVisible}
               />
             </div>
           </div>
@@ -169,6 +235,7 @@ function App() {
                 data={data} 
                 state={dashboardState} 
                 onCountryClick={handleCountrySelection}
+                sidebarVisible={sidebarVisible}
               />
             </div>
           </div>
@@ -183,6 +250,7 @@ function App() {
                 data={data} 
                 state={dashboardState} 
                 onCountryClick={handleCountrySelection}
+                sidebarVisible={sidebarVisible}
               />
             </div>
           </div>
@@ -197,6 +265,7 @@ function App() {
                 data={data} 
                 state={dashboardState} 
                 onCountryHighlight={handleCountrySelection}
+                sidebarVisible={sidebarVisible}
               />
             </div>
           </div>

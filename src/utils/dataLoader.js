@@ -2,7 +2,7 @@ import * as d3 from 'd3';
 import Papa from 'papaparse';
 import { COUNTRY_REGIONS, INDICATORS, THRESHOLDS } from './constants.js';
 
-export class RealDataLoader {
+export class DataLoader {
   constructor() {
     this.schemaInfo = null;
     this.loadedData = new Map();
@@ -59,7 +59,7 @@ export class RealDataLoader {
         console.warn('V-Dem parsing warnings:', parsed.errors.slice(0, 3));
       }
 
-      console.log('📊 [DEBUG] V-Dem original data analysis:');
+      console.log('[DEBUG] V-Dem original data analysis:');
       console.log('  Total records:', parsed.data.length);
       
       const allYears = parsed.data
@@ -97,7 +97,7 @@ export class RealDataLoader {
 
       const processedData = this.processVDemData(parsed.data, []);
       
-      console.log(`✅ V-Dem data processed: ${processedData.length} records`);
+      console.log(`V-Dem data processed: ${processedData.length} records`);
       this.loadedData.set('vdem', processedData);
       
       return processedData;
@@ -109,7 +109,7 @@ export class RealDataLoader {
   }
 
   async loadPolityData() {
-    console.log('🔍 [DEBUG] Loading Polity5 data...');
+    console.log('[DEBUG] Loading Polity5 data...');
     
     const polityFile = this.findFileByPattern('Polity5.*\\.csv');
     if (!polityFile) {
@@ -121,8 +121,8 @@ export class RealDataLoader {
       const csvContent = await fetch('/dataset/Polity5/p5v2018.csv').then(r => r.text());
       
       const lines = csvContent.split('\n');
-      console.log('📝 Polity5 CSV header:', lines[0]);
-      console.log('📝 First data line:', lines[1]);
+      console.log('Polity5 CSV header:', lines[0]);
+      console.log('First data line:', lines[1]);
       
       const parsed = Papa.parse(csvContent, {
         header: true,
@@ -131,7 +131,7 @@ export class RealDataLoader {
         transformHeader: header => header.trim()
       });
 
-      console.log('📊 [DEBUG] Polity5 original data analysis:');
+      console.log('[DEBUG] Polity5 original data analysis:');
       console.log('  Total records:', parsed.data.length);
       console.log('  Column names:', Object.keys(parsed.data[0] || {}));
       
@@ -178,7 +178,7 @@ export class RealDataLoader {
       });
       
       const processedData = parsed.data
-        .filter(row => row.year >= 1945 && row.year <= 2025)
+        .filter(row => row.year >= 1945 && row.year <= 2024)
         .map(row => {
           const standardizedName = this.standardizeCountryName(row.country);
           return {
@@ -195,7 +195,7 @@ export class RealDataLoader {
         })
         .filter(row => row.country && row.year);
 
-      console.log('🔄 [DEBUG] Country name mapping results:');
+      console.log('[DEBUG] Country name mapping results:');
       const mappingResults = {};
       parsed.data.forEach(row => {
         if (row.country) {
@@ -214,14 +214,14 @@ export class RealDataLoader {
       this.debugInfo.countryMappings.polity5 = mappingResults;
 
       const finalKoreaData = processedData.filter(d => d.country === 'South Korea');
-      console.log('🇰🇷 Final South Korea data:', finalKoreaData.length, 'records');
+      console.log('Final South Korea data:', finalKoreaData.length, 'records');
       if (finalKoreaData.length > 0) {
         const years = finalKoreaData.map(d => d.year);
-        console.log('🇰🇷 South Korea data year range:', Math.min(...years), '-', Math.max(...years));
-        console.log('🇰🇷 Sample data:', finalKoreaData[0]);
+        console.log('South Korea data year range:', Math.min(...years), '-', Math.max(...years));
+        console.log('Sample data:', finalKoreaData[0]);
       }
 
-      console.log(`✅ Polity5 data processed: ${processedData.length} records`);
+      console.log(`Polity5 data processed: ${processedData.length} records`);
       this.loadedData.set('polity5', processedData);
       
       return processedData;
@@ -233,11 +233,10 @@ export class RealDataLoader {
   }
 
   async loadFreedomHouseData() {
-    console.log('🔍 [DEBUG] Loading Freedom House data...');
+    console.log('[DEBUG] Loading Freedom House data...');
     
     try {
       const possibleFiles = [
-        '/dataset/freedomhouse/All_data_FIW_processed.csv',
         '/dataset/freedomhouse/Country_and_Territory_Ratings_processed.csv'
       ];
 
@@ -255,7 +254,7 @@ export class RealDataLoader {
       }
 
       if (!csvContent) {
-        console.warn('No Freedom House CSV files found');
+        console.warn('Freedom House CSV file (Country_and_Territory_Ratings_processed.csv) not found');
         return [];
       }
 
@@ -266,7 +265,7 @@ export class RealDataLoader {
         transformHeader: header => header.trim()
       });
 
-      console.log('📊 [DEBUG] Freedom House original data analysis:');
+      console.log('[DEBUG] Freedom House original data analysis:');
       console.log('  File used:', usedFile);
       console.log('  Total records:', parsed.data.length);
       console.log('  Column names:', Object.keys(parsed.data[0] || {}));
@@ -291,7 +290,7 @@ export class RealDataLoader {
 
       const processedData = this.processFreedomHouseData(parsed.data);
       
-      console.log(`✅ Freedom House data processed: ${processedData.length} records`);
+      console.log(`Freedom House data processed: ${processedData.length} records`);
       this.loadedData.set('freedom_house', processedData);
       
       return processedData;
@@ -303,7 +302,7 @@ export class RealDataLoader {
   }
 
   processVDemData(rawData, importantColumns) {
-    console.log('🔄 [DEBUG] Processing V-Dem data...');
+    console.log('[DEBUG] Processing V-Dem data...');
     
     const processed = rawData
       .filter(row => row.year >= 1945 && row.year <= 2025)
@@ -331,7 +330,7 @@ export class RealDataLoader {
   }
 
   processFreedomHouseData(rawData) {
-    console.log('🔄 [DEBUG] Processing Freedom House data...');
+    console.log('[DEBUG] Processing Freedom House data...');
     
     const processed = rawData
       .filter(row => {
@@ -360,7 +359,7 @@ export class RealDataLoader {
   }
 
   mergeDatasets(datasets) {
-    console.log('🔗 [DEBUG] Starting dataset merge...');
+    console.log('[DEBUG] Starting dataset merge...');
     
     const mergedMap = new Map();
     
@@ -423,7 +422,7 @@ export class RealDataLoader {
       authoritarianism_index: this.calculateAuthoritarianismIndex(row)
     }));
     
-    console.log('📊 [DEBUG] Merge results analysis:');
+    console.log('[DEBUG] Merge results analysis:');
     console.log('  Total records:', result.length);
     
     if (result.length > 0) {
@@ -447,15 +446,15 @@ export class RealDataLoader {
       console.log('  Records with Polity5 data:', withPolity5.length, 'records');
       
       const koreaFinal = result.filter(d => d.country === 'South Korea');
-      console.log('🇰🇷 Final South Korea merged data:', koreaFinal.length, 'records');
+      console.log('Final South Korea merged data:', koreaFinal.length, 'records');
       if (koreaFinal.length > 0) {
         const koreaYears = koreaFinal.map(d => d.year);
-        console.log('🇰🇷 South Korea final year range:', Math.min(...koreaYears), '-', Math.max(...koreaYears));
+        console.log('South Korea final year range:', Math.min(...koreaYears), '-', Math.max(...koreaYears));
         
         const koreaWithPolity = koreaFinal.filter(d => d.polity5 != null);
-        console.log('🇰🇷 South Korea records with Polity5 data:', koreaWithPolity.length, 'records');
+        console.log('South Korea records with Polity5 data:', koreaWithPolity.length, 'records');
         
-        console.log('🇰🇷 South Korea sample data:', {
+        console.log('South Korea sample data:', {
           country: koreaFinal[0].country,
           year: koreaFinal[0].year,
           polity5: koreaFinal[0].polity5,
@@ -466,7 +465,7 @@ export class RealDataLoader {
       }
       
       const indicators = ['polity5', 'vdem_liberal', 'freedom_house', 'press_freedom', 'surveillance', 'minority_rights'];
-      console.log('📈 Data availability by indicator:');
+      console.log('Data availability by indicator:');
       indicators.forEach(indicator => {
         const withData = result.filter(d => d[indicator] != null).length;
         console.log(`  ${indicator}: ${withData}/${result.length} (${(withData/result.length*100).toFixed(1)}%)`);
@@ -483,15 +482,15 @@ export class RealDataLoader {
   }
 
   generateDebugReport() {
-    console.log('📋 [DEBUG REPORT] Data Loading and Processing Summary');
+    console.log('[DEBUG REPORT] Data Loading and Processing Summary');
     console.log('=====================================');
     
-    console.log('🗓️ Year range by dataset:');
+    console.log('Year range by dataset:');
     Object.entries(this.debugInfo.yearRanges).forEach(([dataset, info]) => {
       console.log(`  ${dataset}: ${info.min}-${info.max} (total ${info.totalRecords} records)`);
     });
     
-    console.log('🌍 Country name mapping results:');
+    console.log('Country name mapping results:');
     Object.entries(this.debugInfo.countryMappings).forEach(([dataset, mappings]) => {
       console.log(`  ${dataset}:`, Object.keys(mappings).length, 'mappings');
       Object.entries(mappings).slice(0, 5).forEach(([original, mapped]) => {
@@ -499,7 +498,7 @@ export class RealDataLoader {
       });
     });
     
-    console.log('📊 Final merge results:');
+    console.log('Final merge results:');
     const stats = this.debugInfo.datasetStats;
     console.log(`  Total records: ${stats.totalRecords}`);
     console.log(`  Year range: ${stats.yearRange[0]}-${stats.yearRange[1]}`);
@@ -508,7 +507,7 @@ export class RealDataLoader {
   }
 
   async loadAllRealData() {
-    console.log('🚀 [DEBUG] Starting Real data loading...');
+    console.log('[DEBUG] Starting Real data loading...');
     
     try {
       await this.loadSchemaInfo();
@@ -534,7 +533,7 @@ export class RealDataLoader {
       };
 
     } catch (error) {
-      console.error('❌ Failed to load real data:', error);
+      console.error('Failed to load real data:', error);
       throw error;
     }
   }
@@ -706,15 +705,15 @@ export class RealDataLoader {
   }
 }
 
-const realDataLoader = new RealDataLoader();
+const dataLoader = new DataLoader();
 
 export async function loadAllData() {
   try {
-    console.log('🔄 Loading real data only...');
-    return await realDataLoader.loadAllRealData();
+    console.log('Loading real data only...');
+    return await dataLoader.loadAllRealData();
     
   } catch (error) {
-    console.error('❌ Real data loading failed:', error);
+    console.error('Real data loading failed:', error);
     throw error;
   }
 }
@@ -839,16 +838,16 @@ export function getDemocracyColor(value, indicator) {
     case 'democracy':
     case 'free':
     case 'high':
-      return '#059669';
+      return '#16a085';
     case 'anocracy':
     case 'partly_free':
     case 'medium':
-      return '#fbbf24';
+      return '#f39c12';
     case 'autocracy':
     case 'not_free':
     case 'low':
-      return '#dc2626';
+      return '#e74c3c';
     default:
-      return '#e5e7eb';
+      return '#95a5a6';
   }
 }

@@ -1,29 +1,38 @@
+export const ENVIRONMENT = {
+  DEBUG_MODE: false,
+  SHOW_CONSOLE_LOGS: false,
+  SHOW_DEBUG_PANELS: false,
+  
+  IS_DEVELOPMENT: process.env.NODE_ENV === 'development',
+  IS_PRODUCTION: process.env.NODE_ENV === 'production',
+};
+
 export const COLORS = {
   democracy: {
-    high: '#059669',
-    medium: '#fbbf24',
-    low: '#dc2626',
-    noData: '#e5e7eb',
+    high: '#16a085',
+    medium: '#f39c12',
+    low: '#e74c3c',
+    noData: '#95a5a6',
   },
   
   regions: {
-    'Europe': '#3b82f6',
-    'Asia': '#ef4444',
-    'Africa': '#f59e0b',
-    'Americas': '#10b981',
-    'Oceania': '#8b5cf6',
-    'Middle East': '#f97316',
+    'Europe': '#5dade2',
+    'Asia': '#ec7063',
+    'Africa': '#f4d03f',
+    'Americas': '#58d68d',
+    'Oceania': '#bb8fce',
+    'Middle East': '#f8c471',
   },
   
-  primary: '#1e40af',
-  secondary: '#64748b',
-  accent: '#fbbf24',
-  background: '#f8fafc',
-  text: '#1e293b',
+  primary: '#2c3e50',
+  secondary: '#7f8c8d',
+  accent: '#e67e22',
+  background: '#ecf0f1',
+  text: '#2c3e50',
   
   gradients: {
-    democracy: ['#dc2626', '#fbbf24', '#059669'],
-    freedom: ['#7c2d12', '#ea580c', '#facc15', '#22c55e'],
+    democracy: ['#e74c3c', '#f39c12', '#16a085'],
+    freedom: ['#c0392b', '#e67e22', '#f1c40f', '#27ae60'],
   }
 };
 
@@ -221,18 +230,18 @@ export const HISTORICAL_EVENTS = [
 ];
 
 export const KOREA_EVENTS = [
-  { year: 1948, event: 'ROK Government Established', description: 'Syngman Rhee Administration Begins' },
-  { year: 1961, event: 'May 16 Military Coup', description: 'Park Chung-hee Regime Begins' },
-  { year: 1972, event: 'Yushin Constitution Proclaimed', description: 'Authoritarian System Strengthened' },
+  { year: 1948, event: 'ROK Government\nEstablished', description: 'Syngman Rhee Administration Begins' },
+  { year: 1961, event: 'May 16\n Military Coup', description: 'Park Chung-hee Regime Begins' },
+  { year: 1972, event: 'Yushin Constitution\n Proclaimed', description: 'Authoritarian System Strengthened' },
   { year: 1979, event: 'October 26 Incident', description: 'President Park Chung-hee Assassinated' },
-  { year: 1980, event: 'May 18 Gwangju Democratization Movement', description: 'Chun Doo-hwan Regime Begins' },
-  { year: 1987, event: 'June Democratic Uprising', description: 'Democratic Transition Begins' },
-  { year: 1993, event: 'Civilian Government Begins', description: 'Kim Young-sam Government, Democratic Consolidation' },
+  { year: 1980, event: 'May 18\nGwangju Democratization\nMovement', description: 'Chun Doo-hwan Regime Begins' },
+  { year: 1987, event: 'June\nDemocratic Uprising', description: 'Democratic Transition Begins' },
+  { year: 1993, event: 'Civilian Government\nBegins', description: 'Kim Young-sam Government, Democratic Consolidation' },
   { year: 1997, event: 'IMF Financial Crisis', description: 'Economic Crisis and Regime Change' },
-  { year: 2016, event: 'Lee Myung-bak Administration', description: 'Authoritarianism' },
-  { year: 2016, event: 'Park Geun-hye Impeachment', description: 'Candlelight Revolution and Democratic Maturity' },
-  { year: 2017, event: 'Moon Jae-in Administration', description: 'Return of Progressive Government' },
-  { year: 2022, event: 'Yoon Suk-yeol Administration', description: 'Authoritarianism/Emergency Martial Law' },
+  { year: 2016, event: 'Lee Myung-bak\nAdministration', description: 'Authoritarianism' },
+  { year: 2016, event: 'Park Geun-hye\nImpeachment', description: 'Candlelight Revolution and Democratic Maturity' },
+  { year: 2017, event: 'Moon Jae-in\nAdministration', description: 'Return of Progressive Government' },
+  { year: 2022, event: 'Yoon Suk-yeol\nAdministration', description: 'Authoritarianism/Emergency Martial Law' },
 ];
 
 export const CHART_DIMENSIONS = {
@@ -283,7 +292,7 @@ export const THRESHOLDS = {
 };
 
 export const DEFAULT_STATE = {
-  selectedYear: 2020,
+  selectedYear: 2018,
   selectedCountries: [],
   activeIndicators: ['polity5', 'vdem_liberal', 'freedom_house'],
   activeRegions: ['europe', 'asia', 'africa', 'americas', 'oceania', 'middle_east'],
@@ -304,6 +313,7 @@ export const TOOLTIP = {
 };
 
 export default {
+  ENVIRONMENT,
   COLORS,
   INDICATORS,
   REGIONS,

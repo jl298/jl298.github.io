@@ -6,12 +6,37 @@ import {
   getDemocracyColor,
   formatValue,
   classifyDemocracyLevel 
-} from '../utils/realDataLoader';
-import { COLORS } from '../utils/constants';
+} from '../utils/dataLoader';
 
-const WorldMap = ({ data, state, onCountryClick }) => {
+const WorldMap = ({ data, state, onCountryClick, sidebarVisible }) => {
   const svgRef = useRef();
   const [tooltip, setTooltip] = useState({ visible: false, x: 0, y: 0, content: '' });
+
+  const adjustTooltipPosition = (x, y, tooltipWidth = 300, tooltipHeight = 180) => {
+    const viewport = {
+      width: window.innerWidth,
+      height: window.innerHeight
+    };
+    
+    let adjustedX = x;
+    let adjustedY = y;
+    
+    if (x + tooltipWidth > viewport.width) {
+      adjustedX = x - tooltipWidth - 20;
+    }
+    if (adjustedX < 0) {
+      adjustedX = 10;
+    }
+    
+    if (y + tooltipHeight > viewport.height) {
+      adjustedY = y - tooltipHeight - 20;
+    }
+    if (adjustedY < 0) {
+      adjustedY = 10;
+    }
+    
+    return { x: adjustedX, y: adjustedY };
+  };
 
   useEffect(() => {
     if (!data || !data.countries) return;
@@ -20,43 +45,89 @@ const WorldMap = ({ data, state, onCountryClick }) => {
     yearData = filterDataByRegions(yearData, state.activeRegions);
 
     drawMap(yearData);
+  }, [data, state, sidebarVisible]);
+
+  useEffect(() => {
+    const svgElement = svgRef.current;
+    if (!svgElement) return;
+
+    const resizeObserver = new ResizeObserver(() => {
+      setTimeout(() => {
+        if (data && data.countries) {
+          let yearData = getDataForYear(data.countries, state.selectedYear);
+          yearData = filterDataByRegions(yearData, state.activeRegions);
+          drawMap(yearData);
+        }
+      }, 100);
+    });
+
+    const container = svgElement.parentElement;
+    if (container) {
+      resizeObserver.observe(container);
+    }
+
+    return () => {
+      if (container) {
+        resizeObserver.unobserve(container);
+      }
+    };
   }, [data, state]);
 
   const drawMap = (chartData) => {
     const svg = d3.select(svgRef.current);
     svg.selectAll('*').remove();
 
-    if (!chartData || chartData.length === 0) {
-      svg.append('text')
-        .attr('x', '50%')
-        .attr('y', '45%')
-        .attr('text-anchor', 'middle')
-        .attr('fill', '#64748b')
-        .style('font-size', '16px')
-        .style('font-weight', '500')
-        .text(`No data available for ${state.selectedYear}`);
-      
-      svg.append('text')
-        .attr('x', '50%')
-        .attr('y', '55%')
-        .attr('text-anchor', 'middle')
-        .attr('fill', '#9ca3af')
-        .style('font-size', '14px')
-        .text('Most data is available from 2000 onwards');
-      return;
-    }
-
     const container = svg.node().getBoundingClientRect();
     const width = container.width;
     const height = container.height;
 
+    if (!chartData || chartData.length === 0) {
+      svg.append('rect')
+        .attr('width', width)
+        .attr('height', height)
+        .attr('fill', '#f8fafc');
+
+      const messageGroup = svg.append('g')
+        .attr('transform', `translate(${width/2}, ${height/2})`);
+
+      messageGroup.append('circle')
+        .attr('r', 60)
+        .attr('fill', '#e5e7eb')
+        .attr('stroke', '#d1d5db')
+        .attr('stroke-width', 2);
+
+      messageGroup.append('text')
+        .attr('text-anchor', 'middle')
+        .attr('dy', '-10')
+        .style('font-size', '16px')
+        .style('font-weight', '600')
+        .style('fill', '#64748b')
+        .text('No Data Available');
+
+      messageGroup.append('text')
+        .attr('text-anchor', 'middle')
+        .attr('dy', '10')
+        .style('font-size', '14px')
+        .style('fill', '#9ca3af')
+        .text(`for ${state.selectedYear}`);
+
+      messageGroup.append('text')
+        .attr('text-anchor', 'middle')
+        .attr('dy', '30')
+        .style('font-size', '12px')
+        .style('fill', '#9ca3af')
+        .text('Try selecting a different year');
+
+      return;
+    }
+
     const regions = [
-      { name: 'Europe', x: 280, y: 100, width: 120, height: 80, region: 'Europe' },
-      { name: 'Asia', x: 400, y: 80, width: 180, height: 120, region: 'Asia' },
-      { name: 'Africa', x: 250, y: 180, width: 100, height: 140, region: 'Africa' },
-      { name: 'Americas', x: 80, y: 120, width: 140, height: 180, region: 'Americas' },
-      { name: 'Oceania', x: 520, y: 220, width: 80, height: 60, region: 'Oceania' },
-      { name: 'Middle East', x: 320, y: 160, width: 80, height: 60, region: 'Middle East' }
+      { name: 'Europe', x: sidebarVisible ? 280 : 320, y: sidebarVisible ? 100 : 110, width: sidebarVisible ? 120 : 140, height: sidebarVisible ? 80 : 90, region: 'Europe' },
+      { name: 'Asia', x: sidebarVisible ? 400 : 480, y: sidebarVisible ? 80 : 90, width: sidebarVisible ? 180 : 220, height: sidebarVisible ? 120 : 140, region: 'Asia' },
+      { name: 'Africa', x: sidebarVisible ? 250 : 280, y: sidebarVisible ? 180 : 210, width: sidebarVisible ? 100 : 120, height: sidebarVisible ? 140 : 160, region: 'Africa' },
+      { name: 'Americas', x: sidebarVisible ? 80 : 100, y: sidebarVisible ? 120 : 140, width: sidebarVisible ? 140 : 170, height: sidebarVisible ? 180 : 210, region: 'Americas' },
+      { name: 'Oceania', x: sidebarVisible ? 520 : 620, y: sidebarVisible ? 220 : 260, width: sidebarVisible ? 80 : 100, height: sidebarVisible ? 60 : 80, region: 'Oceania' },
+      { name: 'Middle East', x: sidebarVisible ? 320 : 380, y: sidebarVisible ? 160 : 180, width: sidebarVisible ? 80 : 100, height: sidebarVisible ? 60 : 80, region: 'Middle East' }
     ];
 
     const regionData = new Map();
@@ -104,7 +175,7 @@ const WorldMap = ({ data, state, onCountryClick }) => {
         .attr('y', regionInfo.y + regionInfo.height / 2)
         .attr('text-anchor', 'middle')
         .attr('dy', '0.35em')
-        .style('font-size', '12px')
+        .style('font-size', sidebarVisible ? '12px' : '14px')
         .style('font-weight', '600')
         .style('fill', '#fff')
         .style('text-shadow', '1px 1px 2px rgba(0,0,0,0.7)')
@@ -126,7 +197,7 @@ const WorldMap = ({ data, state, onCountryClick }) => {
           const rows = Math.ceil(countries.length / cols);
           return regionInfo.y + 15 + (row * (regionInfo.height - 30) / (rows - 1 || 1));
         })
-        .attr('r', 4)
+        .attr('r', sidebarVisible ? 4 : 5)
         .attr('fill', d => getDemocracyColor(d[primaryIndicator], primaryIndicator))
         .attr('stroke', '#fff')
         .attr('stroke-width', 1)
@@ -142,7 +213,7 @@ const WorldMap = ({ data, state, onCountryClick }) => {
             .attr('stroke-width', 2);
 
           const tooltipContent = `
-            <div style="font-weight: 600; color: #fbbf24; margin-bottom: 8px;">${d.country}</div>
+            <div style="font-weight: 600; color: #f39c12; margin-bottom: 8px;">${d.country}</div>
             <div><strong>Region:</strong> ${d.region}</div>
             <div><strong>Year:</strong> ${d.year}</div>
             <div style="margin-top: 8px;">
@@ -155,18 +226,21 @@ const WorldMap = ({ data, state, onCountryClick }) => {
             </div>
           `;
 
+          const adjustedPos = adjustTooltipPosition(event.pageX + 10, event.pageY - 10);
+          
           setTooltip({
             visible: true,
-            x: event.pageX + 10,
-            y: event.pageY - 10,
+            x: adjustedPos.x,
+            y: adjustedPos.y,
             content: tooltipContent
           });
         })
         .on('mousemove', function(event) {
+          const adjustedPos = adjustTooltipPosition(event.pageX + 10, event.pageY - 10);
           setTooltip(prev => ({
             ...prev,
-            x: event.pageX + 10,
-            y: event.pageY - 10
+            x: adjustedPos.x,
+            y: adjustedPos.y
           }));
         })
         .on('mouseout', function() {
@@ -215,7 +289,7 @@ const WorldMap = ({ data, state, onCountryClick }) => {
         .on('mouseover', function(event) {
           const avgScore = d3.mean(countries, d => d[primaryIndicator]) || 0;
           const tooltipContent = `
-            <div style="font-weight: 600; color: #fbbf24; margin-bottom: 8px;">${regionInfo.name}</div>
+            <div style="font-weight: 600; color: #f39c12; margin-bottom: 8px;">${regionInfo.name}</div>
             <div><strong>Number of Countries:</strong> ${countries.length}</div>
             <div><strong>Average ${getIndicatorName(primaryIndicator)}:</strong> ${formatValue(avgScore, primaryIndicator)}</div>
             <div style="margin-top: 8px;">
@@ -223,10 +297,12 @@ const WorldMap = ({ data, state, onCountryClick }) => {
             </div>
           `;
 
+          const adjustedPos = adjustTooltipPosition(event.pageX + 10, event.pageY - 10);
+          
           setTooltip({
             visible: true,
-            x: event.pageX + 10,
-            y: event.pageY - 10,
+            x: adjustedPos.x,
+            y: adjustedPos.y,
             content: tooltipContent
           });
         })
@@ -239,40 +315,40 @@ const WorldMap = ({ data, state, onCountryClick }) => {
       { label: 'High Democracy', color: getDemocracyColor(0.8, 'vdem_liberal') },
       { label: 'Medium Level', color: getDemocracyColor(0.5, 'vdem_liberal') },
       { label: 'Low Democracy', color: getDemocracyColor(0.2, 'vdem_liberal') },
-      { label: 'No Data', color: '#e5e7eb' }
+      { label: 'No Data', color: '#95a5a6' }
     ];
 
     const legend = svg.append('g')
       .attr('class', 'legend')
-      .attr('transform', `translate(20, 20)`);
+      .attr('transform', `translate(${sidebarVisible ? 20 : 30}, ${sidebarVisible ? 20 : 25})`);
 
     const legendItems = legend.selectAll('.legend-item')
       .data(legendData)
       .enter().append('g')
       .attr('class', 'legend-item')
-      .attr('transform', (d, i) => `translate(0, ${i * 25})`);
+      .attr('transform', (d, i) => `translate(0, ${i * (sidebarVisible ? 25 : 30)})`);
 
     legendItems.append('rect')
-      .attr('width', 16)
-      .attr('height', 16)
+      .attr('width', sidebarVisible ? 16 : 20)
+      .attr('height', sidebarVisible ? 16 : 20)
       .attr('fill', d => d.color)
       .attr('stroke', '#fff')
       .attr('stroke-width', 1);
 
     legendItems.append('text')
-      .attr('x', 22)
-      .attr('y', 8)
+      .attr('x', sidebarVisible ? 22 : 28)
+      .attr('y', sidebarVisible ? 8 : 10)
       .attr('dy', '0.35em')
-      .style('font-size', '12px')
+      .style('font-size', sidebarVisible ? '12px' : '14px')
       .style('fill', '#374151')
       .style('font-weight', '500')
       .text(d => d.label);
 
     svg.append('text')
       .attr('x', width / 2)
-      .attr('y', 30)
+      .attr('y', 25)
       .attr('text-anchor', 'middle')
-      .style('font-size', '16px')
+      .style('font-size', sidebarVisible ? '14px' : '16px')
       .style('font-weight', '600')
       .style('fill', '#1e293b')
       .text(`Global ${getIndicatorName(primaryIndicator)} Distribution in ${state.selectedYear}`);
@@ -337,8 +413,11 @@ const WorldMap = ({ data, state, onCountryClick }) => {
             lineHeight: '1.4',
             pointerEvents: 'none',
             zIndex: 1000,
-            maxWidth: '240px',
-            boxShadow: '0 8px 32px rgba(0, 0, 0, 0.3)'
+            maxWidth: '300px',
+            minWidth: '180px',
+            boxShadow: '0 8px 32px rgba(0, 0, 0, 0.3)',
+            wordWrap: 'break-word',
+            overflowWrap: 'break-word'
           }}
           dangerouslySetInnerHTML={{ __html: tooltip.content }}
         />

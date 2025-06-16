@@ -4,14 +4,39 @@ import {
   getDataForYear, 
   filterDataByRegions, 
   filterDataByCountries,
-  getDemocracyColor,
   formatValue 
-} from '../utils/realDataLoader';
+} from '../utils/dataLoader';
 import { COLORS } from '../utils/constants';
 
-const BubbleChart = ({ data, state, onCountryClick }) => {
+const BubbleChart = ({ data, state, onCountryClick, sidebarVisible }) => {
   const svgRef = useRef();
   const [tooltip, setTooltip] = useState({ visible: false, x: 0, y: 0, content: '' });
+
+  const adjustTooltipPosition = (x, y, tooltipWidth = 320, tooltipHeight = 200) => {
+    const viewport = {
+      width: window.innerWidth,
+      height: window.innerHeight
+    };
+    
+    let adjustedX = x;
+    let adjustedY = y;
+    
+    if (x + tooltipWidth > viewport.width) {
+      adjustedX = x - tooltipWidth - 20;
+    }
+    if (adjustedX < 0) {
+      adjustedX = 10;
+    }
+    
+    if (y + tooltipHeight > viewport.height) {
+      adjustedY = y - tooltipHeight - 20;
+    }
+    if (adjustedY < 0) {
+      adjustedY = 10;
+    }
+    
+    return { x: adjustedX, y: adjustedY };
+  };
 
   useEffect(() => {
     if (!data || !data.countries) return;
@@ -24,6 +49,37 @@ const BubbleChart = ({ data, state, onCountryClick }) => {
     }
 
     drawChart(yearData);
+  }, [data, state, sidebarVisible]);
+
+  useEffect(() => {
+    const svgElement = svgRef.current;
+    if (!svgElement) return;
+
+    const resizeObserver = new ResizeObserver(() => {
+      setTimeout(() => {
+        if (data && data.countries) {
+          let yearData = getDataForYear(data.countries, state.selectedYear);
+          yearData = filterDataByRegions(yearData, state.activeRegions);
+          
+          if (state.selectedCountries.length > 0) {
+            yearData = filterDataByCountries(yearData, state.selectedCountries);
+          }
+
+          drawChart(yearData);
+        }
+      }, 100);
+    });
+
+    const container = svgElement.parentElement;
+    if (container) {
+      resizeObserver.observe(container);
+    }
+
+    return () => {
+      if (container) {
+        resizeObserver.unobserve(container);
+      }
+    };
   }, [data, state]);
 
   const drawChart = (chartData) => {
@@ -51,7 +107,11 @@ const BubbleChart = ({ data, state, onCountryClick }) => {
     }
 
     const container = svg.node().getBoundingClientRect();
-    const margin = { top: 20, right: 40, bottom: 60, left: 70 };
+    
+    const margin = sidebarVisible 
+      ? { top: 20, right: 40, bottom: 60, left: 70 }
+      : { top: 15, right: 25, bottom: 50, left: 60 };
+    
     const width = container.width - margin.left - margin.right;
     const height = container.height - margin.top - margin.bottom;
 
@@ -96,7 +156,7 @@ const BubbleChart = ({ data, state, onCountryClick }) => {
 
     const radiusScale = d3.scaleSqrt()
       .domain(d3.extent(validData, d => d.surveillance))
-      .range([6, 25]);
+      .range(sidebarVisible ? [6, 25] : [8, 30]);
 
     const colorScale = d3.scaleOrdinal()
       .domain(['Europe', 'Asia', 'Africa', 'Americas', 'Oceania', 'Middle East'])
@@ -146,7 +206,7 @@ const BubbleChart = ({ data, state, onCountryClick }) => {
       .attr('x', 0 - (height / 2))
       .attr('dy', '1em')
       .style('text-anchor', 'middle')
-      .style('font-size', '13px')
+      .style('font-size', sidebarVisible ? '12px' : '14px')
       .style('font-weight', '500')
       .style('fill', '#374151')
       .text('Freedom House Score (Civil Liberties)');
@@ -154,16 +214,16 @@ const BubbleChart = ({ data, state, onCountryClick }) => {
     g.append('text')
       .attr('transform', `translate(${width / 2}, ${height + margin.bottom - 10})`)
       .style('text-anchor', 'middle')
-      .style('font-size', '13px')
+      .style('font-size', sidebarVisible ? '12px' : '14px')
       .style('font-weight', '500')
       .style('fill', '#374151')
       .text('Press Freedom Index (Lower = More Free)');
 
     const quadrantData = [
-      { x: 0, y: 0, width: xScale(50), height: yScale(50), class: 'high-freedom', opacity: 0.05, color: '#059669' },
-      { x: xScale(50), y: 0, width: width - xScale(50), height: yScale(50), class: 'medium-freedom', opacity: 0.05, color: '#fbbf24' },
-      { x: 0, y: yScale(50), width: xScale(50), height: height - yScale(50), class: 'mixed', opacity: 0.05, color: '#3b82f6' },
-      { x: xScale(50), y: yScale(50), width: width - xScale(50), height: height - yScale(50), class: 'low-freedom', opacity: 0.05, color: '#dc2626' }
+      { x: 0, y: 0, width: xScale(50), height: yScale(50), class: 'high-freedom', opacity: 0.05, color: '#16a085' },
+      { x: xScale(50), y: 0, width: width - xScale(50), height: yScale(50), class: 'medium-freedom', opacity: 0.05, color: '#f39c12' },
+      { x: 0, y: yScale(50), width: xScale(50), height: height - yScale(50), class: 'mixed', opacity: 0.05, color: '#5dade2' },
+      { x: xScale(50), y: yScale(50), width: width - xScale(50), height: height - yScale(50), class: 'low-freedom', opacity: 0.05, color: '#e74c3c' }
     ];
 
     g.selectAll('.quadrant')
@@ -205,7 +265,7 @@ const BubbleChart = ({ data, state, onCountryClick }) => {
           .attr('stroke-width', 3);
 
         const tooltipContent = `
-          <div style="font-weight: 600; color: #fbbf24; margin-bottom: 8px;">${d.country}</div>
+          <div style="font-weight: 600; color: #f39c12; margin-bottom: 8px;">${d.country}</div>
           <div><strong>Region:</strong> ${d.region}</div>
           <div><strong>Year:</strong> ${d.year}</div>
           <div style="margin-top: 8px;">
@@ -221,16 +281,17 @@ const BubbleChart = ({ data, state, onCountryClick }) => {
 
         setTooltip({
           visible: true,
-          x: event.pageX + 10,
-          y: event.pageY - 10,
+          x: adjustTooltipPosition(event.pageX + 10, event.pageY - 10).x,
+          y: adjustTooltipPosition(event.pageX + 10, event.pageY - 10).y,
           content: tooltipContent
         });
       })
       .on('mousemove', function(event) {
+        const adjustedPos = adjustTooltipPosition(event.pageX + 10, event.pageY - 10);
         setTooltip(prev => ({
           ...prev,
-          x: event.pageX + 10,
-          y: event.pageY - 10
+          x: adjustedPos.x,
+          y: adjustedPos.y
         }));
       })
       .on('mouseout', function() {
@@ -262,10 +323,10 @@ const BubbleChart = ({ data, state, onCountryClick }) => {
     }
 
     const labels = [
-      { x: xScale(25), y: 25, text: 'High Freedom', color: '#059669' },
-      { x: xScale(75), y: 25, text: 'Press Restrictions', color: '#fbbf24' },
-      { x: xScale(25), y: height - 10, text: 'Mixed System', color: '#3b82f6' },
-      { x: xScale(75), y: height - 10, text: 'Authoritarian', color: '#dc2626' }
+      { x: xScale(25), y: 25, text: 'High Freedom', color: '#16a085' },
+      { x: xScale(75), y: 25, text: 'Press Restrictions', color: '#f39c12' },
+      { x: xScale(25), y: height - 10, text: 'Mixed System', color: '#5dade2' },
+      { x: xScale(75), y: height - 10, text: 'Authoritarian', color: '#e74c3c' }
     ];
 
     labels.forEach(label => {
@@ -277,53 +338,62 @@ const BubbleChart = ({ data, state, onCountryClick }) => {
         .style('font-weight', '600')
         .style('opacity', 0.8)
         .style('text-anchor', 'middle')
+        .style('pointer-events', 'none')
         .text(label.text);
     });
 
     const legendData = [...new Set(validData.map(d => d.region))];
+    const legendHeight = legendData.length * (sidebarVisible ? 18 : 22);
+    
     const legend = g.append('g')
       .attr('class', 'legend')
-      .attr('transform', `translate(${width - 150}, 20)`);
+      .attr('transform', `translate(${width - (sidebarVisible ? 80 : 85)}, ${height - legendHeight - 10})`)
+      .style('pointer-events', 'none');
 
     const legendItems = legend.selectAll('.legend-item')
       .data(legendData)
       .enter().append('g')
       .attr('class', 'legend-item')
-      .attr('transform', (d, i) => `translate(0, ${i * 20})`);
+      .attr('transform', (d, i) => `translate(0, ${i * (sidebarVisible ? 18 : 22)})`);
 
     legendItems.append('circle')
       .attr('cx', 6)
       .attr('cy', 6)
-      .attr('r', 6)
+      .attr('r', sidebarVisible ? 5 : 7)
       .attr('fill', d => colorScale(d))
-      .attr('opacity', 0.8);
+      .attr('opacity', 0.8)
+      .style('pointer-events', 'none');
 
     legendItems.append('text')
-      .attr('x', 18)
+      .attr('x', sidebarVisible ? 16 : 20)
       .attr('y', 6)
       .attr('dy', '0.35em')
-      .style('font-size', '11px')
+      .style('font-size', sidebarVisible ? '10px' : '12px')
       .style('fill', '#374151')
+      .style('pointer-events', 'none')
       .text(d => d);
 
+    const sizeLegendHeight = sidebarVisible ? 80 : 100;
     const sizeLegend = g.append('g')
       .attr('class', 'size-legend')
-      .attr('transform', `translate(20, ${height - 100})`);
+      .attr('transform', `translate(${sidebarVisible ? 15 : 25}, ${height - legendHeight - sizeLegendHeight - 20})`)
+      .style('pointer-events', 'none');
 
     sizeLegend.append('text')
       .attr('x', 0)
       .attr('y', 0)
-      .style('font-size', '12px')
+      .style('font-size', sidebarVisible ? '10px' : '12px')
       .style('font-weight', '600')
       .style('fill', '#374151')
+      .style('pointer-events', 'none')
       .text('Surveillance Index (Bubble Size)');
 
-    const sizeValues = [20, 50, 80];
+    const sizeValues = sidebarVisible ? [20, 50, 80] : [25, 55, 85];
     const sizeLegendItems = sizeLegend.selectAll('.size-item')
       .data(sizeValues)
       .enter().append('g')
       .attr('class', 'size-item')
-      .attr('transform', (d, i) => `translate(${i * 40}, 20)`);
+      .attr('transform', (d, i) => `translate(${i * (sidebarVisible ? 40 : 50)}, 20)`);
 
     sizeLegendItems.append('circle')
       .attr('cx', 15)
@@ -332,14 +402,16 @@ const BubbleChart = ({ data, state, onCountryClick }) => {
       .attr('fill', '#94a3b8')
       .attr('opacity', 0.6)
       .attr('stroke', '#fff')
-      .attr('stroke-width', 1);
+      .attr('stroke-width', 1)
+      .style('pointer-events', 'none');
 
     sizeLegendItems.append('text')
       .attr('x', 15)
-      .attr('y', 40)
+      .attr('y', sidebarVisible ? 38 : 42)
       .attr('text-anchor', 'middle')
-      .style('font-size', '10px')
+      .style('font-size', sidebarVisible ? '8px' : '10px')
       .style('fill', '#64748b')
+      .style('pointer-events', 'none')
       .text(d => d);
   };
 
@@ -367,8 +439,11 @@ const BubbleChart = ({ data, state, onCountryClick }) => {
             lineHeight: '1.4',
             pointerEvents: 'none',
             zIndex: 1000,
-            maxWidth: '280px',
-            boxShadow: '0 8px 32px rgba(0, 0, 0, 0.3)'
+            maxWidth: '320px',
+            minWidth: '200px',
+            boxShadow: '0 8px 32px rgba(0, 0, 0, 0.3)',
+            wordWrap: 'break-word',
+            overflowWrap: 'break-word'
           }}
           dangerouslySetInnerHTML={{ __html: tooltip.content }}
         />

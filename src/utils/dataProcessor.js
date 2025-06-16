@@ -1,16 +1,16 @@
 import * as d3 from 'd3';
-import { COUNTRY_REGIONS, INDICATORS, THRESHOLDS } from './constants.js';
-import { RealDataLoader } from './realDataLoader.js';
+import { INDICATORS, THRESHOLDS } from './constants.js';
+import { DataLoader } from './dataLoader.js';
 
-const realDataLoader = new RealDataLoader();
+const dataLoader = new DataLoader();
 
 export async function loadAllData() {
   try {
-    console.log('🚀 Starting data load...');
+    console.log('Starting data load...');
     
     try {
-      const realData = await realDataLoader.loadAllRealData();
-      console.log('✅ Real data loaded successfully:', {
+      const realData = await dataLoader.loadAllRealData();
+      console.log('Real data loaded successfully:', {
         countries: realData.countries.length,
         indicators: realData.indicators.length,
         sources: realData.loadedSources,
@@ -19,7 +19,7 @@ export async function loadAllData() {
       return realData;
       
     } catch (realDataError) {
-      console.warn('⚠️ Real data loading failed, falling back to mock data:', realDataError);
+      console.warn('Real data loading failed, falling back to mock data:', realDataError);
       
       const mockData = {
         countries: await generateMockCountryData(),
@@ -30,7 +30,7 @@ export async function loadAllData() {
         schemaInfo: null
       };
       
-      console.log('📊 Mock data loaded as fallback:', {
+      console.log('Mock data loaded as fallback:', {
         countries: mockData.countries.length,
         indicators: mockData.indicators.length
       });
@@ -39,7 +39,7 @@ export async function loadAllData() {
     }
     
   } catch (error) {
-    console.error('❌ Complete data loading failure:', error);
+    console.error('Complete data loading failure:', error);
     throw error;
   }
 }

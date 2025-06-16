@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { INDICATORS, REGIONS } from '../utils/constants';
-import { getUniqueCountries, searchCountries } from '../utils/realDataLoader';
+import { searchCountries } from '../utils/dataLoader';
 
 const Sidebar = ({ 
   state, 
@@ -9,7 +9,10 @@ const Sidebar = ({
   onRegionToggle, 
   onCountrySelection,
   onToggleCaseStudy,
-  data 
+  data,
+  style,
+  className,
+  onToggleSidebar
 }) => {
   const [searchQuery, setSearchQuery] = useState('');
   const [searchResults, setSearchResults] = useState([]);
@@ -49,10 +52,19 @@ const Sidebar = ({
   };
 
   return (
-    <aside className="sidebar">
+    <aside className={`sidebar ${className || ''}`} style={style}>
+      {!className?.includes('hidden') && onToggleSidebar && (
+        <button
+          onClick={onToggleSidebar}
+          className="sidebar-internal-toggle"
+          title="Hide Sidebar"
+        >
+          ◀
+        </button>
+      )}
+      
       <div>
-        <h1>Authoritarianism vs Democracy</h1>
-        <p className="subtitle">Global Analysis 2000-2024</p>
+        <h1>Political Freedom</h1>
       </div>
 
       <div className="control-section">
@@ -60,8 +72,8 @@ const Sidebar = ({
         <div className="year-slider-container">
           <input
             type="range"
-            min={data?.timeRange?.[0] || 2000}
-            max={data?.timeRange?.[1] || 2024}
+            min={2000}
+            max={2024}
             value={state.selectedYear}
             onChange={(e) => onYearChange(parseInt(e.target.value))}
             className="year-slider"
@@ -75,10 +87,10 @@ const Sidebar = ({
             marginTop: '8px',
             textAlign: 'center'
           }}>
-            Data available range: {data.timeRange[0]}-{data.timeRange[1]}
+            Data available range: 2000-2024
             <br />
             <span style={{ fontSize: '11px' }}>
-              Data before 2019 may be limited
+              Polity5 data after 2018 is limited
             </span>
           </div>
         )}
@@ -100,9 +112,22 @@ const Sidebar = ({
                 className="indicator-checkbox"
                 onClick={(e) => e.stopPropagation()}
               />
-              <div>
-                <div className="indicator-label">{indicator.name}</div>
-                <div style={{ fontSize: '12px', opacity: 0.8, marginTop: '2px' }}>
+              <div style={{ flex: 1, minWidth: 0 }}>
+                <div className="indicator-label" style={{ 
+                  overflow: 'hidden', 
+                  textOverflow: 'ellipsis', 
+                  whiteSpace: 'nowrap' 
+                }}>
+                  {indicator.name}
+                </div>
+                <div style={{ 
+                  fontSize: '11px', 
+                  opacity: 0.8, 
+                  marginTop: '2px',
+                  overflow: 'hidden',
+                  textOverflow: 'ellipsis',
+                  whiteSpace: 'nowrap'
+                }}>
                   {indicator.description}
                 </div>
               </div>
@@ -184,7 +209,7 @@ const Sidebar = ({
                 style={{
                   background: 'none',
                   border: 'none',
-                  color: '#fbbf24',
+                  color: '#f39c12',
                   cursor: 'pointer',
                   fontSize: '12px',
                   textDecoration: 'underline'
@@ -236,11 +261,16 @@ const Sidebar = ({
 
       <div className="control-section">
         <button
-          className="case-study-button"
-          onClick={onToggleCaseStudy}
-        >
-          🇰🇷 South Korea Case Study
-        </button>
+        className="case-study-button"
+        onClick={onToggleCaseStudy}
+          style={{
+          whiteSpace: 'nowrap',
+            overflow: 'hidden',
+              textOverflow: 'ellipsis'
+            }}
+          >
+            South Korea Case Study
+          </button>
       </div>
 
       <div className="control-section" style={{ 
@@ -249,11 +279,14 @@ const Sidebar = ({
         borderTop: '1px solid rgba(255,255,255,0.1)', 
         paddingTop: '16px' 
       }}>
-        <div>Data Sources:</div>
-        <div>• Polity5 Project</div>
-        <div>• V-Dem Institute</div>
-        <div>• Freedom House</div>
-        <div>• RSF Press Freedom</div>
+        <div style={{ marginBottom: '4px' }}>Data Sources:</div>
+        <div style={{ fontSize: '11px', lineHeight: '1.3' }}>
+          • Polity5 Project<br/>
+          • V-Dem Institute<br/>
+          • Freedom House<br/>
+          • RSF Press Freedom<br/>
+          • Global Surveillance Index
+        </div>
       </div>
     </aside>
   );

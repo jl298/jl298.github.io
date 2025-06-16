@@ -4,16 +4,41 @@ import {
   getDataForYear, 
   filterDataByRegions, 
   filterDataByCountries,
-  getDemocracyColor,
   formatValue 
-} from '../utils/realDataLoader';
-import { COLORS, COUNTRY_REGIONS } from '../utils/constants';
+} from '../utils/dataLoader';
+import { COLORS, COUNTRY_REGIONS, ENVIRONMENT } from '../utils/constants';
 
-const Overview = ({ data, state, onCountryClick }) => {
+const Overview = ({ data, state, onCountryClick, sidebarVisible }) => {
   const svgRef = useRef();
   const tooltipRef = useRef();
   const [tooltip, setTooltip] = useState({ visible: false, x: 0, y: 0, content: '' });
   const [debugInfo, setDebugInfo] = useState(null);
+
+  const adjustTooltipPosition = (x, y, tooltipWidth = 300, tooltipHeight = 200) => {
+    const viewport = {
+      width: window.innerWidth,
+      height: window.innerHeight
+    };
+    
+    let adjustedX = x;
+    let adjustedY = y;
+    
+    if (x + tooltipWidth > viewport.width) {
+      adjustedX = x - tooltipWidth - 20;
+    }
+    if (adjustedX < 0) {
+      adjustedX = 10;
+    }
+    
+    if (y + tooltipHeight > viewport.height) {
+      adjustedY = y - tooltipHeight - 20;
+    }
+    if (adjustedY < 0) {
+      adjustedY = 10;
+    }
+    
+    return { x: adjustedX, y: adjustedY };
+  };
 
   useEffect(() => {
     if (!data || !data.countries) return;
@@ -26,114 +51,156 @@ const Overview = ({ data, state, onCountryClick }) => {
     }
 
     drawChart(yearData);
+  }, [data, state, sidebarVisible]);
+
+  useEffect(() => {
+    const svgElement = svgRef.current;
+    if (!svgElement) return;
+
+    const resizeObserver = new ResizeObserver(() => {
+      setTimeout(() => {
+        if (data && data.countries) {
+          let yearData = getDataForYear(data.countries, state.selectedYear);
+          yearData = filterDataByRegions(yearData, state.activeRegions);
+          
+          if (state.selectedCountries.length > 0) {
+            yearData = filterDataByCountries(yearData, state.selectedCountries);
+          }
+
+          drawChart(yearData);
+        }
+      }, 100);
+    });
+
+    const container = svgElement.parentElement;
+    if (container) {
+      resizeObserver.observe(container);
+    }
+
+    return () => {
+      if (container) {
+        resizeObserver.unobserve(container);
+      }
+    };
   }, [data, state]);
 
   const drawChart = (chartData) => {
     const svg = d3.select(svgRef.current);
     svg.selectAll('*').remove();
 
-    console.log('📊 [OVERVIEW DEBUG] Overview Chart Debugging:');
-    console.log('=====================================');
-    console.log('  Selected year:', state.selectedYear);
-    console.log('  Original data count:', data?.countries?.length || 0);
-    console.log('  Filtered data count:', chartData?.length || 0);
-    console.log('  Active regions:', state.activeRegions);
-    console.log('  Selected countries:', state.selectedCountries);
+    if (ENVIRONMENT.SHOW_CONSOLE_LOGS) {
+      console.log('[OVERVIEW DEBUG] Overview Chart Debugging:');
+      console.log('=====================================');
+      console.log('  Selected year:', state.selectedYear);
+      console.log('  Original data count:', data?.countries?.length || 0);
+      console.log('  Filtered data count:', chartData?.length || 0);
+      console.log('  Active regions:', state.activeRegions);
+      console.log('  Selected countries:', state.selectedCountries);
 
-    if (data?.countries) {
-      console.log('📅 Data availability analysis by year:');
-      
-      const allYears = [...new Set(data.countries.map(d => d.year))].sort();
-      const minYear = Math.min(...allYears);
-      const maxYear = Math.max(...allYears);
-      console.log(`  Overall data year range: ${minYear}-${maxYear}`);
-      
-      const beforeAfter2020 = {
-        before: data.countries.filter(d => d.year < 2020).length,
-        after: data.countries.filter(d => d.year >= 2020).length
-      };
-      console.log(`  Before 2020: ${beforeAfter2020.before} records, After: ${beforeAfter2020.after} records`);
-      
-      const testYears = [1980, 1990, 2000, 2010, 2019, 2020, 2021, 2022, 2023, 2024];
-      console.log('  Data count by specific years:');
-      testYears.forEach(year => {
-        const count = data.countries.filter(d => d.year === year).length;
-        const status = count === 0 ? '❌' : count < 50 ? '⚠️' : '✅';
-        console.log(`    ${status} ${year}: ${count} records`);
-      });
-      
-      const currentYearData = getDataForYear(data.countries, state.selectedYear);
-      console.log(`📈 ${state.selectedYear} detailed analysis:`);
-      console.log(`  Total data for this year: ${currentYearData.length} records`);
-      
-      if (currentYearData.length > 0) {
-        const regionCounts = {};
-        currentYearData.forEach(d => {
-          regionCounts[d.region] = (regionCounts[d.region] || 0) + 1;
-        });
-        console.log('  Regional data distribution:');
-        Object.entries(regionCounts).forEach(([region, count]) => {
-          console.log(`    ${region}: ${count} records`);
+      if (data?.countries) {
+        console.log('Data availability analysis by year:');
+        
+        const allYears = [...new Set(data.countries.map(d => d.year))].sort();
+        const minYear = Math.min(...allYears);
+        const maxYear = Math.max(...allYears);
+        console.log(`  Overall data year range: ${minYear}-${maxYear}`);
+        
+        const beforeAfter2020 = {
+          before: data.countries.filter(d => d.year < 2020).length,
+          after: data.countries.filter(d => d.year >= 2020).length
+        };
+        console.log(`  Before 2020: ${beforeAfter2020.before} records, After: ${beforeAfter2020.after} records`);
+        
+        const testYears = [1980, 1990, 2000, 2010, 2019, 2020, 2021, 2022, 2023, 2024];
+        console.log('  Data count by specific years:');
+        testYears.forEach(year => {
+          const count = data.countries.filter(d => d.year === year).length;
+          const status = count === 0 ? '❌' : count < 50 ? '⚠️' : '✅';
+          console.log(`    ${status} ${year}: ${count} records`);
         });
         
-        const indicators = ['vdem_liberal', 'freedom_house', 'polity5'];
-        console.log('  Key indicator data availability:');
-        indicators.forEach(indicator => {
-          const withData = currentYearData.filter(d => d[indicator] != null && !isNaN(d[indicator])).length;
-          const percentage = (withData / currentYearData.length * 100).toFixed(1);
-          console.log(`    ${indicator}: ${withData}/${currentYearData.length} (${percentage}%)`);
-        });
+        const currentYearData = getDataForYear(data.countries, state.selectedYear);
+        console.log(`${state.selectedYear} detailed analysis:`);
+        console.log(`  Total data for this year: ${currentYearData.length} records`);
         
-        const koreaData = currentYearData.filter(d => d.country === 'South Korea');
-        console.log('🇰🇷 South Korea data status:');
-        if (koreaData.length > 0) {
-          console.log('  ✅ South Korea data exists');
-          console.log('  South Korea data content:', koreaData[0]);
-          indicators.forEach(indicator => {
-            const value = koreaData[0][indicator];
-            const status = value != null && !isNaN(value) ? '✅' : '❌';
-            console.log(`    ${status} ${indicator}: ${value}`);
+        if (currentYearData.length > 0) {
+          const regionCounts = {};
+          currentYearData.forEach(d => {
+            regionCounts[d.region] = (regionCounts[d.region] || 0) + 1;
           });
-        } else {
-          console.log('  ❌ No South Korea data');
-          const allCountries = [...new Set(currentYearData.map(d => d.country))];
-          const koreaLike = allCountries.filter(name => 
-            name && name.toLowerCase().includes('kor'));
-          if (koreaLike.length > 0) {
-            console.log('  🔍 Korea-related names:', koreaLike);
+          console.log('  Regional data distribution:');
+          Object.entries(regionCounts).forEach(([region, count]) => {
+            console.log(`    ${region}: ${count} records`);
+          });
+          
+          const indicators = ['vdem_liberal', 'freedom_house', 'polity5'];
+          console.log('  Key indicator data availability:');
+          indicators.forEach(indicator => {
+            const withData = currentYearData.filter(d => d[indicator] != null && !isNaN(d[indicator])).length;
+            const percentage = (withData / currentYearData.length * 100).toFixed(1);
+            console.log(`    ${indicator}: ${withData}/${currentYearData.length} (${percentage}%)`);
+          });
+          
+          const koreaData = currentYearData.filter(d => d.country === 'South Korea');
+          console.log('🇰🇷 South Korea data status:');
+          if (koreaData.length > 0) {
+            console.log('  [V] South Korea data exists');
+            console.log('  South Korea data content:', koreaData[0]);
+            indicators.forEach(indicator => {
+              const value = koreaData[0][indicator];
+              const status = value != null && !isNaN(value) ? '[V]' : '[X]';
+              console.log(`    ${status} ${indicator}: ${value}`);
+            });
+          } else {
+            console.log('  [X] No South Korea data');
+            const allCountries = [...new Set(currentYearData.map(d => d.country))];
+            const koreaLike = allCountries.filter(name => 
+              name && name.toLowerCase().includes('kor'));
+            if (koreaLike.length > 0) {
+              console.log('  🔍 Korea-related names:', koreaLike);
+            }
           }
         }
       }
+
+      if (chartData) {
+        console.log('Post-filtering data analysis:');
+        
+        const preValidation = chartData.filter(d => 
+          d.vdem_liberal != null && !isNaN(d.vdem_liberal) &&
+          d.freedom_house != null && !isNaN(d.freedom_house)
+        );
+        
+        console.log(`  validData condition check: ${preValidation.length}/${chartData.length} passed`);
+        console.log('    Condition: vdem_liberal != null && freedom_house != null');
+        
+        if (chartData.length > 0 && preValidation.length === 0) {
+          console.log('  [!] Analysis of why validData is 0:');
+          const vdemCount = chartData.filter(d => d.vdem_liberal != null && !isNaN(d.vdem_liberal)).length;
+          const fhCount = chartData.filter(d => d.freedom_house != null && !isNaN(d.freedom_house)).length;
+          console.log(`    Records with vdem_liberal: ${vdemCount}`);
+          console.log(`    Records with freedom_house: ${fhCount}`);
+          
+          const sample = chartData[0];
+          console.log('    Sample data:', {
+            country: sample.country,
+            year: sample.year,
+            vdem_liberal: sample.vdem_liberal,
+            freedom_house: sample.freedom_house,
+            polity5: sample.polity5,
+            sources: sample.sources
+          });
+        }
+      }
+      
+      console.log('=====================================');
     }
 
     if (chartData) {
-      console.log('🎯 Post-filtering data analysis:');
-      
       const preValidation = chartData.filter(d => 
         d.vdem_liberal != null && !isNaN(d.vdem_liberal) &&
         d.freedom_house != null && !isNaN(d.freedom_house)
       );
-      
-      console.log(`  validData condition check: ${preValidation.length}/${chartData.length} passed`);
-      console.log('    Condition: vdem_liberal != null && freedom_house != null');
-      
-      if (chartData.length > 0 && preValidation.length === 0) {
-        console.log('  ⚠️ Analysis of why validData is 0:');
-        const vdemCount = chartData.filter(d => d.vdem_liberal != null && !isNaN(d.vdem_liberal)).length;
-        const fhCount = chartData.filter(d => d.freedom_house != null && !isNaN(d.freedom_house)).length;
-        console.log(`    Records with vdem_liberal: ${vdemCount}`);
-        console.log(`    Records with freedom_house: ${fhCount}`);
-        
-        const sample = chartData[0];
-        console.log('    Sample data:', {
-          country: sample.country,
-          year: sample.year,
-          vdem_liberal: sample.vdem_liberal,
-          freedom_house: sample.freedom_house,
-          polity5: sample.polity5,
-          sources: sample.sources
-        });
-      }
       
       setDebugInfo({
         totalRecords: chartData.length,
@@ -147,8 +214,6 @@ const Overview = ({ data, state, onCountryClick }) => {
         }
       });
     }
-    
-    console.log('=====================================');
 
     if (!chartData || chartData.length === 0) {
       svg.append('text')
@@ -300,7 +365,7 @@ const Overview = ({ data, state, onCountryClick }) => {
           .attr('stroke-width', 2.5);
 
         const tooltipContent = `
-          <div style="font-weight: 600; color: #fbbf24; margin-bottom: 8px;">${d.country}</div>
+          <div style="font-weight: 600; color: #f39c12; margin-bottom: 8px;">${d.country}</div>
           <div><strong>Region:</strong> ${d.region}</div>
           <div><strong>Year:</strong> ${d.year}</div>
           <div style="margin-top: 8px;">
@@ -313,18 +378,21 @@ const Overview = ({ data, state, onCountryClick }) => {
           </div>
         `;
 
+        const adjustedPos = adjustTooltipPosition(event.pageX + 10, event.pageY - 10);
+        
         setTooltip({
           visible: true,
-          x: event.pageX + 10,
-          y: event.pageY - 10,
+          x: adjustedPos.x,
+          y: adjustedPos.y,
           content: tooltipContent
         });
       })
       .on('mousemove', function(event) {
+        const adjustedPos = adjustTooltipPosition(event.pageX + 10, event.pageY - 10);
         setTooltip(prev => ({
           ...prev,
-          x: event.pageX + 10,
-          y: event.pageY - 10
+          x: adjustedPos.x,
+          y: adjustedPos.y
         }));
       })
       .on('mouseout', function() {
@@ -359,10 +427,10 @@ const Overview = ({ data, state, onCountryClick }) => {
     const midY = yScale(50);
 
     const quadrants = [
-      { x: midX + 10, y: 25, text: 'Liberal Democracy', color: '#059669' },
-      { x: 10, y: 25, text: 'Partial Freedom', color: '#fbbf24' },
-      { x: 10, y: height - 10, text: 'Authoritarianism', color: '#dc2626' },
-      { x: midX + 10, y: height - 10, text: 'Electoral Democracy', color: '#3b82f6' }
+      { x: midX + 10, y: 25, text: 'Liberal Democracy', color: '#16a085' },
+      { x: 10, y: 25, text: 'Partial Freedom', color: '#f39c12' },
+      { x: 10, y: height - 10, text: 'Authoritarianism', color: '#e74c3c' },
+      { x: midX + 10, y: height - 10, text: 'Electoral Democracy', color: '#5dade2' }
     ];
 
     quadrants.forEach(quad => {
@@ -373,13 +441,15 @@ const Overview = ({ data, state, onCountryClick }) => {
         .style('font-size', '12px')
         .style('font-weight', '600')
         .style('opacity', 0.7)
+        .style('pointer-events', 'none')
         .text(quad.text);
     });
 
     const legendData = [...new Set(validData.map(d => d.region))];
     const legend = g.append('g')
       .attr('class', 'legend')
-      .attr('transform', `translate(${width - 150}, 20)`);
+      .attr('transform', `translate(${width - 80}, 20)`)
+      .style('pointer-events', 'none');
 
     const legendItems = legend.selectAll('.legend-item')
       .data(legendData)
@@ -392,7 +462,8 @@ const Overview = ({ data, state, onCountryClick }) => {
       .attr('cy', 6)
       .attr('r', 6)
       .attr('fill', d => colorScale(d))
-      .attr('opacity', 0.8);
+      .attr('opacity', 0.8)
+      .style('pointer-events', 'none');
 
     legendItems.append('text')
       .attr('x', 18)
@@ -400,9 +471,10 @@ const Overview = ({ data, state, onCountryClick }) => {
       .attr('dy', '0.35em')
       .style('font-size', '11px')
       .style('fill', '#374151')
+      .style('pointer-events', 'none')
       .text(d => d);
 
-    if (process.env.NODE_ENV === 'development' && debugInfo) {
+    if (ENVIRONMENT.DEBUG_MODE && debugInfo) {
       g.append('text')
         .attr('x', 10)
         .attr('y', height + 50)
@@ -436,14 +508,17 @@ const Overview = ({ data, state, onCountryClick }) => {
             lineHeight: '1.4',
             pointerEvents: 'none',
             zIndex: 1000,
-            maxWidth: '240px',
-            boxShadow: '0 8px 32px rgba(0, 0, 0, 0.3)'
+            maxWidth: '300px',
+            minWidth: '200px',
+            boxShadow: '0 8px 32px rgba(0, 0, 0, 0.3)',
+            wordWrap: 'break-word',
+            overflowWrap: 'break-word'
           }}
           dangerouslySetInnerHTML={{ __html: tooltip.content }}
         />
       )}
       
-      {process.env.NODE_ENV === 'development' && debugInfo && (
+      {ENVIRONMENT.SHOW_DEBUG_PANELS && debugInfo && (
         <div style={{
           position: 'absolute',
           top: 10,

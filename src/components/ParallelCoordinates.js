@@ -5,14 +5,65 @@ import {
   filterDataByRegions, 
   filterDataByCountries,
   formatValue 
-} from '../utils/realDataLoader';
-import { COLORS, INDICATORS } from '../utils/constants';
+} from '../utils/dataLoader';
+import { COLORS } from '../utils/constants';
 
-const ParallelCoordinates = ({ data, state, onCountryHighlight }) => {
+const wrapText = (text, width) => {
+  text.each(function() {
+    const text = d3.select(this);
+    const words = text.text().split(/\s+/).reverse();
+    let word;
+    let line = [];
+    let lineNumber = 0;
+    const lineHeight = 1.1; // ems
+    const y = text.attr('y');
+    const dy = parseFloat(text.attr('dy')) || 0;
+    let tspan = text.text(null).append('tspan').attr('x', 0).attr('y', y).attr('dy', dy + 'em');
+    
+    while (word = words.pop()) {
+      line.push(word);
+      tspan.text(line.join(' '));
+      if (tspan.node().getComputedTextLength() > width) {
+        line.pop();
+        tspan.text(line.join(' '));
+        line = [word];
+        tspan = text.append('tspan').attr('x', 0).attr('y', y).attr('dy', ++lineNumber * lineHeight + dy + 'em').text(word);
+      }
+    }
+  });
+};
+
+const ParallelCoordinates = ({ data, state, onCountryHighlight, sidebarVisible }) => {
   const svgRef = useRef();
   const [tooltip, setTooltip] = useState({ visible: false, x: 0, y: 0, content: '' });
   const [highlightedCountries, setHighlightedCountries] = useState([]);
   const [debugInfo, setDebugInfo] = useState(null);
+
+  const adjustTooltipPosition = (x, y, tooltipWidth = 320, tooltipHeight = 200) => {
+    const viewport = {
+      width: window.innerWidth,
+      height: window.innerHeight
+    };
+    
+    let adjustedX = x;
+    let adjustedY = y;
+    
+    if (x + tooltipWidth > viewport.width) {
+      adjustedX = x - tooltipWidth - 20;
+    }
+    if (adjustedX < 0) {
+      adjustedX = 10;
+    }
+    
+    if (y + tooltipHeight > viewport.height) {
+      adjustedY = y - tooltipHeight - 20;
+    }
+    if (adjustedY < 0) {
+      adjustedY = 10;
+    }
+    
+    return { x: adjustedX, y: adjustedY };
+  };
 
   useEffect(() => {
     if (!data || !data.countries) return;
@@ -25,13 +76,44 @@ const ParallelCoordinates = ({ data, state, onCountryHighlight }) => {
     }
 
     drawChart(yearData);
-  }, [data, state, highlightedCountries]);
+  }, [data, state, highlightedCountries, sidebarVisible]);
+
+  useEffect(() => {
+    const svgElement = svgRef.current;
+    if (!svgElement) return;
+
+    const resizeObserver = new ResizeObserver(() => {
+      setTimeout(() => {
+        if (data && data.countries) {
+          let yearData = getDataForYear(data.countries, state.selectedYear);
+          yearData = filterDataByRegions(yearData, state.activeRegions);
+          
+          if (state.selectedCountries.length > 0) {
+            yearData = filterDataByCountries(yearData, state.selectedCountries);
+          }
+
+          drawChart(yearData);
+        }
+      }, 100);
+    });
+
+    const container = svgElement.parentElement;
+    if (container) {
+      resizeObserver.observe(container);
+    }
+
+    return () => {
+      if (container) {
+        resizeObserver.unobserve(container);
+      }
+    };
+  }, [data, state]);
 
   const drawChart = (chartData) => {
     const svg = d3.select(svgRef.current);
     svg.selectAll('*').remove();
 
-    console.log('🔧 [IMPROVED PARALLEL] Enhanced ParallelCoordinates Debugging:');
+    console.log('[IMPROVED PARALLEL] Enhanced ParallelCoordinates Debugging:');
     console.log('=====================================');
     console.log('  Selected year:', state.selectedYear);
     console.log('  Input data count:', chartData?.length || 0);
@@ -49,7 +131,11 @@ const ParallelCoordinates = ({ data, state, onCountryHighlight }) => {
     }
 
     const container = svg.node().getBoundingClientRect();
-    const margin = { top: 30, right: 10, bottom: 60, left: 10 };
+    
+    const margin = sidebarVisible 
+      ? { top: 30, right: 10, bottom: 60, left: 10 }
+      : { top: 25, right: 15, bottom: 70, left: 15 };
+    
     const width = container.width - margin.left - margin.right;
     const height = container.height - margin.top - margin.bottom;
 
@@ -57,8 +143,8 @@ const ParallelCoordinates = ({ data, state, onCountryHighlight }) => {
       .attr('transform', `translate(${margin.left},${margin.top})`);
 
     const allDimensions = [
-      { key: 'vdem_liberal', name: 'Liberal Democracy', format: d3.format('.2f'), required: false },
-      { key: 'polity5', name: 'Polity5', format: d3.format('.1f'), required: false },
+      { key: 'vdem_liberal', name: "Liberal Democracy", format: d3.format('.2f'), required: false },
+      { key: 'polity5', name: 'Polity5 Score', format: d3.format('.1f'), required: false },
       { key: 'freedom_house', name: 'Freedom House', format: d3.format('.0f'), required: true },
       { key: 'press_freedom', name: 'Press Freedom', format: d3.format('.0f'), required: false },
       { key: 'surveillance', name: 'Surveillance Index', format: d3.format('.0f'), required: false },
@@ -76,7 +162,7 @@ const ParallelCoordinates = ({ data, state, onCountryHighlight }) => {
       };
     });
 
-    console.log('📊 Data availability by dimension:');
+    console.log('Data availability by dimension:');
     dimensionStats.forEach(stat => {
       console.log(`  ${stat.name}: ${stat.validCount}/${chartData.length} (${stat.percentage.toFixed(1)}%)`);
     });
@@ -111,7 +197,7 @@ const ParallelCoordinates = ({ data, state, onCountryHighlight }) => {
       return validRatio >= 0.3;
     });
 
-    console.log('🎯 Filtering results:');
+    console.log('Filtering results:');
     console.log(`  validData: ${validData.length}/${chartData.length} (${(validData.length/chartData.length*100).toFixed(1)}%)`);
 
     const koreaData = validData.filter(d => d.country === 'South Korea');
@@ -214,13 +300,15 @@ const ParallelCoordinates = ({ data, state, onCountryHighlight }) => {
 
     if (koreaData.length > 0) {
       paths.filter(d => d.country === 'South Korea')
-        .style('stroke', '#fbbf24')
+        .style('stroke', '#f39c12')
         .style('stroke-width', 3)
         .style('opacity', 0.9);
     }
 
     paths
       .on('mouseover', function(event, d) {
+        d3.selectAll('.tooltip-parallel').remove();
+        
         d3.select(this)
           .style('stroke-width', 4)
           .style('opacity', 1);
@@ -231,7 +319,7 @@ const ParallelCoordinates = ({ data, state, onCountryHighlight }) => {
         setHighlightedCountries([d.country]);
 
         const tooltipContent = `
-          <div style="font-weight: 600; color: #fbbf24; margin-bottom: 8px;">${d.country}</div>
+          <div style="font-weight: 600; color: #f39c12; margin-bottom: 8px;">${d.country}</div>
           <div><strong>Region:</strong> ${d.region}</div>
           <div><strong>Year:</strong> ${d.year}</div>
           <div style="margin-top: 8px;">
@@ -248,35 +336,48 @@ const ParallelCoordinates = ({ data, state, onCountryHighlight }) => {
           </div>
         `;
 
+        const adjustedPosition = adjustTooltipPosition(event.pageX + 10, event.pageY - 10);
+        
         setTooltip({
           visible: true,
-          x: event.pageX + 10,
-          y: event.pageY - 10,
+          x: adjustedPosition.x,
+          y: adjustedPosition.y,
           content: tooltipContent
         });
       })
       .on('mousemove', function(event) {
+        const adjustedPosition = adjustTooltipPosition(event.pageX + 10, event.pageY - 10);
+        
         setTooltip(prev => ({
           ...prev,
-          x: event.pageX + 10,
-          y: event.pageY - 10
+          x: adjustedPosition.x,
+          y: adjustedPosition.y
         }));
       })
-      .on('mouseout', function() {
-        paths
-          .style('stroke-width', d => {
-            if (d.country === 'South Korea') return 3;
-            return 2;
-          })
-          .style('opacity', d => {
-            if (state.selectedCountries.length === 0) {
-              return d.country === 'South Korea' ? 0.9 : 0.6;
-            }
-            return state.selectedCountries.includes(d.country) ? 0.8 : 0.2;
-          });
+      .on('mouseout', function(event) {
+        const relatedTarget = event.relatedTarget;
+        const isMovingToTooltip = relatedTarget && (relatedTarget.classList?.contains('tooltip') || relatedTarget.closest('.tooltip'));
+        
+        if (!isMovingToTooltip) {
+          paths
+            .style('stroke-width', d => {
+              if (d.country === 'South Korea') return 3;
+              return 2;
+            })
+            .style('opacity', d => {
+              if (state.selectedCountries.length === 0) {
+                return d.country === 'South Korea' ? 0.9 : 0.6;
+              }
+              return state.selectedCountries.includes(d.country) ? 0.8 : 0.2;
+            });
 
-        setHighlightedCountries([]);
-        setTooltip({ visible: false, x: 0, y: 0, content: '' });
+          setHighlightedCountries([]);
+          setTooltip({ visible: false, x: 0, y: 0, content: '' });
+          
+          setTimeout(() => {
+            d3.selectAll('.tooltip-parallel').remove();
+          }, 100);
+        }
       })
       .on('click', function(event, d) {
         if (onCountryHighlight) {
@@ -306,7 +407,7 @@ const ParallelCoordinates = ({ data, state, onCountryHighlight }) => {
     axes.append('text')
       .attr('y', -10)
       .attr('text-anchor', 'middle')
-      .style('font-size', '12px')
+      .style('font-size', sidebarVisible ? '11px' : '13px')
       .style('font-weight', '600')
       .style('fill', d => {
         const stat = dimensionStats.find(s => s.key === d.key);
@@ -316,7 +417,8 @@ const ParallelCoordinates = ({ data, state, onCountryHighlight }) => {
         const stat = dimensionStats.find(s => s.key === d.key);
         const percentage = stat ? stat.percentage.toFixed(0) : '0';
         return `${d.name} (${percentage}%)`;
-      });
+      })
+      .call(wrapText, x.step() - (sidebarVisible ? 20 : 30));
 
     axes.each(function(dim) {
       const axis = d3.select(this);
@@ -340,7 +442,7 @@ const ParallelCoordinates = ({ data, state, onCountryHighlight }) => {
           .attr('x', -8)
           .attr('dy', '0.35em')
           .attr('text-anchor', 'end')
-          .style('font-size', '10px')
+          .style('font-size', sidebarVisible ? '10px' : '11px')
           .style('fill', '#64748b')
           .text(d => dim.format(d));
       }
@@ -349,45 +451,60 @@ const ParallelCoordinates = ({ data, state, onCountryHighlight }) => {
     const legendData = [...new Set(validData.map(d => d.region))];
     const legend = g.append('g')
       .attr('class', 'legend')
-      .attr('transform', `translate(${width - 120}, 20)`);
+      .attr('transform', `translate(${width - (sidebarVisible ? 120 : 150)}, 20)`);
 
     const legendItems = legend.selectAll('.legend-item')
       .data(legendData)
       .enter().append('g')
       .attr('class', 'legend-item')
-      .attr('transform', (d, i) => `translate(0, ${i * 18})`);
+      .attr('transform', (d, i) => `translate(0, ${i * (sidebarVisible ? 18 : 22)})`);
 
     legendItems.append('line')
       .attr('x1', 0)
-      .attr('x2', 15)
+      .attr('x2', sidebarVisible ? 15 : 18)
       .attr('y1', 0)
       .attr('y2', 0)
       .style('stroke', d => colorScale(d))
-      .style('stroke-width', 3);
+      .style('stroke-width', sidebarVisible ? 3 : 4);
 
     legendItems.append('text')
-      .attr('x', 20)
+      .attr('x', sidebarVisible ? 20 : 25)
       .attr('y', 0)
       .attr('dy', '0.35em')
-      .style('font-size', '11px')
+      .style('font-size', sidebarVisible ? '11px' : '13px')
       .style('fill', '#374151')
       .text(d => d);
 
     g.append('text')
       .attr('x', 10)
       .attr('y', height + 35)
-      .style('font-size', '11px')
+      .style('font-size', sidebarVisible ? '11px' : '12px')
       .style('fill', '#64748b')
       .style('font-style', 'italic')
-      .text('The yellow-highlighted line is South Korea. The % in axis labels shows data availability.');
+      .text('The yellow-highlighted line represents South Korea. Percentages in axis labels show data availability.');
 
     g.append('text')
       .attr('x', 10)
       .attr('y', height + 50)
-      .style('font-size', '10px')
+      .style('font-size', sidebarVisible ? '10px' : '11px')
       .style('fill', '#6b7280')
-      .text(`Displayed countries: ${validData.length} | Used indicators: ${dimensions.length} | Korea included: ${koreaData.length > 0 ? 'Yes' : 'No'}`);
+      .text(`Countries displayed: ${validData.length} | Indicators used: ${dimensions.length} | South Korea included: ${koreaData.length > 0 ? 'Yes' : 'No'}`);
   };
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (!event.target.closest('.tooltip') && !event.target.closest('svg')) {
+        setTooltip({ visible: false, x: 0, y: 0, content: '' });
+        d3.selectAll('.tooltip-parallel').remove();
+      }
+    };
+
+    document.addEventListener('click', handleClickOutside);
+    return () => {
+      document.removeEventListener('click', handleClickOutside);
+      d3.selectAll('.tooltip-parallel').remove();
+    };
+  }, []);
 
   return (
     <>
@@ -395,7 +512,12 @@ const ParallelCoordinates = ({ data, state, onCountryHighlight }) => {
         ref={svgRef}
         width="100%"
         height="100%"
-        style={{ minHeight: '400px' }}
+        style={{ minHeight: '450px' }}
+
+        onMouseLeave={() => {
+          setTooltip({ visible: false, x: 0, y: 0, content: '' });
+          d3.selectAll('.tooltip-parallel').remove();
+        }}
       />
       
       {tooltip.visible && (
