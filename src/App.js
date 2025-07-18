@@ -1,10 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { createPortal } from 'react-dom';
 import Sidebar from './components/Sidebar';
 import Overview from './components/Overview';
 import WorldMap from './components/WorldMap';
 import BubbleChart from './components/BubbleChart';
 import ParallelCoordinates from './components/ParallelCoordinates';
-import CaseStudyPanel from './components/CaseStudyPanel';
+import NarrativeCaseStudy from './components/narrative/NarrativeCaseStudy';
 import { loadAllData } from './utils/dataProcessor';
 import { DEFAULT_STATE } from './utils/constants';
 
@@ -15,7 +16,13 @@ function App() {
   const [dashboardState, setDashboardState] = useState(DEFAULT_STATE);
   const [showScrollIndicator, setShowScrollIndicator] = useState(false);
   const [sidebarVisible, setSidebarVisible] = useState(true);
+  const [showNarrativeCaseStudy, setShowNarrativeCaseStudy] = useState(false);
+  const [narrativeBoxVisible, setNarrativeBoxVisible] = useState(false);
+  const [showSimpleHint, setShowSimpleHint] = useState(false);
+  const [showAttentionGuide, setShowAttentionGuide] = useState(false);
+  const [hintCycle, setHintCycle] = useState(null);
   const mainContentRef = useRef(null);
+  const narrativeBoxRef = useRef(null);
 
   useEffect(() => {
     const initializeData = async () => {
@@ -28,6 +35,12 @@ function App() {
         window.dashboardData = loadedData;
         console.log('[V] Dashboard data loaded successfully and debugging ready');
         console.log('[#] Run DashboardDebugger.diagnose() in browser console');
+        console.log('[T] Tutorial functions available: window.resetSouthKoreaTutorial()');
+        
+        setTimeout(() => setNarrativeBoxVisible(true), 800);
+        setTimeout(() => setShowAttentionGuide(true), 2000);
+        
+        startHintCycle();
         
       } catch (err) {
         console.error('Error loading data:', err);
@@ -82,10 +95,6 @@ function App() {
     updateState({ activeRegions: updated });
   };
 
-  const toggleCaseStudy = () => {
-    updateState({ showCaseStudy: !dashboardState.showCaseStudy });
-  };
-
   const toggleSidebar = () => {
     setSidebarVisible(!sidebarVisible);
     
@@ -93,6 +102,125 @@ function App() {
       window.dispatchEvent(new Event('resize'));
     }, 300);
   };
+
+  const toggleCaseStudy = () => {
+    setShowNarrativeCaseStudy(!showNarrativeCaseStudy);
+  };
+
+  const handleNarrativeCaseStudyClose = () => {
+    setShowNarrativeCaseStudy(false);
+  };
+
+  const resetSouthKoreaTutorial = () => {
+    try {
+      console.log('🔄 Resetting South Korea tutorial from App');
+      
+      sessionStorage.setItem('southKoreaTutorialSeen', '0');
+      
+      const notification = document.createElement('div');
+      notification.style.cssText = `
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+        color: white;
+        padding: 12px 16px;
+        border-radius: 8px;
+        font-size: 14px;
+        z-index: 999999;
+        box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+        animation: slideInRight 0.3s ease-out;
+      `;
+      notification.textContent = '✅ Tutorial reset! Go to Scene 0 in South Korea story to see it again.';
+      
+      document.body.appendChild(notification);
+      
+      setTimeout(() => {
+        notification.style.animation = 'slideOutRight 0.3s ease-out forwards';
+        setTimeout(() => {
+          if (document.body.contains(notification)) {
+            document.body.removeChild(notification);
+          }
+        }, 300);
+      }, 3000);
+      
+    } catch (error) {
+      console.error('Failed to reset tutorial:', error);
+    }
+  };
+  
+  useEffect(() => {
+    window.resetSouthKoreaTutorial = resetSouthKoreaTutorial;
+    
+    return () => {
+      delete window.resetSouthKoreaTutorial;
+    };
+  }, []);
+
+  const handleAttentionGuideClick = () => {
+    setShowAttentionGuide(false);
+    
+    setTimeout(() => {
+      if (!showNarrativeCaseStudy) {
+        setShowAttentionGuide(true);
+      }
+    }, 10000);
+  };
+
+  const startHintCycle = () => {
+    if (hintCycle) {
+      clearTimeout(hintCycle);
+    }
+    
+    const firstHint = setTimeout(() => {
+      if (!showNarrativeCaseStudy) {
+        setShowSimpleHint(true);
+        scheduleNextHintCycle();
+      }
+    }, 5000);
+    
+    setHintCycle(firstHint);
+  };
+  
+  const scheduleNextHintCycle = () => {
+    const hideHint = setTimeout(() => {
+      setShowSimpleHint(false);
+      
+      const showAgain = setTimeout(() => {
+        if (!showNarrativeCaseStudy) {
+          setShowSimpleHint(true);
+          scheduleNextHintCycle();
+        }
+      }, 3000);
+      
+      setHintCycle(showAgain);
+    }, 3000);
+    
+    setHintCycle(hideHint);
+  };
+  
+  const stopHintCycle = () => {
+    if (hintCycle) {
+      clearTimeout(hintCycle);
+      setHintCycle(null);
+    }
+    setShowSimpleHint(false);
+  };
+
+  useEffect(() => {
+    if (showNarrativeCaseStudy) {
+      setShowAttentionGuide(false);
+      stopHintCycle();
+    }
+  }, [showNarrativeCaseStudy]);
+  
+  useEffect(() => {
+    return () => {
+      if (hintCycle) {
+        clearTimeout(hintCycle);
+      }
+    };
+  }, [hintCycle]);
 
   if (loading) {
     return (
@@ -108,10 +236,25 @@ function App() {
         justifyContent: 'center',
         color: 'white',
         fontSize: '18px',
-        fontWeight: '500'
+        fontWeight: '500',
+        flexDirection: 'column',
+        gap: '16px',
+        animation: 'fadeIn 0.3s ease-in'
       }}>
         <div className="loading-spinner-small"></div>
-        Processing data...
+        <div>Processing data for narrative visualization...</div>
+        <div style={{ fontSize: '14px', opacity: 0.8 }}>
+          Preparing Visual Narrative components
+        </div>
+        <div style={{ 
+          fontSize: '12px', 
+          opacity: 0.6, 
+          marginTop: '8px',
+          textAlign: 'center',
+          maxWidth: '300px'
+        }}>
+          This includes enhanced South Korea case study with interactive storytelling
+        </div>
       </div>
     );
   }
@@ -163,7 +306,6 @@ function App() {
         onToggleSidebar={toggleSidebar}
       />
       
-      {/* 사이드바 토글 버튼 (사이드바가 숨겨진 상태일 때만) */}
       {!sidebarVisible && (
         <button
           onClick={toggleSidebar}
@@ -202,11 +344,112 @@ function App() {
             ↓
           </div>
         )}
+        
         <header className="dashboard-header">
-          <h1 className="dashboard-title">Political Freedom Analysis Dashboard</h1>
-          <p className="dashboard-subtitle">
-            Global Political System Trends Analysis and Composite Indicators (2000-2024)
-          </p>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+            <div>
+              <h1 className="dashboard-title">Political Freedom Analysis Dashboard</h1>
+              <p className="dashboard-subtitle">
+                Global Political System Trends Analysis and Composite Indicators (2000-2024)
+              </p>
+            </div>
+
+            {!showNarrativeCaseStudy && narrativeBoxVisible && (
+              <div 
+                ref={narrativeBoxRef}
+                className="narrative-case-study-container"
+                style={{
+                  padding: '20px',
+                  background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+                  borderRadius: '12px',
+                  color: 'white',
+                  textAlign: 'center',
+                  position: 'relative',
+                  zIndex: 1,
+                  maxWidth: '320px',
+                  animation: narrativeBoxVisible ? 'narrativeBoxReveal 0.8s cubic-bezier(0.4, 0, 0.2, 1)' : 'none'
+                }}
+              >
+                {showAttentionGuide && (
+                  <>
+                    <div className="attention-spotlight" />
+                    <div 
+                      className="attention-tooltip"
+                      onClick={handleAttentionGuideClick}
+                      style={{ cursor: 'pointer', pointerEvents: 'auto' }}
+                    >
+                      💡 New Feature: Interactive Storytelling!
+                    </div>
+                  </>
+                )}
+
+                {showSimpleHint && (
+                  <div 
+                    style={{
+                      position: 'absolute',
+                      top: '-8px',
+                      right: '-8px',
+                      background: '#10b981',
+                      color: 'white',
+                      fontSize: '11px',
+                      padding: '4px 8px',
+                      borderRadius: '12px',
+                      fontWeight: '600',
+                      animation: 'pulse 2s infinite',
+                      zIndex: 2
+                    }}
+                  >
+                    NEW!
+                  </div>
+                )}
+                
+                <h3 style={{ 
+                  margin: '0 0 8px 0', 
+                  fontSize: '18px', 
+                  fontWeight: '600'
+                }}>
+                  📖 Visual Narrative Case Study
+                </h3>
+                <p style={{ margin: '0 0 16px 0', fontSize: '14px', opacity: 0.9, lineHeight: 1.5 }}>
+                  Click the button below to experience South Korea's democratization through an interactive story.
+                </p>
+                <button
+                  onClick={() => {
+                    handleAttentionGuideClick();
+                    stopHintCycle();
+                    toggleCaseStudy();
+                  }}
+                  className="narrative-cta-button"
+                  style={{
+                    padding: '12px 24px',
+                    background: 'rgba(255, 255, 255, 0.9)',
+                    color: '#667eea',
+                    border: 'none',
+                    borderRadius: '8px',
+                    cursor: 'pointer',
+                    fontSize: '14px',
+                    fontWeight: '600',
+                    transition: 'all 0.2s',
+                    boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
+                    position: 'relative',
+                    zIndex: 1
+                  }}
+                  onMouseOver={(e) => {
+                    e.target.style.background = 'white';
+                    e.target.style.transform = 'translateY(-1px)';
+                    e.target.style.boxShadow = '0 4px 12px rgba(0,0,0,0.15)';
+                  }}
+                  onMouseOut={(e) => {
+                    e.target.style.background = 'rgba(255, 255, 255, 0.9)';
+                    e.target.style.transform = 'translateY(0)';
+                    e.target.style.boxShadow = '0 2px 8px rgba(0,0,0,0.1)';
+                  }}
+                >
+                  🚀 Open Interactive Story →
+                </button>
+              </div>
+            )}
+          </div>
         </header>
         
         <div className="dashboard-grid">
@@ -271,13 +514,16 @@ function App() {
           </div>
         </div>
       </main>
-      
-      <CaseStudyPanel 
-        isOpen={dashboardState.showCaseStudy}
-        onClose={toggleCaseStudy}
-        data={data}
-        state={dashboardState}
-      />
+
+      {showNarrativeCaseStudy && createPortal(
+        <NarrativeCaseStudy 
+          isOpen={showNarrativeCaseStudy}
+          onClose={handleNarrativeCaseStudyClose}
+          data={data}
+          state={dashboardState}
+        />,
+        document.body
+      )}
     </div>
   );
 }

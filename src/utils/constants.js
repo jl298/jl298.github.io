@@ -230,18 +230,84 @@ export const HISTORICAL_EVENTS = [
 ];
 
 export const KOREA_EVENTS = [
-  { year: 1948, event: 'ROK Government\nEstablished', description: 'Syngman Rhee Administration Begins' },
-  { year: 1961, event: 'May 16\n Military Coup', description: 'Park Chung-hee Regime Begins' },
-  { year: 1972, event: 'Yushin Constitution\n Proclaimed', description: 'Authoritarian System Strengthened' },
-  { year: 1979, event: 'October 26 Incident', description: 'President Park Chung-hee Assassinated' },
-  { year: 1980, event: 'May 18\nGwangju Democratization\nMovement', description: 'Chun Doo-hwan Regime Begins' },
-  { year: 1987, event: 'June\nDemocratic Uprising', description: 'Democratic Transition Begins' },
-  { year: 1993, event: 'Civilian Government\nBegins', description: 'Kim Young-sam Government, Democratic Consolidation' },
-  { year: 1997, event: 'IMF Financial Crisis', description: 'Economic Crisis and Regime Change' },
-  { year: 2016, event: 'Lee Myung-bak\nAdministration', description: 'Authoritarianism' },
-  { year: 2016, event: 'Park Geun-hye\nImpeachment', description: 'Candlelight Revolution and Democratic Maturity' },
-  { year: 2017, event: 'Moon Jae-in\nAdministration', description: 'Return of Progressive Government' },
-  { year: 2022, event: 'Yoon Suk-yeol\nAdministration', description: 'Authoritarianism/Emergency Martial Law' },
+  { 
+    year: 1948, 
+    event: 'ROK Government Established', 
+    description: 'The Republic of Korea government is established under President Syngman Rhee, marking the beginning of South Korea as an independent state.',
+    type: 'founding'
+  },
+  { 
+    year: 1961, 
+    event: 'May 16 Military Coup', 
+    description: 'General Park Chung-hee seizes power in a military coup, beginning over two decades of authoritarian rule with rapid economic development.',
+    type: 'authoritarian'
+  },
+  { 
+    year: 1972, 
+    event: 'Yushin Constitution', 
+    description: 'Park Chung-hee proclaims the Yushin Constitution, concentrating power and establishing a more repressive authoritarian system.',
+    type: 'authoritarian'
+  },
+  { 
+    year: 1979, 
+    event: 'Park Assassination', 
+    description: 'President Park Chung-hee is assassinated by his intelligence chief, ending 18 years of military rule but leading to continued authoritarianism.',
+    type: 'transition'
+  },
+  { 
+    year: 1980, 
+    event: 'Gwangju Uprising', 
+    description: 'Pro-democracy uprising in Gwangju is brutally suppressed by Chun Doo-hwan\'s military, becoming a symbol of resistance to authoritarian rule.',
+    type: 'resistance'
+  },
+  { 
+    year: 1987, 
+    event: 'June Democratic Uprising', 
+    description: 'Massive nationwide protests force the military government to accept democratic reforms, including direct presidential elections.',
+    type: 'democratization'
+  },
+  { 
+    year: 1993, 
+    event: 'Civilian Government', 
+    description: 'Kim Young-sam becomes the first civilian president in 32 years, marking the beginning of democratic consolidation.',
+    type: 'democratization'
+  },
+  { 
+    year: 1997, 
+    event: 'Asian Financial Crisis', 
+    description: 'The IMF financial crisis leads to the first peaceful transfer of power to the opposition party under Kim Dae-jung.',
+    type: 'consolidation'
+  },
+  { 
+    year: 2002, 
+    event: 'World Cup Success', 
+    description: 'South Korea co-hosts the FIFA World Cup, showcasing its democratic development and soft power on the global stage.',
+    type: 'consolidation'
+  },
+  { 
+    year: 2008, 
+    event: 'Conservative Return', 
+    description: 'Lee Myung-bak\'s presidency begins a conservative era with some concerns about press freedom and civil liberties.',
+    type: 'backslide'
+  },
+  { 
+    year: 2016, 
+    event: 'Candlelight Revolution', 
+    description: 'Peaceful mass protests against President Park Geun-hye\'s corruption lead to her impeachment, demonstrating democratic maturity.',
+    type: 'resilience'
+  },
+  { 
+    year: 2017, 
+    event: 'Democratic Renewal', 
+    description: 'Moon Jae-in\'s election represents a return to progressive governance and strengthened democratic institutions.',
+    type: 'renewal'
+  },
+  { 
+    year: 2022, 
+    event: 'Political Polarization', 
+    description: 'Yoon Suk-yeol\'s presidency highlights ongoing challenges of political polarization and institutional tensions.',
+    type: 'challenge'
+  }
 ];
 
 export const CHART_DIMENSIONS = {
@@ -289,6 +355,19 @@ export const THRESHOLDS = {
     anocracy: -5,
     autocracy: -10,
   },
+
+  dataQuality: {
+    minimumDataPoints: 5,
+    minimumYearRange: 10,
+    validValueRange: {
+      polity5: [-10, 10],
+      vdem_liberal: [0, 1],
+      freedom_house: [0, 100],
+      press_freedom: [0, 100],
+      surveillance: [0, 100],
+      minority_rights: [0, 1]
+    }
+  }
 };
 
 export const DEFAULT_STATE = {
@@ -304,6 +383,14 @@ export const ANIMATION = {
   duration: 750,
   delay: 50,
   ease: 'cubic-bezier(0.4, 0, 0.2, 1)',
+
+  narrative: {
+    sceneTransition: 600,
+    lineDrawing: 1500,
+    annotationDelay: 300,
+    tooltipFade: 200,
+    panelSlide: 400
+  }
 };
 
 export const TOOLTIP = {

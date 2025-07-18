@@ -507,7 +507,7 @@ const Overview = ({ data, state, onCountryClick, sidebarVisible }) => {
             fontSize: '13px',
             lineHeight: '1.4',
             pointerEvents: 'none',
-            zIndex: 1000,
+            zIndex: 10002,
             maxWidth: '300px',
             minWidth: '200px',
             boxShadow: '0 8px 32px rgba(0, 0, 0, 0.3)',
@@ -529,7 +529,7 @@ const Overview = ({ data, state, onCountryClick, sidebarVisible }) => {
           borderRadius: '4px',
           fontSize: '11px',
           maxWidth: '200px',
-          zIndex: 1000
+          zIndex: 10001
         }}>
           <div><strong>Overview Debug:</strong></div>
           <div>Year: {debugInfo.selectedYear}</div>

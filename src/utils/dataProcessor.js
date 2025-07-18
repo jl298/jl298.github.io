@@ -275,38 +275,98 @@ function applySouthKoreaTrends(values, year) {
     surveillance: Number(values.surveillance) || 0,
     minority_rights: Number(values.minority_rights) || 0,
   };
-  
+
   if (year >= 1945 && year <= 1960) {
+    const instabilityFactor = Math.random() * 0.3 - 0.15;
     return {
-      ...baseValues,
-      polity5: 2 + Math.random() * 3,
-      vdem_liberal: 0.3 + Math.random() * 0.2
+      polity5: Math.max(-10, Math.min(10, 3 + instabilityFactor * 5)),
+      vdem_liberal: Math.max(0, Math.min(1, 0.35 + instabilityFactor)),
+      freedom_house: Math.max(0, Math.min(100, 45 + instabilityFactor * 25)),
+      press_freedom: Math.max(0, Math.min(100, 45 + Math.random() * 20)),
+      surveillance: Math.max(0, Math.min(100, 30 + Math.random() * 20)),
+      minority_rights: Math.max(0, Math.min(1, 0.3 + Math.random() * 0.2))
     };
-  } else if (year >= 1961 && year <= 1986) {
+  }
+
+  else if (year >= 1961 && year <= 1986) {
+    const authoritarian_intensity = (year >= 1972 && year <= 1979) ? 1.2 : 1.0;
+    const variation = Math.random() * 0.2 - 0.1;
+    
     return {
-      ...baseValues,
-      polity5: -7 + Math.random() * 3,
-      vdem_liberal: 0.1 + Math.random() * 0.15,
-      freedom_house: 25 + Math.random() * 20
+      polity5: Math.max(-10, Math.min(10, (-6 * authoritarian_intensity) + variation * 2)),
+      vdem_liberal: Math.max(0, Math.min(1, (0.12 / authoritarian_intensity) + variation * 0.05)),
+      freedom_house: Math.max(0, Math.min(100, (30 / authoritarian_intensity) + variation * 15)),
+      press_freedom: Math.max(0, Math.min(100, (75 * authoritarian_intensity) + Math.random() * 10)),
+      surveillance: Math.max(0, Math.min(100, (60 * authoritarian_intensity) + Math.random() * 15)),
+      minority_rights: Math.max(0, Math.min(1, (0.15 / authoritarian_intensity) + Math.random() * 0.1))
     };
-  } else if (year >= 1987 && year <= 1992) {
+  }
+
+  else if (year >= 1987 && year <= 1992) {
     const progress = (year - 1987) / 5;
+    const smoothTransition = Math.sin(progress * Math.PI / 2);
+    
     return {
-      ...baseValues,
-      polity5: -5 + progress * 12,
-      vdem_liberal: 0.1 + progress * 0.6,
-      freedom_house: 30 + progress * 50
-    };
-  } else if (year >= 1993) {
-    return {
-      ...baseValues,
-      polity5: 7 + Math.random() * 2,
-      vdem_liberal: 0.65 + Math.random() * 0.2,
-      freedom_house: 75 + Math.random() * 15
+      polity5: Math.max(-10, Math.min(10, -6 + smoothTransition * 12 + Math.random() * 1)),
+      vdem_liberal: Math.max(0, Math.min(1, 0.12 + smoothTransition * 0.55 + Math.random() * 0.05)),
+      freedom_house: Math.max(0, Math.min(100, 30 + smoothTransition * 45 + Math.random() * 8)),
+      press_freedom: Math.max(0, Math.min(100, 75 - smoothTransition * 35 + Math.random() * 8)),
+      surveillance: Math.max(0, Math.min(100, 60 - smoothTransition * 25 + Math.random() * 10)),
+      minority_rights: Math.max(0, Math.min(1, 0.15 + smoothTransition * 0.35 + Math.random() * 0.05))
     };
   }
   
-  return baseValues;
+  else if (year >= 1993 && year <= 2007) {
+    const maturity = Math.min(1, (year - 1993) / 10);
+    const cyclicalVariation = Math.sin((year - 1993) * 2 * Math.PI / 5) * 0.1;
+    
+    return {
+      polity5: Math.max(-10, Math.min(10, 6 + maturity * 2 + cyclicalVariation + Math.random() * 0.8)),
+      vdem_liberal: Math.max(0, Math.min(1, 0.67 + maturity * 0.15 + cyclicalVariation * 0.05 + Math.random() * 0.05)),
+      freedom_house: Math.max(0, Math.min(100, 75 + maturity * 10 + cyclicalVariation * 5 + Math.random() * 6)),
+      press_freedom: Math.max(0, Math.min(100, 40 - maturity * 10 + Math.abs(cyclicalVariation) * 8 + Math.random() * 8)),
+      surveillance: Math.max(0, Math.min(100, 35 + Math.random() * 15)),
+      minority_rights: Math.max(0, Math.min(1, 0.5 + maturity * 0.2 + Math.random() * 0.1))
+    };
+  }
+  
+  else if (year >= 2008 && year <= 2016) {
+    const backslide_intensity = (year >= 2013) ? 1.3 : 1.0;
+    const yearsInPeriod = year - 2008;
+    const degradation = Math.min(0.15, yearsInPeriod * 0.02);
+    
+    return {
+      polity5: Math.max(-10, Math.min(10, 8 - degradation * backslide_intensity * 10 + Math.random() * 0.6)),
+      vdem_liberal: Math.max(0, Math.min(1, 0.82 - degradation * backslide_intensity + Math.random() * 0.04)),
+      freedom_house: Math.max(0, Math.min(100, 85 - degradation * backslide_intensity * 20 + Math.random() * 5)),
+      press_freedom: Math.max(0, Math.min(100, 32 + degradation * backslide_intensity * 25 + Math.random() * 8)),
+      surveillance: Math.max(0, Math.min(100, 40 + degradation * backslide_intensity * 30 + Math.random() * 10)),
+      minority_rights: Math.max(0, Math.min(1, 0.7 - degradation * backslide_intensity * 0.5 + Math.random() * 0.08))
+    };
+  }
+
+  else if (year >= 2017) {
+    const renewal = Math.min(1, (year - 2017) / 3);
+    const modern_challenges = (year >= 2020) ? 0.05 : 0;
+    
+    return {
+      polity5: Math.max(-10, Math.min(10, 7.5 + renewal * 0.8 - modern_challenges * 2 + Math.random() * 0.5)),
+      vdem_liberal: Math.max(0, Math.min(1, 0.75 + renewal * 0.1 - modern_challenges * 0.03 + Math.random() * 0.03)),
+      freedom_house: Math.max(0, Math.min(100, 80 + renewal * 8 - modern_challenges * 5 + Math.random() * 4)),
+      press_freedom: Math.max(0, Math.min(100, 45 - renewal * 8 + modern_challenges * 5 + Math.random() * 6)),
+      surveillance: Math.max(0, Math.min(100, 55 - renewal * 10 + modern_challenges * 10 + Math.random() * 8)),
+      minority_rights: Math.max(0, Math.min(1, 0.65 + renewal * 0.15 - modern_challenges * 0.05 + Math.random() * 0.06))
+    };
+  }
+
+  return {
+    polity5: Math.max(-10, Math.min(10, baseValues.polity5 + Math.random() * 2 - 1)),
+    vdem_liberal: Math.max(0, Math.min(1, baseValues.vdem_liberal + Math.random() * 0.1 - 0.05)),
+    freedom_house: Math.max(0, Math.min(100, baseValues.freedom_house + Math.random() * 10 - 5)),
+    press_freedom: Math.max(0, Math.min(100, baseValues.press_freedom + Math.random() * 10 - 5)),
+    surveillance: Math.max(0, Math.min(100, baseValues.surveillance + Math.random() * 10 - 5)),
+    minority_rights: Math.max(0, Math.min(1, baseValues.minority_rights + Math.random() * 0.1 - 0.05))
+  };
 }
 
 async function loadWorldGeography() {

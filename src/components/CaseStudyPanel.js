@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { createPortal } from 'react-dom';
 import * as d3 from 'd3';
 import { 
   getCountryTimeSeries, 
@@ -9,6 +10,24 @@ import { KOREA_EVENTS, COLORS } from '../utils/constants';
 const CaseStudyPanel = ({ isOpen, onClose, data, state }) => {
   const svgRef = useRef();
   const [selectedIndicator, setSelectedIndicator] = useState('vdem_liberal');
+  
+  useEffect(() => {
+    const handleEscape = (e) => {
+      if (e.key === 'Escape' && isOpen) {
+        onClose();
+      }
+    };
+    
+    if (isOpen) {
+      document.addEventListener('keydown', handleEscape);
+      document.body.style.overflow = 'hidden';
+    }
+    
+    return () => {
+      document.removeEventListener('keydown', handleEscape);
+      document.body.style.overflow = 'unset';
+    };
+  }, [isOpen, onClose]);
 
   const adjustTooltipPosition = (x, y, tooltipWidth = 280, tooltipHeight = 150) => {
     const viewport = {
@@ -435,23 +454,45 @@ const CaseStudyPanel = ({ isOpen, onClose, data, state }) => {
 
   if (!isOpen) return null;
 
-  return (
-    <div
+  return createPortal(
+    <div 
+      className="portal-case-study-overlay"
       style={{
         position: 'fixed',
         top: 0,
+        left: 0,
         right: 0,
-        width: '50%',
-        height: '100vh',
-        background: 'white',
-        boxShadow: '-4px 0 20px rgba(0, 0, 0, 0.15)',
-        zIndex: 1000,
+        bottom: 0,
+        background: 'rgba(0, 0, 0, 0.6)',
+        zIndex: 2147483647,
         display: 'flex',
-        flexDirection: 'column',
-        transform: isOpen ? 'translateX(0)' : 'translateX(100%)',
-        transition: 'transform 0.3s ease-in-out'
+        justifyContent: 'flex-end',
+        alignItems: 'stretch',
+        opacity: isOpen ? 1 : 0,
+        visibility: isOpen ? 'visible' : 'hidden',
+        transition: 'opacity 0.3s ease-in-out, visibility 0.3s ease-in-out'
+      }}
+      onClick={(e) => {
+        if (e.target === e.currentTarget) {
+          onClose();
+        }
       }}
     >
+      <div
+        className="portal-case-study-panel"
+        style={{
+          width: '50%',
+          maxWidth: '800px',
+          minWidth: '500px',
+          height: '100vh',
+          background: 'white',
+          boxShadow: '-4px 0 20px rgba(0, 0, 0, 0.25)',
+          display: 'flex',
+          flexDirection: 'column',
+          opacity: isOpen ? 1 : 0,
+          transition: 'opacity 0.3s ease-in-out'
+        }}
+      >
       <div
         style={{
           padding: '20px 24px',
@@ -473,18 +514,43 @@ const CaseStudyPanel = ({ isOpen, onClose, data, state }) => {
         </div>
         <button
           onClick={onClose}
+          title="Click this X button or press ESC key to close"
+          aria-label="Close dialog"
           style={{
-            background: 'rgba(255, 255, 255, 0.2)',
-            border: 'none',
-            color: 'white',
+            background: 'rgba(255, 255, 255, 0.9)',
+            border: '2px solid rgba(255, 255, 255, 0.8)',
+            color: '#dc2626',
             fontSize: '24px',
-            width: '40px',
-            height: '40px',
+            fontWeight: 'bold',
+            width: '44px',
+            height: '44px',
             borderRadius: '50%',
             cursor: 'pointer',
             display: 'flex',
             alignItems: 'center',
-            justifyContent: 'center'
+            justifyContent: 'center',
+            boxShadow: '0 2px 8px rgba(0, 0, 0, 0.15)',
+            transition: 'all 0.2s ease-in-out',
+            flexShrink: 0
+          }}
+          onMouseEnter={(e) => {
+            e.target.style.background = 'rgba(255, 255, 255, 1)';
+            e.target.style.border = '2px solid #dc2626';
+            e.target.style.transform = 'scale(1.05)';
+            e.target.style.boxShadow = '0 4px 12px rgba(220, 38, 38, 0.3)';
+          }}
+          onMouseLeave={(e) => {
+            e.target.style.background = 'rgba(255, 255, 255, 0.9)';
+            e.target.style.border = '2px solid rgba(255, 255, 255, 0.8)';
+            e.target.style.transform = 'scale(1)';
+            e.target.style.boxShadow = '0 2px 8px rgba(0, 0, 0, 0.15)';
+          }}
+          onFocus={(e) => {
+            e.target.style.outline = '2px solid #fbbf24';
+            e.target.style.outlineOffset = '2px';
+          }}
+          onBlur={(e) => {
+            e.target.style.outline = 'none';
           }}
         >
           ×
@@ -586,7 +652,8 @@ const CaseStudyPanel = ({ isOpen, onClose, data, state }) => {
           </p>
         </div>
       </div>
-    </div>
+    </div>,
+    document.body
   );
 };
 
