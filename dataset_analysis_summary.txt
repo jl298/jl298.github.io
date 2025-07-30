@@ -1,0 +1,204 @@
+================================================================================
+DATASET SCHEMA ANALYSIS SUMMARY
+================================================================================
+
+==================== AI & Big Data Global Surveillance Index (2022 updated) ====================
+
+File: AIGS 2022.csv.sample
+  Shape: 9 rows × 39 columns
+  ✓ Korea data found in columns: ['Country', 'Other Countries']
+    Country: ['North Korea']
+    Other Countries: ['North Korea']
+  Democracy indicators: ['V-Dem Electoral Democracy Index 2021', 'Feldstein Digital Repression Index 2021', 'Freedom on the Net 2021 Status', 'Freedom on the Net 2021 Score', 'Military Expenditures Ranking (2018)', 'China ODI Rank (EIU)', 'Social Media Surveillance', 'China Tech', 'US Tech']
+  Suggested democracy scores:
+    - V-Dem Electoral Democracy Index 2021: 0.02 to 0.27
+    - Feldstein Digital Repression Index 2021: 0.57 to 2.97
+    - Freedom on the Net 2021 Score: 10.00 to 53.00
+    - Military Expenditures Ranking (2018): 2.00 to 65.00
+    - China ODI Rank (EIU): 3.00 to 24.00
+    - China Tech: 1.00 to 1.00
+    - US Tech: 1.00 to 1.00
+  Transformations needed:
+    - V-Dem Electoral Democracy Index 2021: Scale 0-1 to -10 to +10
+    - Feldstein Digital Repression Index 2021: Scale 0-100 to -10 to +10
+    - Freedom on the Net 2021 Score: Scale 0-100 to -10 to +10
+    - Military Expenditures Ranking (2018): Scale 0-100 to -10 to +10
+    - China ODI Rank (EIU): Scale 0-100 to -10 to +10
+    - China Tech: Scale 0-1 to -10 to +10
+    - US Tech: Scale 0-1 to -10 to +10
+
+File: Digital Repression Inde + V-Dem.csv.sample
+  Shape: 9 rows × 16 columns
+  ✗ No Korea data found
+  Time coverage: 2021 - 2021
+  Democracy indicators: ['v2x_polyarchy', 'v2x_libdem', 'Digital Repression Index 2021', 'Gov SM surveillance v2smgovsmmon', 'Gov disinfo v2smgovdom', 'Pol party disinfo v2smpardom', 'Gov filtering v2smgovfilprc', 'Gov internet shutdowns v2smgovshut', 'Gov SM Shutdown v2smgovsm', 'Gov SM censorship v2smgovsmcenprc', 'Arrests online users (v2smarrest)']
+  Suggested democracy scores:
+    - v2x_polyarchy: 0.16 to 0.85
+    - v2x_libdem: 0.02 to 0.81
+    - Digital Repression Index 2021: -1.13 to 1.35
+    - Gov SM surveillance v2smgovsmmon: -1.48 to 2.62
+    - Gov disinfo v2smgovdom: -1.20 to 2.97
+    - Pol party disinfo v2smpardom: -1.29 to 2.70
+    - Gov filtering v2smgovfilprc: -2.23 to 1.88
+    - Gov internet shutdowns v2smgovshut: -1.85 to 1.38
+    - Gov SM Shutdown v2smgovsm: -1.83 to 1.97
+    - Gov SM censorship v2smgovsmcenprc: -2.00 to 1.30
+    - Arrests online users (v2smarrest): -2.63 to 2.16
+  Transformations needed:
+    - v2x_polyarchy: Scale 0-1 to -10 to +10
+    - v2x_libdem: Scale 0-1 to -10 to +10
+
+==================== freedomhouse ====================
+
+File: All_data_FIW_processed.csv.sample
+  Shape: 9 rows × 6 columns
+  ✗ No Korea data found
+  Time coverage: 2013 - 2021
+  Democracy indicators: ['pr', 'cl', 'total']
+  Suggested democracy scores:
+    - pr: 4.00 to 5.00
+    - cl: 5.00 to 5.00
+    - total: 40.00 to 42.00
+  Transformations needed:
+    - pr: Scale 0-100 to -10 to +10
+    - cl: Scale 0-100 to -10 to +10
+    - total: Scale 0-100 to -10 to +10
+
+File: Country_and_Territory_Ratings_processed.csv.sample
+  Shape: 9 rows × 6 columns
+  ✗ No Korea data found
+  Time coverage: 2000 - 2009
+  Democracy indicators: ['pr', 'cl', 'total']
+  Suggested democracy scores:
+    - pr: 5.00 to 7.00
+    - cl: 5.00 to 7.00
+    - total: 10.00 to 14.00
+  Transformations needed:
+    - pr: Scale 0-100 to -10 to +10
+    - cl: Scale 0-100 to -10 to +10
+    - total: Scale 0-100 to -10 to +10
+
+==================== Polity5 ====================
+
+File: p5v2018.csv.sample
+  Shape: 9 rows × 37 columns
+  ✗ No Korea data found
+  Time coverage: 7001800 - 7001808
+  Democracy indicators: ['p5', 'flag', 'democ', 'autoc', 'polity', 'polity2', 'xrreg', 'xrcomp', 'xropen', 'xconst', 'parreg', 'parcomp', 'exrec', 'exconst', 'polcomp', 'bmonth', 'bday', 'bprec', 'post', 'change', 'd5']
+  Suggested democracy scores:
+    - p5: 0.00 to 0.00
+    - flag: 0.00 to 0.00
+    - democ: 1.00 to 1.00
+    - autoc: 7.00 to 7.00
+    - polity: -6.00 to -6.00
+    - polity2: -6.00 to -6.00
+    - xrreg: 3.00 to 3.00
+    - xrcomp: 1.00 to 1.00
+    - xropen: 1.00 to 1.00
+    - xconst: 1.00 to 1.00
+    - parreg: 3.00 to 3.00
+    - parcomp: 3.00 to 3.00
+    - exrec: 1.00 to 1.00
+    - exconst: 1.00 to 1.00
+    - polcomp: 6.00 to 6.00
+    - bmonth: 1.00 to 1.00
+    - bday: 1.00 to 1.00
+    - bprec: 1.00 to 1.00
+    - post: -6.00 to -6.00
+    - change: 88.00 to 88.00
+    - d5: 1.00 to 1.00
+  Transformations needed:
+    - p5: Scale 0-1 to -10 to +10
+    - flag: Scale 0-1 to -10 to +10
+    - democ: Scale 0-1 to -10 to +10
+    - autoc: Scale 0-100 to -10 to +10
+    - xrreg: Scale 0-100 to -10 to +10
+    - xrcomp: Scale 0-1 to -10 to +10
+    - xropen: Scale 0-1 to -10 to +10
+    - xconst: Scale 0-1 to -10 to +10
+    - parreg: Scale 0-100 to -10 to +10
+    - parcomp: Scale 0-100 to -10 to +10
+    - exrec: Scale 0-1 to -10 to +10
+    - exconst: Scale 0-1 to -10 to +10
+    - polcomp: Scale 0-100 to -10 to +10
+    - bmonth: Scale 0-1 to -10 to +10
+    - bday: Scale 0-1 to -10 to +10
+    - bprec: Scale 0-1 to -10 to +10
+    - change: Scale 0-100 to -10 to +10
+    - d5: Scale 0-1 to -10 to +10
+
+==================== RSF ====================
+
+File: 2020.csv.sample
+  Shape: 9 rows × 1 columns
+  ✗ No Korea data found
+  Democracy indicators: ['Year (N);ISO;Rank N;Score N;Score N without the exactions;Score N with the exactions;Score exactions;Rank N-1;Score N-1;Rank evolution;FR_country;EN_country;ES_country;AR_country;FA_country;Zone']
+
+==================== V-Dem ====================
+
+File: V-Dem-processed.csv.sample
+  Shape: 9 rows × 21 columns
+  ✗ No Korea data found
+  Time coverage: 2000 - 2008
+  Democracy indicators: ['country_id', 'v2x_libdem', 'v2x_polyarchy', 'v2x_api', 'v2x_mpi', 'v2x_freexp_altinf', 'v2xlg_legcon', 'v2x_jucon', 'v2xcs_ccsi', 'v2x_corr', 'v2x_civlib', 'v2xcl_rol', 'v2x_clphy', 'v2x_clpriv', 'v2x_clpol', 'v2xeg_eqprotec', 'v2xeg_eqaccess', 'v2xeg_eqdr']
+  Suggested democracy scores:
+    - country_id: 37.00 to 37.00
+    - v2x_libdem: 0.59 to 0.68
+    - v2x_polyarchy: 0.77 to 0.84
+    - v2x_api: 0.90 to 0.93
+    - v2x_mpi: 0.64 to 0.74
+    - v2x_freexp_altinf: 0.90 to 0.95
+    - v2xlg_legcon: 0.74 to 0.78
+    - v2x_jucon: 0.65 to 0.72
+    - v2xcs_ccsi: 0.86 to 0.94
+    - v2x_corr: 0.46 to 0.56
+    - v2x_civlib: 0.91 to 0.94
+    - v2xcl_rol: 0.86 to 0.93
+    - v2x_clphy: 0.90 to 0.95
+    - v2x_clpriv: 0.93 to 0.93
+    - v2x_clpol: 0.89 to 0.96
+    - v2xeg_eqprotec: 0.77 to 0.79
+    - v2xeg_eqaccess: 0.86 to 0.88
+    - v2xeg_eqdr: 0.69 to 0.71
+  Transformations needed:
+    - country_id: Scale 0-100 to -10 to +10
+    - v2x_libdem: Scale 0-1 to -10 to +10
+    - v2x_polyarchy: Scale 0-1 to -10 to +10
+    - v2x_api: Scale 0-1 to -10 to +10
+    - v2x_mpi: Scale 0-1 to -10 to +10
+    - v2x_freexp_altinf: Scale 0-1 to -10 to +10
+    - v2xlg_legcon: Scale 0-1 to -10 to +10
+    - v2x_jucon: Scale 0-1 to -10 to +10
+    - v2xcs_ccsi: Scale 0-1 to -10 to +10
+    - v2x_corr: Scale 0-1 to -10 to +10
+    - v2x_civlib: Scale 0-1 to -10 to +10
+    - v2xcl_rol: Scale 0-1 to -10 to +10
+    - v2x_clphy: Scale 0-1 to -10 to +10
+    - v2x_clpriv: Scale 0-1 to -10 to +10
+    - v2x_clpol: Scale 0-1 to -10 to +10
+    - v2xeg_eqprotec: Scale 0-1 to -10 to +10
+    - v2xeg_eqaccess: Scale 0-1 to -10 to +10
+    - v2xeg_eqdr: Scale 0-1 to -10 to +10
+
+==================== OVERALL SUMMARY ====================
+Total datasets analyzed: 5
+Datasets with Korea data: 1
+Overall time coverage: 2000 - 7001808
+Democracy indicators found: 61
+  ['China ODI Rank (EIU)', 'V-Dem Electoral Democracy Index 2021', 'xropen', 'Military Expenditures Ranking (2018)', 'v2x_clpol', 'Gov SM Shutdown v2smgovsm', 'polity2', 'bmonth', 'Year (N);ISO;Rank N;Score N;Score N without the exactions;Score N with the exactions;Score exactions;Rank N-1;Score N-1;Rank evolution;FR_country;EN_country;ES_country;AR_country;FA_country;Zone', 'v2xcl_rol', 'p5', 'China Tech', 'Social Media Surveillance', 'Gov SM censorship v2smgovsmcenprc', 'Feldstein Digital Repression Index 2021', 'v2x_api', 'v2xcs_ccsi', 'v2x_freexp_altinf', 'polity', 'Gov disinfo v2smgovdom', 'polcomp', 'country_id', 'v2xeg_eqdr', 'v2xeg_eqprotec', 'v2xlg_legcon', 'xrcomp', 'v2x_libdem', 'bday', 'v2x_mpi', 'Gov filtering v2smgovfilprc', 'Gov internet shutdowns v2smgovshut', 'Gov SM surveillance v2smgovsmmon', 'total', 'Freedom on the Net 2021 Score', 'Arrests online users (v2smarrest)', 'exconst', 'parcomp', 'cl', 'v2x_corr', 'v2x_clpriv', 'post', 'autoc', 'xrreg', 'Pol party disinfo v2smpardom', 'flag', 'v2x_polyarchy', 'parreg', 'exrec', 'change', 'Freedom on the Net 2021 Status', 'd5', 'Digital Repression Index 2021', 'v2xeg_eqaccess', 'democ', 'bprec', 'xconst', 'v2x_jucon', 'v2x_civlib', 'pr', 'v2x_clphy', 'US Tech']
+
+==================== RECOMMENDATIONS ====================
+1. Data Integration Strategy:
+   - Use multiple datasets to create comprehensive democracy timeline
+   - Combine different indicators to create robust democracy score
+   - Fill gaps in time coverage using interpolation where appropriate
+
+2. Web Visualization Updates Needed:
+   - Replace generateSampleData() with real data loading
+   - Create data transformation functions for each dataset
+   - Implement data caching for better performance
+
+3. Suggested Implementation:
+   - Create separate data loading module
+   - Implement normalization functions for different scales
+   - Add data validation and error handling

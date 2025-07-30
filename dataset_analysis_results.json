@@ -1,0 +1,1904 @@
+{
+  "AI & Big Data Global Surveillance Index (2022 updated)": {
+    "dataset_name": "AI & Big Data Global Surveillance Index (2022 updated)",
+    "files": {
+      "AIGS 2022.csv.sample": {
+        "file_path": "/mnt/c/home/cs416/jl298.github.io/dataset/AI & Big Data Global Surveillance Index (2022 updated)/AIGS 2022.csv.sample",
+        "shape": [
+          9,
+          39
+        ],
+        "columns": [
+          "Country",
+          "Region",
+          "V-Dem Electoral Democracy Index 2021",
+          "V-Dem Regime Type 2021",
+          "Feldstein Digital Repression Index 2021",
+          "Freedom on the Net 2021 Status",
+          "Freedom on the Net 2021 Score",
+          "Military Expenditures (USD) 2018",
+          "Military Expenditures Ranking (2018)",
+          "Member of Belt & Road Initiative",
+          "China ODI Rank (EIU)",
+          "Safe City System",
+          "Facial Recognition System",
+          "Smart Policing",
+          "Social Media Surveillance",
+          "China Tech",
+          "US Tech",
+          "Other Countries",
+          "Company 1",
+          "Company 2",
+          "Company 3",
+          "Company 4",
+          "Company 5",
+          "Unnamed: 23",
+          "Unnamed: 24",
+          "Unnamed: 25",
+          "Unnamed: 26",
+          "Unnamed: 27",
+          "Unnamed: 28",
+          "Unnamed: 29",
+          "Unnamed: 30",
+          "Unnamed: 31",
+          "Unnamed: 32",
+          "Unnamed: 33",
+          "Unnamed: 34",
+          "Unnamed: 35",
+          "Unnamed: 36",
+          "Unnamed: 37",
+          "Unnamed: 38"
+        ],
+        "data_types": {
+          "Country": "object",
+          "Region": "object",
+          "V-Dem Electoral Democracy Index 2021": "float64",
+          "V-Dem Regime Type 2021": "object",
+          "Feldstein Digital Repression Index 2021": "float64",
+          "Freedom on the Net 2021 Status": "object",
+          "Freedom on the Net 2021 Score": "float64",
+          "Military Expenditures (USD) 2018": "float64",
+          "Military Expenditures Ranking (2018)": "float64",
+          "Member of Belt & Road Initiative": "object",
+          "China ODI Rank (EIU)": "float64",
+          "Safe City System": "object",
+          "Facial Recognition System": "object",
+          "Smart Policing": "object",
+          "Social Media Surveillance": "object",
+          "China Tech": "float64",
+          "US Tech": "float64",
+          "Other Countries": "object",
+          "Company 1": "object",
+          "Company 2": "object",
+          "Company 3": "object",
+          "Company 4": "object",
+          "Company 5": "object",
+          "Unnamed: 23": "float64",
+          "Unnamed: 24": "float64",
+          "Unnamed: 25": "float64",
+          "Unnamed: 26": "float64",
+          "Unnamed: 27": "float64",
+          "Unnamed: 28": "float64",
+          "Unnamed: 29": "float64",
+          "Unnamed: 30": "float64",
+          "Unnamed: 31": "float64",
+          "Unnamed: 32": "float64",
+          "Unnamed: 33": "float64",
+          "Unnamed: 34": "float64",
+          "Unnamed: 35": "float64",
+          "Unnamed: 36": "float64",
+          "Unnamed: 37": "float64",
+          "Unnamed: 38": "float64"
+        },
+        "null_counts": {
+          "Country": 0,
+          "Region": 0,
+          "V-Dem Electoral Democracy Index 2021": 0,
+          "V-Dem Regime Type 2021": 0,
+          "Feldstein Digital Repression Index 2021": 0,
+          "Freedom on the Net 2021 Status": 4,
+          "Freedom on the Net 2021 Score": 4,
+          "Military Expenditures (USD) 2018": 4,
+          "Military Expenditures Ranking (2018)": 4,
+          "Member of Belt & Road Initiative": 3,
+          "China ODI Rank (EIU)": 7,
+          "Safe City System": 3,
+          "Facial Recognition System": 1,
+          "Smart Policing": 2,
+          "Social Media Surveillance": 4,
+          "China Tech": 3,
+          "US Tech": 6,
+          "Other Countries": 2,
+          "Company 1": 1,
+          "Company 2": 2,
+          "Company 3": 5,
+          "Company 4": 7,
+          "Company 5": 7,
+          "Unnamed: 23": 9,
+          "Unnamed: 24": 9,
+          "Unnamed: 25": 9,
+          "Unnamed: 26": 9,
+          "Unnamed: 27": 9,
+          "Unnamed: 28": 9,
+          "Unnamed: 29": 9,
+          "Unnamed: 30": 9,
+          "Unnamed: 31": 9,
+          "Unnamed: 32": 9,
+          "Unnamed: 33": 9,
+          "Unnamed: 34": 9,
+          "Unnamed: 35": 9,
+          "Unnamed: 36": 9,
+          "Unnamed: 37": 9,
+          "Unnamed: 38": 9
+        },
+        "sample_values": {
+          "Country": [
+            "Bahrain",
+            "Burma/Myanmar",
+            "China",
+            "Hong Kong",
+            "Laos"
+          ],
+          "Region": [
+            "MENA",
+            "EAP",
+            "EAP",
+            "EAP",
+            "EAP"
+          ],
+          "V-Dem Electoral Democracy Index 2021": [
+            0.12,
+            0.13,
+            0.08,
+            0.27,
+            0.13
+          ],
+          "V-Dem Regime Type 2021": [
+            "CA",
+            "CA",
+            "CA",
+            "CA",
+            "CA"
+          ],
+          "Feldstein Digital Repression Index 2021": [
+            1.11,
+            2.01,
+            1.89,
+            0.88,
+            0.57
+          ],
+          "Freedom on the Net 2021 Status": [
+            "NOT FREE",
+            "NOT FREE",
+            "NOT FREE",
+            "PARTLY FREE",
+            "NOT FREE"
+          ],
+          "Freedom on the Net 2021 Score": [
+            30.0,
+            17.0,
+            10.0,
+            53.0,
+            24.0
+          ],
+          "Military Expenditures (USD) 2018": [
+            1396.8,
+            2030.5,
+            249996.9,
+            3696.9,
+            67554.7
+          ],
+          "Military Expenditures Ranking (2018)": [
+            65.0,
+            58.0,
+            2.0,
+            47.0,
+            3.0
+          ],
+          "Member of Belt & Road Initiative": [
+            "x",
+            "x",
+            "x",
+            "x",
+            "x"
+          ],
+          "China ODI Rank (EIU)": [
+            3.0,
+            24.0
+          ],
+          "Safe City System": [
+            "x",
+            "x",
+            "x",
+            "x",
+            "x"
+          ],
+          "Facial Recognition System": [
+            "x",
+            "x",
+            "x",
+            "x",
+            "x"
+          ],
+          "Smart Policing": [
+            "x",
+            "x",
+            "x",
+            "x",
+            "x"
+          ],
+          "Social Media Surveillance": [
+            "x",
+            "x",
+            "x",
+            "x",
+            "x"
+          ],
+          "China Tech": [
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "US Tech": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "Other Countries": [
+            "Australia, Bahrain",
+            "Israel, UK, Sweden, Germany, Japan",
+            "Australia",
+            "UK",
+            "North Korea"
+          ],
+          "Company 1": [
+            "iOmnicient",
+            "Huawei",
+            "Mult",
+            "iOmnicient",
+            "Huawei"
+          ],
+          "Company 2": [
+            "Pelco",
+            "Hikvision",
+            "Meiya Pico",
+            "Huawei",
+            "Huawei"
+          ],
+          "Company 3": [
+            "LSS",
+            "Semptian",
+            "Axxonsoft",
+            "Hikvision"
+          ],
+          "Company 4": [
+            "Knowlesys",
+            "BriefCam"
+          ],
+          "Company 5": [
+            "Megvii",
+            "Hugslock"
+          ]
+        },
+        "korea_columns": [
+          "Country",
+          "Other Countries"
+        ],
+        "time_columns": [],
+        "democracy_columns": [
+          "V-Dem Electoral Democracy Index 2021",
+          "Feldstein Digital Repression Index 2021",
+          "Freedom on the Net 2021 Status",
+          "Freedom on the Net 2021 Score",
+          "Military Expenditures Ranking (2018)",
+          "China ODI Rank (EIU)",
+          "Social Media Surveillance",
+          "China Tech",
+          "US Tech"
+        ],
+        "korea_data_found": true,
+        "time_range": null,
+        "unique_countries": [
+          "Bahrain",
+          "Burma/Myanmar",
+          "China",
+          "Hong Kong",
+          "Laos",
+          "Morocco",
+          "North Korea",
+          "Qatar",
+          "Saudi Arabia"
+        ],
+        "potential_mappings": {
+          "year_column": null,
+          "country_column": "Country",
+          "democracy_score_columns": [
+            {
+              "column": "V-Dem Electoral Democracy Index 2021",
+              "data_type": "float64",
+              "min_value": 0.02,
+              "max_value": 0.27,
+              "null_percentage": 0.0
+            },
+            {
+              "column": "Feldstein Digital Repression Index 2021",
+              "data_type": "float64",
+              "min_value": 0.57,
+              "max_value": 2.97,
+              "null_percentage": 0.0
+            },
+            {
+              "column": "Freedom on the Net 2021 Score",
+              "data_type": "float64",
+              "min_value": 10.0,
+              "max_value": 53.0,
+              "null_percentage": 44.44444444444444
+            },
+            {
+              "column": "Military Expenditures Ranking (2018)",
+              "data_type": "float64",
+              "min_value": 2.0,
+              "max_value": 65.0,
+              "null_percentage": 44.44444444444444
+            },
+            {
+              "column": "China ODI Rank (EIU)",
+              "data_type": "float64",
+              "min_value": 3.0,
+              "max_value": 24.0,
+              "null_percentage": 77.77777777777779
+            },
+            {
+              "column": "China Tech",
+              "data_type": "float64",
+              "min_value": 1.0,
+              "max_value": 1.0,
+              "null_percentage": 33.33333333333333
+            },
+            {
+              "column": "US Tech",
+              "data_type": "float64",
+              "min_value": 1.0,
+              "max_value": 1.0,
+              "null_percentage": 66.66666666666666
+            }
+          ],
+          "transformation_needed": [
+            "V-Dem Electoral Democracy Index 2021: Scale 0-1 to -10 to +10",
+            "Feldstein Digital Repression Index 2021: Scale 0-100 to -10 to +10",
+            "Freedom on the Net 2021 Score: Scale 0-100 to -10 to +10",
+            "Military Expenditures Ranking (2018): Scale 0-100 to -10 to +10",
+            "China ODI Rank (EIU): Scale 0-100 to -10 to +10",
+            "China Tech: Scale 0-1 to -10 to +10",
+            "US Tech: Scale 0-1 to -10 to +10"
+          ],
+          "filter_criteria": {
+            "Country": [
+              "North Korea"
+            ],
+            "Other Countries": [
+              "North Korea"
+            ]
+          }
+        },
+        "korea_entries_Country": [
+          "North Korea"
+        ],
+        "korea_entries_Other Countries": [
+          "North Korea"
+        ]
+      },
+      "Digital Repression Inde + V-Dem.csv.sample": {
+        "file_path": "/mnt/c/home/cs416/jl298.github.io/dataset/AI & Big Data Global Surveillance Index (2022 updated)/Digital Repression Inde + V-Dem.csv.sample",
+        "shape": [
+          9,
+          16
+        ],
+        "columns": [
+          "Country",
+          "Region",
+          "Year",
+          "v2x_polyarchy",
+          "v2x_libdem",
+          "v2x_regime",
+          "Digital Repression Index 2021",
+          "Gov SM surveillance v2smgovsmmon",
+          "Gov disinfo v2smgovdom",
+          "Pol party disinfo v2smpardom",
+          "Gov filtering v2smgovfilprc",
+          "Gov internet shutdowns v2smgovshut",
+          "Gov SM Shutdown v2smgovsm",
+          "Gov SM censorship v2smgovsmcenprc",
+          "Arrests online users (v2smarrest)",
+          "AIGS?"
+        ],
+        "data_types": {
+          "Country": "object",
+          "Region": "object",
+          "Year": "int64",
+          "v2x_polyarchy": "float64",
+          "v2x_libdem": "float64",
+          "v2x_regime": "object",
+          "Digital Repression Index 2021": "float64",
+          "Gov SM surveillance v2smgovsmmon": "float64",
+          "Gov disinfo v2smgovdom": "float64",
+          "Pol party disinfo v2smpardom": "float64",
+          "Gov filtering v2smgovfilprc": "float64",
+          "Gov internet shutdowns v2smgovshut": "float64",
+          "Gov SM Shutdown v2smgovsm": "float64",
+          "Gov SM censorship v2smgovsmcenprc": "float64",
+          "Arrests online users (v2smarrest)": "float64",
+          "AIGS?": "object"
+        },
+        "null_counts": {
+          "Country": 0,
+          "Region": 0,
+          "Year": 0,
+          "v2x_polyarchy": 0,
+          "v2x_libdem": 0,
+          "v2x_regime": 0,
+          "Digital Repression Index 2021": 0,
+          "Gov SM surveillance v2smgovsmmon": 0,
+          "Gov disinfo v2smgovdom": 0,
+          "Pol party disinfo v2smpardom": 0,
+          "Gov filtering v2smgovfilprc": 0,
+          "Gov internet shutdowns v2smgovshut": 0,
+          "Gov SM Shutdown v2smgovsm": 0,
+          "Gov SM censorship v2smgovsmcenprc": 0,
+          "Arrests online users (v2smarrest)": 0,
+          "AIGS?": 3
+        },
+        "sample_values": {
+          "Country": [
+            "Afghanistan",
+            "Albania",
+            "Algeria",
+            "Angola",
+            "Argentina"
+          ],
+          "Region": [
+            "SCA",
+            "EUR",
+            "MENA",
+            "AFR",
+            "WHA"
+          ],
+          "Year": [
+            2021,
+            2021,
+            2021,
+            2021,
+            2021
+          ],
+          "v2x_polyarchy": [
+            0.16,
+            0.478,
+            0.284,
+            0.351,
+            0.819
+          ],
+          "v2x_libdem": [
+            0.021,
+            0.403,
+            0.145,
+            0.19,
+            0.658
+          ],
+          "v2x_regime": [
+            "CA",
+            "EA",
+            "EA",
+            "EA",
+            "ED"
+          ],
+          "Digital Repression Index 2021": [
+            0.817572176,
+            -0.291089863,
+            1.353595972,
+            -0.251761854,
+            -1.13125968
+          ],
+          "Gov SM surveillance v2smgovsmmon": [
+            1.054,
+            0.151,
+            2.14,
+            0.129,
+            -0.507
+          ],
+          "Gov disinfo v2smgovdom": [
+            1.564,
+            0.31,
+            1.675,
+            -0.233,
+            -0.925
+          ],
+          "Pol party disinfo v2smpardom": [
+            2.702,
+            -0.13,
+            0.594,
+            0.419,
+            -1.205
+          ],
+          "Gov filtering v2smgovfilprc": [
+            0.941,
+            0.117,
+            1.72,
+            -0.879,
+            -2.233
+          ],
+          "Gov internet shutdowns v2smgovshut": [
+            -0.202,
+            -0.806,
+            1.383,
+            -0.374,
+            -1.849
+          ],
+          "Gov SM Shutdown v2smgovsm": [
+            0.71,
+            -1.582,
+            1.974,
+            -0.608,
+            -1.827
+          ],
+          "Gov SM censorship v2smgovsmcenprc": [
+            -0.427,
+            -0.912,
+            1.302,
+            -0.875,
+            -1.67
+          ],
+          "Arrests online users (v2smarrest)": [
+            2.164,
+            -1.25,
+            1.37,
+            -1.048,
+            -2.632
+          ],
+          "AIGS?": [
+            "x",
+            "x",
+            "x",
+            "x",
+            "x"
+          ]
+        },
+        "korea_columns": [],
+        "time_columns": [
+          "Year"
+        ],
+        "democracy_columns": [
+          "v2x_polyarchy",
+          "v2x_libdem",
+          "Digital Repression Index 2021",
+          "Gov SM surveillance v2smgovsmmon",
+          "Gov disinfo v2smgovdom",
+          "Pol party disinfo v2smpardom",
+          "Gov filtering v2smgovfilprc",
+          "Gov internet shutdowns v2smgovshut",
+          "Gov SM Shutdown v2smgovsm",
+          "Gov SM censorship v2smgovsmcenprc",
+          "Arrests online users (v2smarrest)"
+        ],
+        "korea_data_found": false,
+        "time_range": {
+          "column": "Year",
+          "min_year": 2021,
+          "max_year": 2021,
+          "span": 1
+        },
+        "unique_countries": [],
+        "potential_mappings": {
+          "year_column": "Year",
+          "country_column": null,
+          "democracy_score_columns": [
+            {
+              "column": "v2x_polyarchy",
+              "data_type": "float64",
+              "min_value": 0.16,
+              "max_value": 0.854,
+              "null_percentage": 0.0
+            },
+            {
+              "column": "v2x_libdem",
+              "data_type": "float64",
+              "min_value": 0.021,
+              "max_value": 0.808,
+              "null_percentage": 0.0
+            },
+            {
+              "column": "Digital Repression Index 2021",
+              "data_type": "float64",
+              "min_value": -1.13125968,
+              "max_value": 1.353595972,
+              "null_percentage": 0.0
+            },
+            {
+              "column": "Gov SM surveillance v2smgovsmmon",
+              "data_type": "float64",
+              "min_value": -1.481,
+              "max_value": 2.616,
+              "null_percentage": 0.0
+            },
+            {
+              "column": "Gov disinfo v2smgovdom",
+              "data_type": "float64",
+              "min_value": -1.204,
+              "max_value": 2.971,
+              "null_percentage": 0.0
+            },
+            {
+              "column": "Pol party disinfo v2smpardom",
+              "data_type": "float64",
+              "min_value": -1.292,
+              "max_value": 2.702,
+              "null_percentage": 0.0
+            },
+            {
+              "column": "Gov filtering v2smgovfilprc",
+              "data_type": "float64",
+              "min_value": -2.233,
+              "max_value": 1.882,
+              "null_percentage": 0.0
+            },
+            {
+              "column": "Gov internet shutdowns v2smgovshut",
+              "data_type": "float64",
+              "min_value": -1.849,
+              "max_value": 1.383,
+              "null_percentage": 0.0
+            },
+            {
+              "column": "Gov SM Shutdown v2smgovsm",
+              "data_type": "float64",
+              "min_value": -1.831,
+              "max_value": 1.974,
+              "null_percentage": 0.0
+            },
+            {
+              "column": "Gov SM censorship v2smgovsmcenprc",
+              "data_type": "float64",
+              "min_value": -1.999,
+              "max_value": 1.302,
+              "null_percentage": 0.0
+            },
+            {
+              "column": "Arrests online users (v2smarrest)",
+              "data_type": "float64",
+              "min_value": -2.632,
+              "max_value": 2.164,
+              "null_percentage": 0.0
+            }
+          ],
+          "transformation_needed": [
+            "v2x_polyarchy: Scale 0-1 to -10 to +10",
+            "v2x_libdem: Scale 0-1 to -10 to +10"
+          ],
+          "filter_criteria": {}
+        }
+      }
+    }
+  },
+  "freedomhouse": {
+    "dataset_name": "freedomhouse",
+    "files": {
+      "All_data_FIW_processed.csv.sample": {
+        "file_path": "/mnt/c/home/cs416/jl298.github.io/dataset/freedomhouse/All_data_FIW_processed.csv.sample",
+        "shape": [
+          9,
+          6
+        ],
+        "columns": [
+          "country",
+          "year",
+          "pr",
+          "cl",
+          "status",
+          "total"
+        ],
+        "data_types": {
+          "country": "object",
+          "year": "int64",
+          "pr": "int64",
+          "cl": "int64",
+          "status": "object",
+          "total": "int64"
+        },
+        "null_counts": {
+          "country": 0,
+          "year": 0,
+          "pr": 0,
+          "cl": 0,
+          "status": 0,
+          "total": 0
+        },
+        "sample_values": {
+          "country": [
+            "Abkhazia",
+            "Abkhazia",
+            "Abkhazia",
+            "Abkhazia",
+            "Abkhazia"
+          ],
+          "year": [
+            2013,
+            2014,
+            2015,
+            2016,
+            2017
+          ],
+          "pr": [
+            4,
+            4,
+            4,
+            4,
+            4
+          ],
+          "cl": [
+            5,
+            5,
+            5,
+            5,
+            5
+          ],
+          "status": [
+            "PF",
+            "PF",
+            "PF",
+            "PF",
+            "PF"
+          ],
+          "total": [
+            40,
+            40,
+            41,
+            42,
+            41
+          ]
+        },
+        "korea_columns": [],
+        "time_columns": [
+          "year"
+        ],
+        "democracy_columns": [
+          "pr",
+          "cl",
+          "total"
+        ],
+        "korea_data_found": false,
+        "time_range": {
+          "column": "year",
+          "min_year": 2013,
+          "max_year": 2021,
+          "span": 9
+        },
+        "unique_countries": [],
+        "potential_mappings": {
+          "year_column": "year",
+          "country_column": null,
+          "democracy_score_columns": [
+            {
+              "column": "pr",
+              "data_type": "int64",
+              "min_value": 4.0,
+              "max_value": 5.0,
+              "null_percentage": 0.0
+            },
+            {
+              "column": "cl",
+              "data_type": "int64",
+              "min_value": 5.0,
+              "max_value": 5.0,
+              "null_percentage": 0.0
+            },
+            {
+              "column": "total",
+              "data_type": "int64",
+              "min_value": 40.0,
+              "max_value": 42.0,
+              "null_percentage": 0.0
+            }
+          ],
+          "transformation_needed": [
+            "pr: Scale 0-100 to -10 to +10",
+            "cl: Scale 0-100 to -10 to +10",
+            "total: Scale 0-100 to -10 to +10"
+          ],
+          "filter_criteria": {}
+        }
+      },
+      "Country_and_Territory_Ratings_processed.csv.sample": {
+        "file_path": "/mnt/c/home/cs416/jl298.github.io/dataset/freedomhouse/Country_and_Territory_Ratings_processed.csv.sample",
+        "shape": [
+          9,
+          6
+        ],
+        "columns": [
+          "country",
+          "year",
+          "pr",
+          "cl",
+          "status",
+          "total"
+        ],
+        "data_types": {
+          "country": "object",
+          "year": "int64",
+          "pr": "int64",
+          "cl": "int64",
+          "status": "object",
+          "total": "int64"
+        },
+        "null_counts": {
+          "country": 0,
+          "year": 0,
+          "pr": 0,
+          "cl": 0,
+          "status": 0,
+          "total": 0
+        },
+        "sample_values": {
+          "country": [
+            "Afghanistan",
+            "Afghanistan",
+            "Afghanistan",
+            "Afghanistan",
+            "Afghanistan"
+          ],
+          "year": [
+            2000,
+            2001,
+            2003,
+            2004,
+            2005
+          ],
+          "pr": [
+            7,
+            7,
+            6,
+            6,
+            5
+          ],
+          "cl": [
+            7,
+            7,
+            6,
+            6,
+            6
+          ],
+          "status": [
+            "NF",
+            "NF",
+            "NF",
+            "NF",
+            "NF"
+          ],
+          "total": [
+            14,
+            14,
+            12,
+            12,
+            11
+          ]
+        },
+        "korea_columns": [],
+        "time_columns": [
+          "year"
+        ],
+        "democracy_columns": [
+          "pr",
+          "cl",
+          "total"
+        ],
+        "korea_data_found": false,
+        "time_range": {
+          "column": "year",
+          "min_year": 2000,
+          "max_year": 2009,
+          "span": 10
+        },
+        "unique_countries": [],
+        "potential_mappings": {
+          "year_column": "year",
+          "country_column": null,
+          "democracy_score_columns": [
+            {
+              "column": "pr",
+              "data_type": "int64",
+              "min_value": 5.0,
+              "max_value": 7.0,
+              "null_percentage": 0.0
+            },
+            {
+              "column": "cl",
+              "data_type": "int64",
+              "min_value": 5.0,
+              "max_value": 7.0,
+              "null_percentage": 0.0
+            },
+            {
+              "column": "total",
+              "data_type": "int64",
+              "min_value": 10.0,
+              "max_value": 14.0,
+              "null_percentage": 0.0
+            }
+          ],
+          "transformation_needed": [
+            "pr: Scale 0-100 to -10 to +10",
+            "cl: Scale 0-100 to -10 to +10",
+            "total: Scale 0-100 to -10 to +10"
+          ],
+          "filter_criteria": {}
+        }
+      }
+    }
+  },
+  "Polity5": {
+    "dataset_name": "Polity5",
+    "files": {
+      "p5v2018.csv.sample": {
+        "file_path": "/mnt/c/home/cs416/jl298.github.io/dataset/Polity5/p5v2018.csv.sample",
+        "shape": [
+          9,
+          37
+        ],
+        "columns": [
+          "p5",
+          "cyear",
+          "ccode",
+          "scode",
+          "country",
+          "year",
+          "flag",
+          "fragment",
+          "democ",
+          "autoc",
+          "polity",
+          "polity2",
+          "durable",
+          "xrreg",
+          "xrcomp",
+          "xropen",
+          "xconst",
+          "parreg",
+          "parcomp",
+          "exrec",
+          "exconst",
+          "polcomp",
+          "prior",
+          "emonth",
+          "eday",
+          "eyear",
+          "eprec",
+          "interim",
+          "bmonth",
+          "bday",
+          "byear",
+          "bprec",
+          "post",
+          "change",
+          "d5",
+          "sf",
+          "regtrans"
+        ],
+        "data_types": {
+          "p5": "int64",
+          "cyear": "int64",
+          "ccode": "int64",
+          "scode": "object",
+          "country": "object",
+          "year": "int64",
+          "flag": "int64",
+          "fragment": "float64",
+          "democ": "int64",
+          "autoc": "int64",
+          "polity": "int64",
+          "polity2": "int64",
+          "durable": "float64",
+          "xrreg": "int64",
+          "xrcomp": "int64",
+          "xropen": "int64",
+          "xconst": "int64",
+          "parreg": "int64",
+          "parcomp": "int64",
+          "exrec": "int64",
+          "exconst": "int64",
+          "polcomp": "int64",
+          "prior": "float64",
+          "emonth": "float64",
+          "eday": "float64",
+          "eyear": "float64",
+          "eprec": "float64",
+          "interim": "float64",
+          "bmonth": "float64",
+          "bday": "float64",
+          "byear": "float64",
+          "bprec": "float64",
+          "post": "float64",
+          "change": "float64",
+          "d5": "float64",
+          "sf": "float64",
+          "regtrans": "float64"
+        },
+        "null_counts": {
+          "p5": 0,
+          "cyear": 0,
+          "ccode": 0,
+          "scode": 0,
+          "country": 0,
+          "year": 0,
+          "flag": 0,
+          "fragment": 9,
+          "democ": 0,
+          "autoc": 0,
+          "polity": 0,
+          "polity2": 0,
+          "durable": 9,
+          "xrreg": 0,
+          "xrcomp": 0,
+          "xropen": 0,
+          "xconst": 0,
+          "parreg": 0,
+          "parcomp": 0,
+          "exrec": 0,
+          "exconst": 0,
+          "polcomp": 0,
+          "prior": 9,
+          "emonth": 9,
+          "eday": 9,
+          "eyear": 9,
+          "eprec": 9,
+          "interim": 9,
+          "bmonth": 8,
+          "bday": 8,
+          "byear": 8,
+          "bprec": 8,
+          "post": 8,
+          "change": 8,
+          "d5": 8,
+          "sf": 9,
+          "regtrans": 9
+        },
+        "sample_values": {
+          "p5": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "cyear": [
+            7001800,
+            7001801,
+            7001802,
+            7001803,
+            7001804
+          ],
+          "ccode": [
+            700,
+            700,
+            700,
+            700,
+            700
+          ],
+          "scode": [
+            "AFG",
+            "AFG",
+            "AFG",
+            "AFG",
+            "AFG"
+          ],
+          "country": [
+            "Afghanistan",
+            "Afghanistan",
+            "Afghanistan",
+            "Afghanistan",
+            "Afghanistan"
+          ],
+          "year": [
+            1800,
+            1801,
+            1802,
+            1803,
+            1804
+          ],
+          "flag": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "democ": [
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "autoc": [
+            7,
+            7,
+            7,
+            7,
+            7
+          ],
+          "polity": [
+            -6,
+            -6,
+            -6,
+            -6,
+            -6
+          ],
+          "polity2": [
+            -6,
+            -6,
+            -6,
+            -6,
+            -6
+          ],
+          "xrreg": [
+            3,
+            3,
+            3,
+            3,
+            3
+          ],
+          "xrcomp": [
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "xropen": [
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "xconst": [
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "parreg": [
+            3,
+            3,
+            3,
+            3,
+            3
+          ],
+          "parcomp": [
+            3,
+            3,
+            3,
+            3,
+            3
+          ],
+          "exrec": [
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "exconst": [
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "polcomp": [
+            6,
+            6,
+            6,
+            6,
+            6
+          ],
+          "bmonth": [
+            1.0
+          ],
+          "bday": [
+            1.0
+          ],
+          "byear": [
+            1800.0
+          ],
+          "bprec": [
+            1.0
+          ],
+          "post": [
+            -6.0
+          ],
+          "change": [
+            88.0
+          ],
+          "d5": [
+            1.0
+          ]
+        },
+        "korea_columns": [],
+        "time_columns": [
+          "cyear",
+          "year",
+          "eyear",
+          "byear"
+        ],
+        "democracy_columns": [
+          "p5",
+          "flag",
+          "democ",
+          "autoc",
+          "polity",
+          "polity2",
+          "xrreg",
+          "xrcomp",
+          "xropen",
+          "xconst",
+          "parreg",
+          "parcomp",
+          "exrec",
+          "exconst",
+          "polcomp",
+          "bmonth",
+          "bday",
+          "bprec",
+          "post",
+          "change",
+          "d5"
+        ],
+        "korea_data_found": false,
+        "time_range": {
+          "column": "cyear",
+          "min_year": 7001800,
+          "max_year": 7001808,
+          "span": 9
+        },
+        "unique_countries": [],
+        "potential_mappings": {
+          "year_column": "cyear",
+          "country_column": null,
+          "democracy_score_columns": [
+            {
+              "column": "p5",
+              "data_type": "int64",
+              "min_value": 0.0,
+              "max_value": 0.0,
+              "null_percentage": 0.0
+            },
+            {
+              "column": "flag",
+              "data_type": "int64",
+              "min_value": 0.0,
+              "max_value": 0.0,
+              "null_percentage": 0.0
+            },
+            {
+              "column": "democ",
+              "data_type": "int64",
+              "min_value": 1.0,
+              "max_value": 1.0,
+              "null_percentage": 0.0
+            },
+            {
+              "column": "autoc",
+              "data_type": "int64",
+              "min_value": 7.0,
+              "max_value": 7.0,
+              "null_percentage": 0.0
+            },
+            {
+              "column": "polity",
+              "data_type": "int64",
+              "min_value": -6.0,
+              "max_value": -6.0,
+              "null_percentage": 0.0
+            },
+            {
+              "column": "polity2",
+              "data_type": "int64",
+              "min_value": -6.0,
+              "max_value": -6.0,
+              "null_percentage": 0.0
+            },
+            {
+              "column": "xrreg",
+              "data_type": "int64",
+              "min_value": 3.0,
+              "max_value": 3.0,
+              "null_percentage": 0.0
+            },
+            {
+              "column": "xrcomp",
+              "data_type": "int64",
+              "min_value": 1.0,
+              "max_value": 1.0,
+              "null_percentage": 0.0
+            },
+            {
+              "column": "xropen",
+              "data_type": "int64",
+              "min_value": 1.0,
+              "max_value": 1.0,
+              "null_percentage": 0.0
+            },
+            {
+              "column": "xconst",
+              "data_type": "int64",
+              "min_value": 1.0,
+              "max_value": 1.0,
+              "null_percentage": 0.0
+            },
+            {
+              "column": "parreg",
+              "data_type": "int64",
+              "min_value": 3.0,
+              "max_value": 3.0,
+              "null_percentage": 0.0
+            },
+            {
+              "column": "parcomp",
+              "data_type": "int64",
+              "min_value": 3.0,
+              "max_value": 3.0,
+              "null_percentage": 0.0
+            },
+            {
+              "column": "exrec",
+              "data_type": "int64",
+              "min_value": 1.0,
+              "max_value": 1.0,
+              "null_percentage": 0.0
+            },
+            {
+              "column": "exconst",
+              "data_type": "int64",
+              "min_value": 1.0,
+              "max_value": 1.0,
+              "null_percentage": 0.0
+            },
+            {
+              "column": "polcomp",
+              "data_type": "int64",
+              "min_value": 6.0,
+              "max_value": 6.0,
+              "null_percentage": 0.0
+            },
+            {
+              "column": "bmonth",
+              "data_type": "float64",
+              "min_value": 1.0,
+              "max_value": 1.0,
+              "null_percentage": 88.88888888888889
+            },
+            {
+              "column": "bday",
+              "data_type": "float64",
+              "min_value": 1.0,
+              "max_value": 1.0,
+              "null_percentage": 88.88888888888889
+            },
+            {
+              "column": "bprec",
+              "data_type": "float64",
+              "min_value": 1.0,
+              "max_value": 1.0,
+              "null_percentage": 88.88888888888889
+            },
+            {
+              "column": "post",
+              "data_type": "float64",
+              "min_value": -6.0,
+              "max_value": -6.0,
+              "null_percentage": 88.88888888888889
+            },
+            {
+              "column": "change",
+              "data_type": "float64",
+              "min_value": 88.0,
+              "max_value": 88.0,
+              "null_percentage": 88.88888888888889
+            },
+            {
+              "column": "d5",
+              "data_type": "float64",
+              "min_value": 1.0,
+              "max_value": 1.0,
+              "null_percentage": 88.88888888888889
+            }
+          ],
+          "transformation_needed": [
+            "p5: Scale 0-1 to -10 to +10",
+            "flag: Scale 0-1 to -10 to +10",
+            "democ: Scale 0-1 to -10 to +10",
+            "autoc: Scale 0-100 to -10 to +10",
+            "xrreg: Scale 0-100 to -10 to +10",
+            "xrcomp: Scale 0-1 to -10 to +10",
+            "xropen: Scale 0-1 to -10 to +10",
+            "xconst: Scale 0-1 to -10 to +10",
+            "parreg: Scale 0-100 to -10 to +10",
+            "parcomp: Scale 0-100 to -10 to +10",
+            "exrec: Scale 0-1 to -10 to +10",
+            "exconst: Scale 0-1 to -10 to +10",
+            "polcomp: Scale 0-100 to -10 to +10",
+            "bmonth: Scale 0-1 to -10 to +10",
+            "bday: Scale 0-1 to -10 to +10",
+            "bprec: Scale 0-1 to -10 to +10",
+            "change: Scale 0-100 to -10 to +10",
+            "d5: Scale 0-1 to -10 to +10"
+          ],
+          "filter_criteria": {}
+        }
+      }
+    }
+  },
+  "RSF": {
+    "dataset_name": "RSF",
+    "files": {
+      "2020.csv.sample": {
+        "file_path": "/mnt/c/home/cs416/jl298.github.io/dataset/RSF/2020.csv.sample",
+        "shape": [
+          9,
+          1
+        ],
+        "columns": [
+          "Year (N);ISO;Rank N;Score N;Score N without the exactions;Score N with the exactions;Score exactions;Rank N-1;Score N-1;Rank evolution;FR_country;EN_country;ES_country;AR_country;FA_country;Zone"
+        ],
+        "data_types": {
+          "Year (N);ISO;Rank N;Score N;Score N without the exactions;Score N with the exactions;Score exactions;Rank N-1;Score N-1;Rank evolution;FR_country;EN_country;ES_country;AR_country;FA_country;Zone": "object"
+        },
+        "null_counts": {
+          "Year (N);ISO;Rank N;Score N;Score N without the exactions;Score N with the exactions;Score exactions;Rank N-1;Score N-1;Rank evolution;FR_country;EN_country;ES_country;AR_country;FA_country;Zone": 0
+        },
+        "sample_values": {
+          "Year (N);ISO;Rank N;Score N;Score N without the exactions;Score N with the exactions;Score exactions;Rank N-1;Score N-1;Rank evolution;FR_country;EN_country;ES_country;AR_country;FA_country;Zone": [
+            "18;0;Norvège;Norway;Noruega;النرويج;نروژ;UE Balkans",
+            "1;0;Finlande;Finland;Finlandia;فنلندا;فنلاند;UE Balkans",
+            "13;2;Danemark;Denmark;Dinamarca;الدنمارك;دانمارک;UE Balkans",
+            "69;-1;Suède;Sweden;Suecia;السويد;سوئد;UE Balkans",
+            "37;-1;Pays-Bas;Netherlands;Países Bajos;هولندا;هلند;UE Balkans"
+          ]
+        },
+        "korea_columns": [],
+        "time_columns": [
+          "Year (N);ISO;Rank N;Score N;Score N without the exactions;Score N with the exactions;Score exactions;Rank N-1;Score N-1;Rank evolution;FR_country;EN_country;ES_country;AR_country;FA_country;Zone"
+        ],
+        "democracy_columns": [
+          "Year (N);ISO;Rank N;Score N;Score N without the exactions;Score N with the exactions;Score exactions;Rank N-1;Score N-1;Rank evolution;FR_country;EN_country;ES_country;AR_country;FA_country;Zone"
+        ],
+        "korea_data_found": false,
+        "time_range": null,
+        "unique_countries": [],
+        "potential_mappings": {
+          "year_column": "Year (N);ISO;Rank N;Score N;Score N without the exactions;Score N with the exactions;Score exactions;Rank N-1;Score N-1;Rank evolution;FR_country;EN_country;ES_country;AR_country;FA_country;Zone",
+          "country_column": null,
+          "democracy_score_columns": [],
+          "transformation_needed": [],
+          "filter_criteria": {}
+        }
+      }
+    }
+  },
+  "V-Dem": {
+    "dataset_name": "V-Dem",
+    "files": {
+      "V-Dem-processed.csv.sample": {
+        "file_path": "/mnt/c/home/cs416/jl298.github.io/dataset/V-Dem/V-Dem-processed.csv.sample",
+        "shape": [
+          9,
+          21
+        ],
+        "columns": [
+          "country_name",
+          "country_id",
+          "country_text_id",
+          "year",
+          "v2x_libdem",
+          "v2x_polyarchy",
+          "v2x_api",
+          "v2x_mpi",
+          "v2x_freexp_altinf",
+          "v2xlg_legcon",
+          "v2x_jucon",
+          "v2xcs_ccsi",
+          "v2x_corr",
+          "v2x_civlib",
+          "v2xcl_rol",
+          "v2x_clphy",
+          "v2x_clpriv",
+          "v2x_clpol",
+          "v2xeg_eqprotec",
+          "v2xeg_eqaccess",
+          "v2xeg_eqdr"
+        ],
+        "data_types": {
+          "country_name": "object",
+          "country_id": "int64",
+          "country_text_id": "object",
+          "year": "int64",
+          "v2x_libdem": "float64",
+          "v2x_polyarchy": "float64",
+          "v2x_api": "float64",
+          "v2x_mpi": "float64",
+          "v2x_freexp_altinf": "float64",
+          "v2xlg_legcon": "float64",
+          "v2x_jucon": "float64",
+          "v2xcs_ccsi": "float64",
+          "v2x_corr": "float64",
+          "v2x_civlib": "float64",
+          "v2xcl_rol": "float64",
+          "v2x_clphy": "float64",
+          "v2x_clpriv": "float64",
+          "v2x_clpol": "float64",
+          "v2xeg_eqprotec": "float64",
+          "v2xeg_eqaccess": "float64",
+          "v2xeg_eqdr": "float64"
+        },
+        "null_counts": {
+          "country_name": 0,
+          "country_id": 0,
+          "country_text_id": 0,
+          "year": 0,
+          "v2x_libdem": 0,
+          "v2x_polyarchy": 0,
+          "v2x_api": 0,
+          "v2x_mpi": 0,
+          "v2x_freexp_altinf": 0,
+          "v2xlg_legcon": 0,
+          "v2x_jucon": 0,
+          "v2xcs_ccsi": 0,
+          "v2x_corr": 0,
+          "v2x_civlib": 0,
+          "v2xcl_rol": 0,
+          "v2x_clphy": 0,
+          "v2x_clpriv": 0,
+          "v2x_clpol": 0,
+          "v2xeg_eqprotec": 0,
+          "v2xeg_eqaccess": 0,
+          "v2xeg_eqdr": 0
+        },
+        "sample_values": {
+          "country_name": [
+            "Argentina",
+            "Argentina",
+            "Argentina",
+            "Argentina",
+            "Argentina"
+          ],
+          "country_id": [
+            37,
+            37,
+            37,
+            37,
+            37
+          ],
+          "country_text_id": [
+            "ARG",
+            "ARG",
+            "ARG",
+            "ARG",
+            "ARG"
+          ],
+          "year": [
+            2000,
+            2001,
+            2002,
+            2003,
+            2004
+          ],
+          "v2x_libdem": [
+            0.676,
+            0.682,
+            0.666,
+            0.645,
+            0.641
+          ],
+          "v2x_polyarchy": [
+            0.836,
+            0.835,
+            0.825,
+            0.81,
+            0.804
+          ],
+          "v2x_api": [
+            0.93,
+            0.929,
+            0.925,
+            0.918,
+            0.914
+          ],
+          "v2x_mpi": [
+            0.742,
+            0.74,
+            0.724,
+            0.703,
+            0.693
+          ],
+          "v2x_freexp_altinf": [
+            0.955,
+            0.953,
+            0.938,
+            0.906,
+            0.914
+          ],
+          "v2xlg_legcon": [
+            0.736,
+            0.778,
+            0.771,
+            0.771,
+            0.771
+          ],
+          "v2x_jucon": [
+            0.717,
+            0.71,
+            0.712,
+            0.714,
+            0.714
+          ],
+          "v2xcs_ccsi": [
+            0.939,
+            0.939,
+            0.939,
+            0.939,
+            0.879
+          ],
+          "v2x_corr": [
+            0.46,
+            0.46,
+            0.518,
+            0.555,
+            0.555
+          ],
+          "v2x_civlib": [
+            0.938,
+            0.932,
+            0.924,
+            0.917,
+            0.917
+          ],
+          "v2xcl_rol": [
+            0.926,
+            0.919,
+            0.889,
+            0.858,
+            0.875
+          ],
+          "v2x_clphy": [
+            0.947,
+            0.926,
+            0.904,
+            0.904,
+            0.904
+          ],
+          "v2x_clpriv": [
+            0.926,
+            0.93,
+            0.925,
+            0.925,
+            0.929
+          ],
+          "v2x_clpol": [
+            0.957,
+            0.955,
+            0.952,
+            0.929,
+            0.926
+          ],
+          "v2xeg_eqprotec": [
+            0.772,
+            0.772,
+            0.793,
+            0.781,
+            0.781
+          ],
+          "v2xeg_eqaccess": [
+            0.861,
+            0.861,
+            0.861,
+            0.861,
+            0.861
+          ],
+          "v2xeg_eqdr": [
+            0.694,
+            0.694,
+            0.698,
+            0.694,
+            0.707
+          ]
+        },
+        "korea_columns": [],
+        "time_columns": [
+          "year"
+        ],
+        "democracy_columns": [
+          "country_id",
+          "v2x_libdem",
+          "v2x_polyarchy",
+          "v2x_api",
+          "v2x_mpi",
+          "v2x_freexp_altinf",
+          "v2xlg_legcon",
+          "v2x_jucon",
+          "v2xcs_ccsi",
+          "v2x_corr",
+          "v2x_civlib",
+          "v2xcl_rol",
+          "v2x_clphy",
+          "v2x_clpriv",
+          "v2x_clpol",
+          "v2xeg_eqprotec",
+          "v2xeg_eqaccess",
+          "v2xeg_eqdr"
+        ],
+        "korea_data_found": false,
+        "time_range": {
+          "column": "year",
+          "min_year": 2000,
+          "max_year": 2008,
+          "span": 9
+        },
+        "unique_countries": [],
+        "potential_mappings": {
+          "year_column": "year",
+          "country_column": null,
+          "democracy_score_columns": [
+            {
+              "column": "country_id",
+              "data_type": "int64",
+              "min_value": 37.0,
+              "max_value": 37.0,
+              "null_percentage": 0.0
+            },
+            {
+              "column": "v2x_libdem",
+              "data_type": "float64",
+              "min_value": 0.593,
+              "max_value": 0.682,
+              "null_percentage": 0.0
+            },
+            {
+              "column": "v2x_polyarchy",
+              "data_type": "float64",
+              "min_value": 0.765,
+              "max_value": 0.836,
+              "null_percentage": 0.0
+            },
+            {
+              "column": "v2x_api",
+              "data_type": "float64",
+              "min_value": 0.896,
+              "max_value": 0.93,
+              "null_percentage": 0.0
+            },
+            {
+              "column": "v2x_mpi",
+              "data_type": "float64",
+              "min_value": 0.635,
+              "max_value": 0.742,
+              "null_percentage": 0.0
+            },
+            {
+              "column": "v2x_freexp_altinf",
+              "data_type": "float64",
+              "min_value": 0.896,
+              "max_value": 0.955,
+              "null_percentage": 0.0
+            },
+            {
+              "column": "v2xlg_legcon",
+              "data_type": "float64",
+              "min_value": 0.736,
+              "max_value": 0.778,
+              "null_percentage": 0.0
+            },
+            {
+              "column": "v2x_jucon",
+              "data_type": "float64",
+              "min_value": 0.65,
+              "max_value": 0.717,
+              "null_percentage": 0.0
+            },
+            {
+              "column": "v2xcs_ccsi",
+              "data_type": "float64",
+              "min_value": 0.861,
+              "max_value": 0.939,
+              "null_percentage": 0.0
+            },
+            {
+              "column": "v2x_corr",
+              "data_type": "float64",
+              "min_value": 0.46,
+              "max_value": 0.555,
+              "null_percentage": 0.0
+            },
+            {
+              "column": "v2x_civlib",
+              "data_type": "float64",
+              "min_value": 0.905,
+              "max_value": 0.938,
+              "null_percentage": 0.0
+            },
+            {
+              "column": "v2xcl_rol",
+              "data_type": "float64",
+              "min_value": 0.858,
+              "max_value": 0.926,
+              "null_percentage": 0.0
+            },
+            {
+              "column": "v2x_clphy",
+              "data_type": "float64",
+              "min_value": 0.904,
+              "max_value": 0.947,
+              "null_percentage": 0.0
+            },
+            {
+              "column": "v2x_clpriv",
+              "data_type": "float64",
+              "min_value": 0.925,
+              "max_value": 0.93,
+              "null_percentage": 0.0
+            },
+            {
+              "column": "v2x_clpol",
+              "data_type": "float64",
+              "min_value": 0.891,
+              "max_value": 0.957,
+              "null_percentage": 0.0
+            },
+            {
+              "column": "v2xeg_eqprotec",
+              "data_type": "float64",
+              "min_value": 0.772,
+              "max_value": 0.793,
+              "null_percentage": 0.0
+            },
+            {
+              "column": "v2xeg_eqaccess",
+              "data_type": "float64",
+              "min_value": 0.861,
+              "max_value": 0.878,
+              "null_percentage": 0.0
+            },
+            {
+              "column": "v2xeg_eqdr",
+              "data_type": "float64",
+              "min_value": 0.694,
+              "max_value": 0.707,
+              "null_percentage": 0.0
+            }
+          ],
+          "transformation_needed": [
+            "country_id: Scale 0-100 to -10 to +10",
+            "v2x_libdem: Scale 0-1 to -10 to +10",
+            "v2x_polyarchy: Scale 0-1 to -10 to +10",
+            "v2x_api: Scale 0-1 to -10 to +10",
+            "v2x_mpi: Scale 0-1 to -10 to +10",
+            "v2x_freexp_altinf: Scale 0-1 to -10 to +10",
+            "v2xlg_legcon: Scale 0-1 to -10 to +10",
+            "v2x_jucon: Scale 0-1 to -10 to +10",
+            "v2xcs_ccsi: Scale 0-1 to -10 to +10",
+            "v2x_corr: Scale 0-1 to -10 to +10",
+            "v2x_civlib: Scale 0-1 to -10 to +10",
+            "v2xcl_rol: Scale 0-1 to -10 to +10",
+            "v2x_clphy: Scale 0-1 to -10 to +10",
+            "v2x_clpriv: Scale 0-1 to -10 to +10",
+            "v2x_clpol: Scale 0-1 to -10 to +10",
+            "v2xeg_eqprotec: Scale 0-1 to -10 to +10",
+            "v2xeg_eqaccess: Scale 0-1 to -10 to +10",
+            "v2xeg_eqdr: Scale 0-1 to -10 to +10"
+          ],
+          "filter_criteria": {}
+        }
+      }
+    }
+  }
+}

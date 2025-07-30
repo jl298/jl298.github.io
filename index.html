@@ -1,0 +1,2683 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>South Korea's Democratic Journey - Narrative Visualization</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-annotation/2.5.1/d3-annotation.min.js"></script>
+    <style>
+        :root {
+            --bg-primary: #ffffff;
+            --bg-secondary: #f8f9fa;
+            --bg-tertiary: #ffffff;
+            --text-primary: #212529;
+            --text-secondary: #6c757d;
+            --border-color: #e9ecef;
+            --accent-color: #000000;
+            --success-color: #28a745;
+            --shadow: 0 1px 3px rgba(0,0,0,0.1);
+            --shadow-hover: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            transition: all 0.3s ease;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 40px 0;
+            background: var(--bg-secondary);
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--accent-color);
+        }
+
+        .header p {
+            font-size: 1.1em;
+            color: var(--text-secondary);
+            font-weight: 400;
+        }
+
+        .loading-spinner {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 400px;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid var(--border-color);
+            border-top: 4px solid var(--accent-color);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .loading-text {
+            color: var(--accent-color);
+            font-weight: 500;
+        }
+
+        .error-message {
+            background: var(--bg-secondary);
+            color: #e74c3c;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #e74c3c;
+            margin: 20px 0;
+            border: 1px solid var(--border-color);
+        }
+
+        .data-info {
+            background: var(--bg-secondary);
+            color: var(--success-color);
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid var(--success-color);
+            margin: 20px 0;
+            font-size: 14px;
+            border: 1px solid var(--border-color);
+        }
+
+        .phase-indicator {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+            gap: 10px;
+            position: relative;
+        }
+
+        .help-button {
+            position: absolute;
+            right: 0;
+            padding: 8px 12px;
+            background: var(--bg-tertiary);
+            color: var(--text-primary);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .help-button:hover {
+            background: var(--bg-secondary);
+            transform: translateY(-1px);
+        }
+
+        .phase-badge {
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            border: 1px solid var(--border-color);
+        }
+
+        .phase-badge.active {
+            background: var(--accent-color);
+            color: var(--bg-primary);
+            border-color: var(--accent-color);
+        }
+
+        .phase-badge.inactive {
+            background: var(--bg-tertiary);
+            color: var(--text-secondary);
+            cursor: pointer;
+        }
+
+        .phase-badge.inactive:hover {
+            background: var(--bg-secondary);
+            transform: translateY(-1px);
+        }
+
+        .main-content {
+            display: flex;
+            gap: 20px;
+            background: var(--bg-tertiary);
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+        }
+
+        .visualization-panel {
+            flex: 2;
+            padding: 20px;
+        }
+
+        .info-panel {
+            flex: 1;
+            background: var(--bg-secondary);
+            padding: 20px;
+            border-left: 1px solid var(--border-color);
+        }
+
+        .scene-navigation {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .scene-btn {
+            padding: 8px 16px;
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+            color: var(--text-primary);
+        }
+
+        .scene-btn.active {
+            background: var(--accent-color);
+            color: var(--bg-primary);
+            border-color: var(--accent-color);
+        }
+
+        .scene-btn.completed::after {
+            content: '✓';
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: var(--success-color);
+            color: white;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            font-size: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .scene-btn:hover:not(.active) {
+            background: var(--bg-secondary);
+            transform: translateY(-1px);
+        }
+
+        .scene-title {
+            font-size: 1.8em;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--text-primary);
+        }
+
+        .scene-subtitle {
+            font-size: 1em;
+            color: var(--text-secondary);
+            margin-bottom: 15px;
+        }
+
+        .scene-message {
+            background: var(--bg-secondary);
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid var(--accent-color);
+            margin-bottom: 20px;
+            font-style: italic;
+            border: 1px solid var(--border-color);
+        }
+
+        #chart-container {
+            width: 100%;
+            height: 400px;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            background: var(--bg-primary);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+            padding: 15px;
+            background: var(--bg-secondary);
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+
+        .progress-indicator {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .progress-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        .progress-dot.active {
+            background: var(--accent-color);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .progress-dot.completed {
+            background: var(--success-color);
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 12px;
+        }
+
+        .nav-btn {
+            padding: 10px 20px;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            background: var(--bg-tertiary);
+            color: var(--text-primary);
+        }
+
+        .nav-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            background: var(--border-color) !important;
+            color: var(--text-secondary) !important;
+            border-color: var(--border-color) !important;
+        }
+        
+        .scene-btn:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+            background: var(--border-color) !important;
+            color: var(--text-secondary) !important;
+            border-color: var(--border-color) !important;
+        }
+        
+        .scene-btn:disabled:hover {
+            transform: none !important;
+            background: var(--border-color) !important;
+        }
+
+        .nav-btn.primary {
+            background: var(--accent-color);
+            color: var(--bg-primary);
+            border-color: var(--accent-color);
+        }
+
+        .nav-btn.primary:hover:not(:disabled) {
+            transform: translateY(-1px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .nav-btn.secondary {
+            background: var(--bg-tertiary);
+            color: var(--text-primary);
+            border: 1px solid var(--border-color);
+        }
+
+        .nav-btn.secondary:hover:not(:disabled) {
+            background: var(--bg-secondary);
+            transform: translateY(-1px);
+        }
+
+        .nav-btn.success {
+            background: var(--success-color);
+            color: white;
+            border-color: var(--success-color);
+        }
+
+        .info-section {
+            margin-bottom: 25px;
+        }
+
+        .info-section h3 {
+            font-size: 1.2em;
+            color: var(--text-primary);
+            margin-bottom: 10px;
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 5px;
+        }
+
+        .event-list {
+            list-style: none;
+        }
+
+        .event-item {
+            padding: 8px 12px;
+            margin-bottom: 8px;
+            background: var(--bg-tertiary);
+            border-radius: 6px;
+            border-left: 4px solid var(--text-secondary);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 13px;
+            color: var(--text-primary);
+            border: 1px solid var(--border-color);
+        }
+
+        .event-item:hover {
+            transform: translateX(5px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .event-item.positive {
+            border-left-color: var(--success-color);
+        }
+
+        .event-item.negative {
+            border-left-color: #e74c3c;
+        }
+
+        .event-item.neutral {
+            border-left-color: #f39c12;
+        }
+
+        .annotation-detail {
+            background: var(--bg-tertiary);
+            padding: 15px;
+            border-radius: 8px;
+            border: 2px solid var(--accent-color);
+            margin-top: 15px;
+            box-shadow: var(--shadow-hover);
+        }
+
+        .annotation-detail h4 {
+            color: var(--accent-color);
+            margin-bottom: 8px;
+        }
+
+        .tooltip {
+            position: absolute;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 12px;
+            pointer-events: none;
+            z-index: 1000;
+            opacity: 0;
+            transition: opacity 0.3s;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .tutorial-overlay {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            width: 320px;
+            background: var(--bg-tertiary);
+            color: var(--text-primary);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: var(--shadow-hover);
+            z-index: 1000;
+            transform: translateX(100%);
+            transition: transform 0.4s ease-out;
+            border: 1px solid var(--border-color);
+        }
+
+        .tutorial-overlay.visible {
+            transform: translateX(0);
+        }
+
+        .tutorial-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+
+        .tutorial-step {
+            font-size: 12px;
+            background: var(--bg-secondary);
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-weight: 600;
+            color: var(--text-primary);
+            border: 1px solid var(--border-color);
+        }
+
+        .tutorial-close {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+            border-radius: 4px;
+            width: 28px;
+            height: 28px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .tutorial-content h4 {
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+
+        .tutorial-content p {
+            margin-bottom: 8px;
+            font-size: 13px;
+            line-height: 1.5;
+            opacity: 0.95;
+        }
+
+        .tutorial-hint {
+            font-size: 11px;
+            background: var(--bg-secondary);
+            padding: 6px 10px;
+            border-radius: 4px;
+            margin-bottom: 16px;
+            font-style: italic;
+            border: 1px solid var(--border-color);
+            color: var(--text-secondary);
+        }
+
+        .tutorial-controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .tutorial-indicators {
+            display: flex;
+            gap: 6px;
+        }
+
+        .tutorial-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        .tutorial-dot.active {
+            background: var(--accent-color);
+            border: 2px solid var(--text-primary);
+        }
+
+        .tutorial-next {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+            transition: all 0.2s ease;
+        }
+
+        .tutorial-next:hover {
+            background: var(--accent-color);
+            color: var(--bg-primary);
+            border-color: var(--accent-color);
+        }
+
+        @keyframes slideInRight {
+            from { transform: translateX(100%); }
+            to { transform: translateX(0); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .chart-annotation {
+            font-family: inherit;
+        }
+
+        .annotation-line {
+            stroke-dasharray: 4,4;
+            opacity: 0.7;
+        }
+
+        .annotation-circle {
+            stroke: white;
+            stroke-width: 2;
+            cursor: pointer;
+        }
+
+        .annotation-circle:hover {
+            r: 8;
+        }
+
+        .annotation-label {
+            font-size: 11px;
+            font-weight: 600;
+            cursor: pointer;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+
+        .annotation-note-label {
+            font-size: 9px;
+            fill: var(--text-primary);
+            text-shadow: 0 0 4px var(--bg-primary), 1px 1px 2px var(--bg-primary);
+            font-weight: 500;
+            line-height: 1.2;
+        }
+
+        .annotation-note-title {
+            font-size: 10px;
+            font-weight: 700;
+            fill: var(--text-primary);
+            text-shadow: 0 0 4px var(--bg-primary), 1px 1px 2px var(--bg-primary);
+            line-height: 1.1;
+        }
+
+        .annotation {
+            pointer-events: all;
+        }
+
+        .annotation-connector {
+            opacity: 0.8;
+        }
+
+        .data-point {
+            stroke: white;
+            stroke-width: 2;
+            cursor: pointer;
+            transition: r 0.2s ease;
+        }
+
+        .data-point:hover {
+            r: 6;
+        }
+
+        .event-marker {
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .event-marker:hover {
+            filter: brightness(1.2);
+        }
+
+        .event-year-label {
+            pointer-events: none;
+            user-select: none;
+        }
+
+        .main-line {
+            fill: none;
+            stroke: #667eea;
+            stroke-width: 3;
+        }
+
+        .main-area {
+            fill: #667eea;
+            opacity: 0.1;
+        }
+
+        .axis-label {
+            font-size: 13px;
+            font-weight: 500;
+            fill: #374151;
+        }
+
+        .grid line {
+            stroke: #f1f5f9;
+            stroke-width: 1;
+        }
+
+        .phase-transition {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--bg-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-primary);
+            font-size: 24px;
+            font-weight: 600;
+            z-index: 2000;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.5s ease;
+        }
+
+        .phase-transition.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .indicators-panel {
+            background: var(--bg-secondary);
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border: 1px solid var(--border-color);
+        }
+
+        .indicators-panel h4 {
+            margin-bottom: 15px;
+            color: var(--text-primary);
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .indicator-checkboxes {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .indicator-checkbox {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            padding: 6px 10px;
+            border-radius: 4px;
+            transition: all 0.2s ease;
+        }
+
+        .indicator-checkbox:hover {
+            background: var(--bg-tertiary);
+        }
+
+        .indicator-checkbox input[type="checkbox"] {
+            margin: 0;
+            cursor: pointer;
+        }
+
+        .indicator-checkbox label {
+            cursor: pointer;
+            font-size: 13px;
+            color: var(--text-primary);
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .indicator-color {
+            width: 16px;
+            height: 3px;
+            border-radius: 2px;
+            display: inline-block;
+        }
+
+        .time-slider-container {
+            background: var(--bg-secondary);
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            margin-bottom: 15px;
+        }
+
+        .time-slider-container h4 {
+            margin-bottom: 10px;
+            color: var(--text-primary);
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .time-range-inputs {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .time-range-inputs label {
+            font-size: 12px;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        .time-range-inputs input {
+            padding: 4px 8px;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            width: 80px;
+            font-size: 12px;
+        }
+
+        .legend {
+            background: var(--bg-secondary);
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+
+        .legend h4 {
+            margin-bottom: 10px;
+            color: var(--text-primary);
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .legend-items {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 12px;
+            color: var(--text-primary);
+            cursor: pointer;
+            padding: 4px 6px;
+            border-radius: 4px;
+            transition: all 0.2s ease;
+        }
+
+        .legend-item:hover {
+            background: var(--bg-tertiary);
+        }
+
+        .legend-item.disabled {
+            opacity: 0.4;
+        }
+
+        .legend-line {
+            width: 20px;
+            height: 2px;
+            border-radius: 1px;
+        }
+
+        .legend-line.dashed {
+            background-image: repeating-linear-gradient(
+                to right,
+                currentColor,
+                currentColor 4px,
+                transparent 4px,
+                transparent 8px
+            );
+            background-size: 8px 2px;
+            background-repeat: repeat-x;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>South Korea's Democratic Journey</h1>
+            <p>An Interactive Narrative Visualization (1945-2025)</p>
+            <div id="data-status"></div>
+        </div>
+
+        <div class="phase-indicator">
+            <div class="phase-badge active" id="stem-badge">
+                Guided Story
+            </div>
+            <div class="phase-badge inactive" id="glass-badge">
+                Free Exploration
+            </div>
+            <button class="help-button" id="help-btn" title="Show Tutorial (Press H or F1)">
+                Help
+            </button>
+        </div>
+
+        <div class="main-content">
+            <div class="visualization-panel">
+                <div class="scene-navigation" id="scene-navigation">
+                </div>
+
+                <div id="scene-info">
+                    <div class="scene-title" id="scene-title">Loading Real Data...</div>
+                    <div class="scene-subtitle" id="scene-subtitle"></div>
+                    <div class="scene-message" id="scene-message"></div>
+                </div>
+
+                <div id="chart-container">
+                    <div class="loading-spinner">
+                        <div class="spinner"></div>
+                        <div class="loading-text">Loading South Korea's democracy data...</div>
+                    </div>
+                </div>
+
+                <div class="controls">
+                    <div class="progress-indicator" id="progress-indicator">
+                    </div>
+                    <div class="nav-buttons">
+                        <button class="nav-btn secondary" id="prev-btn" disabled>← Previous</button>
+                        <button class="nav-btn primary" id="next-btn">Next →</button>
+                        <button class="nav-btn success" id="explore-btn" style="display: none;">Explore Freely →</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="info-panel">
+                <div class="info-section">
+                    <h3>Scene Information</h3>
+                    <div id="scene-details">
+                        <p><strong>Time Period:</strong> <span id="time-period">-</span></p>
+                        <p><strong>Focus Indicator:</strong> <span id="focus-indicator">-</span></p>
+                    </div>
+                </div>
+
+                <div class="info-section">
+                    <h3>Key Events</h3>
+                    <ul class="event-list" id="event-list">
+                    </ul>
+                </div>
+
+                <div id="annotation-details" style="display: none;">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="tutorial-overlay" id="tutorial-overlay">
+        <div class="tutorial-header">
+            <div class="tutorial-step" id="tutorial-step">Step 1 of 4</div>
+            <button class="tutorial-close" id="tutorial-close">×</button>
+        </div>
+        <div class="tutorial-content">
+            <h4 id="tutorial-title">Welcome to South Korea's Real Data Story! 🇰🇷</h4>
+            <p id="tutorial-message">This visualization uses actual democracy indicators from multiple datasets. Explore South Korea's authentic democratic transformation!</p>
+            <div class="tutorial-hint" id="tutorial-hint">💡 Click Next to continue or explore the chart</div>
+        </div>
+        <div class="tutorial-controls">
+            <div class="tutorial-indicators" id="tutorial-indicators">
+                <div class="tutorial-dot active"></div>
+                <div class="tutorial-dot"></div>
+                <div class="tutorial-dot"></div>
+                <div class="tutorial-dot"></div>
+            </div>
+            <button class="tutorial-next" id="tutorial-next">Next →</button>
+        </div>
+    </div>
+
+    <div class="phase-transition" id="phase-transition">
+        <div>Transitioning to Free Exploration Mode...</div>
+    </div>
+
+    <div class="tooltip" id="tooltip"></div>
+
+    <script>
+
+        class NarrativeVisualization {
+            constructor() {
+    
+                this.parameters = {
+                    currentScene: 0,
+                    narrativePhase: 'stem',
+                    selectedAnnotation: null,
+                    tutorialStep: 0,
+                    showTutorial: true,
+                    completedScenes: new Set(),
+                    dataLoaded: false,
+                    dataLoading: false,
+                    dataError: null,
+                    dataMetadata: null,
+                    activeIndicators: new Set(['V-Dem_v2x_libdem', 'RSF_Rank N-1', 'Polity5_polity2', 'AI & Big Data Global Surveillance Index (2022 updated)_Digital Repression Index 2021']),
+                    timeRange: [2000, 2020]
+                };
+
+                this.indicatorConfig = {
+                    'V-Dem_v2x_libdem': {
+                        name: 'V-Dem Liberal Democracy',
+                        color: '#4472C4',
+                        strokeStyle: 'solid',
+                        strokeWidth: 3
+                    },
+                    'RSF_Rank N-1': {
+                        name: 'Press Freedom Index',
+                        color: '#70AD47',
+                        strokeStyle: 'dashed',
+                        strokeWidth: 2
+                    },
+                    'AI & Big Data Global Surveillance Index (2022 updated)_Digital Repression Index 2021': {
+                        name: 'AI Surveillance Index',
+                        color: '#FFC000',
+                        strokeStyle: 'dashed',
+                        strokeWidth: 2
+                    },
+                    'V-Dem_v2x_polyarchy': {
+                        name: 'Freedom House Score',
+                        color: '#C5504B',
+                        strokeStyle: 'dashed',
+                        strokeWidth: 2
+                    },
+                    'Polity5_polity2': {
+                        name: 'PolityS Score',
+                        color: '#7030A0',
+                        strokeStyle: 'dashed',
+                        strokeWidth: 2
+                    }
+                };
+
+    
+                this.scenes = [
+                    {
+                        id: 'overview',
+                        title: "South Korea's Democratic Journey",
+                        subtitle: "From Authoritarianism to Democracy (1945-2025)",
+                        message: "Examine this extraordinary democratic transformation by following the blue line across eight decades. Notice three critical phases: (1) The steep decline from 1961-1972 as military coups destroyed democratic institutions, (2) The dramatic 26-year plateau at -8 to -9 points showing how authoritarian rule can persist, and (3) The remarkable 15-point surge from 1987-1993 proving that sustained citizen resistance can break even the most entrenched dictatorships. Click on the colored markers to explore pivotal moments - each represents millions of Koreans who risked everything for democracy. This 16-point transformation from dictatorship to vibrant democracy ranks among history's most successful peaceful revolutions, offering hope that authoritarian systems can be democratically transformed through organized civil resistance.",
+                        indicator: 'democracy_score',
+                        timeRange: [1945, 2020],
+                        annotations: [
+                            { year: 1961, text: 'Military Coup', type: 'negative', description: 'Park Chung-hee seized power in a military coup, establishing authoritarian rule that would last 26 years.' },
+                            { year: 1987, text: 'June Uprising', type: 'positive', description: 'Millions of citizens took to the streets in peaceful protests, forcing the military government to accept democratic reforms.' },
+                            { year: 2016, text: 'Candlelight Revolution', type: 'positive', description: 'Over 17 million citizens participated in peaceful candlelight vigils, leading to the impeachment of President Park Geun-hye through constitutional processes.' }
+                        ]
+                    },
+                    {
+                        id: 'authoritarian-era',
+                        title: "The Authoritarian Era",
+                        subtitle: "Park Chung-hee and Developmental Dictatorship (1961-1987)",
+                        message: "Study the flat, consistently low line from 1961-1987 - this 26-year period of stagnant democracy scores at -8 to -9 points tells a crucial story about authoritarian resilience. Despite achieving the 'Miracle on the Han River' with GDP growing 400-fold, political freedoms remained completely suppressed. Hover over data points in the 1970s to see how the Yushin Constitution (1972) further centralized power, making South Korea as authoritarian as North Korea during this period. The chart's horizontal line during economic boom years proves that prosperity alone doesn't create democracy - it requires organized civil society, independent media, and citizen activism. Notice how even successful economic development under Park Chung-hee couldn't prevent the eventual democratic uprising, showing that sustained repression ultimately becomes unsustainable.",
+                        indicator: 'democracy_score',
+                        timeRange: [1960, 1990],
+                        annotations: [
+                            { year: 1961, text: 'May 16 Coup', type: 'negative', description: 'General Park Chung-hee overthrew the democratic government, beginning 26 years of military rule justified by promises of economic development.' },
+                            { year: 1972, text: 'Yushin Constitution', type: 'negative', description: 'The new constitution eliminated direct presidential elections and granted Park near-absolute power, marking the height of authoritarian control.' },
+                            { year: 1979, text: 'Park Assassination', type: 'neutral', description: 'Park was assassinated by his intelligence chief, creating a brief moment of political uncertainty and hope for democratic change.' },
+                            { year: 1980, text: 'Gwangju Uprising', type: 'negative', description: 'Citizens in Gwangju rose up demanding democracy but were brutally suppressed by military forces, with hundreds killed and wounded.' }
+                        ]
+                    },
+                    {
+                        id: 'transition',
+                        title: "Democratic Transition",
+                        subtitle: "The June Democratic Uprising (1987-1993)",
+                        message: "Follow the dramatic upward curve from 1987-1993 - the steepest democratization slope in modern Asian history. This isn't just a line on a chart; it represents 10 million citizens taking to the streets in June 1987, forcing military generals to accept direct elections. Notice the consistent upward trajectory - unlike many failed transitions, South Korea's democratization never reversed. Click on the 1987 marker to explore how the June Democratic Uprising created an irreversible momentum. The smooth curve from -9 to +6 points in just six years occurred because three factors converged: (1) Sustained student-led resistance since the 1960s, (2) Middle-class participation triggered by economic development, and (3) International pressure following the 1988 Seoul Olympics. This visualization proves that successful democratization requires both grassroots mobilization and elite acceptance of change.",
+                        indicator: 'democracy_score',
+                        timeRange: [1980, 2000],
+                        annotations: [
+                            { year: 1987, text: 'June Uprising', type: 'positive', description: 'Nationwide protests involving millions of citizens forced General Chun Doo-hwan to accept direct presidential elections and democratic constitutional reforms.' },
+                            { year: 1988, text: 'Direct Elections', type: 'positive', description: 'The first direct presidential election in 16 years marked the formal beginning of democratic rule, with peaceful transfers of power becoming institutionalized.' },
+                            { year: 1993, text: 'Civilian Government', type: 'positive', description: 'Kim Young-sam became the first civilian president in 32 years, symbolizing the complete end of military dominance in politics.' }
+                        ]
+                    },
+                    {
+                        id: 'consolidation',
+                        title: "Democratic Consolidation",
+                        subtitle: "Strengthening Institutions (1993-2008)",
+                        message: "Observe the dramatic V-shaped pattern from 1997-2002 - a critical test of democratic resilience. The sharp dip during the Asian Financial Crisis shows how economic shocks can threaten even established democracies, as unemployment soared to 7% and the IMF imposed harsh austerity measures. However, the rapid recovery to +7 points by 2002 reveals something remarkable: instead of military intervention or emergency rule, South Koreans chose democratic solutions. Click on the 1998 marker to see how the first peaceful opposition victory (Kim Dae-jung) occurred during the nation's worst economic crisis, proving that democratic institutions had become unshakeable. The steady upward trend through 2008 reflects successful democratic consolidation - South Korea passed the crucial 'two-turnover test' where power peacefully alternated between competing parties multiple times, cementing its status as a fully consolidated democracy.",
+                        indicator: 'democracy_score',
+                        timeRange: [1990, 2010],
+                        annotations: [
+                            { year: 1998, text: 'First Opposition Victory', type: 'positive', description: 'Kim Dae-jung\'s election victory marked the first peaceful transfer of power to the opposition, a crucial milestone in democratic consolidation despite ongoing economic crisis.' },
+                            { year: 2002, text: 'Peaceful Power Transfer', type: 'positive', description: 'Another smooth transition between opposing parties confirmed that alternation in power had become institutionalized and accepted by all political actors.' }
+                        ]
+                    },
+                    {
+                        id: 'challenges',
+                        title: "Modern Challenges",
+                        subtitle: "Polarization and Democratic Resilience (2008-Present)",
+                        message: "Examine the post-2008 fluctuations - even consolidated democracies face continuous challenges. The declining trend from 2008-2016 reflects concerning developments: press freedom restrictions, civil society crackdowns, and increasing political polarization under conservative administrations. Notice how the line dips and rises - this isn't democratic failure but the natural ebb and flow of democratic quality in real-world conditions. The dramatic recovery after 2016 showcases democracy's self-correcting power. Click on the 2016 Candlelight Revolution marker to see how 17 million citizens (one-third of the population) peacefully removed a corrupt president through constitutional impeachment - no violence, no military intervention, just democratic institutions working as designed. This recent pattern teaches a crucial lesson: democracy requires constant citizen vigilance and participation. The chart's end point shows South Korea maintaining strong democratic scores, proving that sustained civic engagement can overcome even serious democratic backsliding.",
+                        indicator: 'democracy_score',
+                        timeRange: [2000, 2024],
+                        annotations: [
+                            { year: 2008, text: 'Conservative Return', type: 'negative', description: 'President Lee Myung-bak\'s administration faced criticism for restricting press freedom and limiting civil society activities, showing how democratic quality can decline even in established democracies.' },
+                            { year: 2016, text: 'Impeachment Crisis', type: 'neutral', description: 'President Park Geun-hye\'s impeachment over corruption scandals created a constitutional crisis but ultimately demonstrated the strength of democratic institutions and rule of law.' },
+                            { year: 2017, text: 'Democratic Renewal', type: 'positive', description: 'Moon Jae-in\'s election following the peaceful Candlelight Revolution showed how citizen mobilization can renew and strengthen democratic governance.' }
+                        ]
+                    }
+                ];
+
+
+                this.data = null;
+                this.rawData = null;
+
+
+                this.tutorialMessages = [
+                    {
+                        title: "Welcome to South Korea's Real Data Story!",
+                        message: "This visualization uses actual democracy indicators from multiple datasets including RSF Press Freedom, V-Dem, Freedom House, and more!",
+                        hint: "Click Next to continue or explore the chart"
+                    },
+                    {
+                        title: "Explore Real Data Points",
+                        message: "Try hovering over the blue dots on the timeline to see detailed democracy scores from actual research datasets.",
+                        hint: "Hover over any blue dot or click Next"
+                    },
+                    {
+                        title: "Discover Historical Events",
+                        message: "Click on the colored event markers to learn about key moments in South Korea's democratic journey.",
+                        hint: "Click any colored event marker or click Next"
+                    },
+                    {
+                        title: "Navigate the Story",
+                        message: "Use the scene buttons at the top to jump between chapters, or follow the story with the Next button below.",
+                        hint: "You're ready to explore real data!"
+                    }
+                ];
+
+                this.init();
+            }
+
+
+            async loadRealData() {
+                this.parameters.dataLoading = true;
+                this.parameters.dataError = null;
+                this.showLoadingState();
+                
+                try {
+                    let response;
+                    try {
+                        response = await fetch('korea_democracy_data.json');
+                    } catch (error) {
+                        console.log('Primary data file not found, trying compact version...');
+                        response = await fetch('korea_democracy_data_compact.json');
+                    }
+                    
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    
+                    const rawData = await response.json();
+                    this.rawData = rawData;
+                    this.parameters.dataMetadata = rawData.metadata;
+
+                    const timeline = rawData.timeline || [];
+                    const convertedData = timeline
+                        .filter(d => d.democracy_score !== null && d.democracy_score !== undefined)
+                        .map(d => ({
+                            year: d.year,
+                            democracy_score: d.democracy_score,
+                            country: 'South Korea',
+                            data_sources: d.data_sources || [],
+                            indicators: d.indicators || {}
+                        }))
+                        .sort((a, b) => a.year - b.year);
+
+                    if (convertedData.length === 0) {
+                        throw new Error('No valid democracy data found in the dataset');
+                    }
+
+                    this.data = convertedData;
+                    this.parameters.dataLoaded = true;
+                    this.parameters.dataLoading = false;
+                    this.showDataInfo();
+
+                    return convertedData;
+
+                } catch (error) {
+                    console.error('Data loading failed:', error);
+                    this.parameters.dataError = error.message;
+                    this.parameters.dataLoading = false;
+                    this.showDataError(error.message);
+                    
+                    // Generate fallback data
+                    this.data = this.generateSampleData();
+                    this.parameters.dataLoaded = true;
+                    
+                    return this.data;
+                }
+            }
+
+
+            showInitialLoadingState() {
+                const statusDiv = d3.select('#data-status');
+                statusDiv.html(`
+                    <div class="loading-spinner">
+                        <div class="spinner"></div>
+                        <div class="loading-text">Initializing South Korea democracy visualization...</div>
+                    </div>
+                `);
+                
+                // Show loading in chart container as well
+                d3.select('#chart-container').html(`
+                    <div class="loading-spinner">
+                        <div class="spinner"></div>
+                        <div class="loading-text">Loading South Korea's democracy data...</div>
+                    </div>
+                `);
+            }
+            
+            showLoadingState() {
+                const statusDiv = d3.select('#data-status');
+                statusDiv.html(`
+                    <div class="loading-spinner">
+                        <div class="spinner"></div>
+                        <div class="loading-text">Loading democracy data from multiple sources...</div>
+                    </div>
+                `);
+            }
+            
+            showInitializationError(errorMessage) {
+                const statusDiv = d3.select('#data-status');
+                statusDiv.html(`
+                    <div class="error-message">
+                        <strong>Initialization Failed:</strong> ${errorMessage}<br>
+                        <small>Please refresh the page to try again. If the problem persists, check the browser console for details.</small>
+                    </div>
+                `);
+                
+                d3.select('#chart-container').html(`
+                    <div style="display: flex; align-items: center; justify-content: center; height: 100%; flex-direction: column; gap: 20px;">
+                        <div style="color: #e74c3c; font-size: 18px; font-weight: 600;">❌ Unable to Load Visualization</div>
+                        <div style="color: #666; text-align: center; max-width: 300px;">There was a problem initializing the democracy data visualization. Please refresh the page to try again.</div>
+                        <button onclick="location.reload()" style="padding: 10px 20px; background: #667eea; color: white; border: none; border-radius: 6px; cursor: pointer;">Refresh Page</button>
+                    </div>
+                `);
+            }
+
+            showDataInfo() {
+                const statusDiv = d3.select('#data-status');
+                if (this.parameters.dataMetadata) {
+                    const metadata = this.parameters.dataMetadata;
+                    statusDiv.html(`
+                        <div class="data-info">
+                            <strong>Data Loaded:</strong> ${metadata.total_years} years 
+                            (${metadata.year_range.start}-${metadata.year_range.end}) from 
+                            ${metadata.datasets_used.length} datasets: ${metadata.datasets_used.join(', ')}
+                        </div>
+                    `);
+                } else {
+                    statusDiv.html(`
+                        <div class="data-info">
+                            <strong>Real Data Loaded:</strong> ${this.data.length} years of democracy indicators
+                        </div>
+                    `);
+                }
+            }
+
+
+            showDataError(errorMessage) {
+                const statusDiv = d3.select('#data-status');
+                statusDiv.html(`
+                    <div class="error-message">
+                        <strong>Data Loading Error:</strong> ${errorMessage}<br>
+                        <small>Using sample data as fallback. Please ensure korea_democracy_data.json is available.</small>
+                    </div>
+                `);
+            }
+
+
+            generateSampleData() {
+
+                const data = [];
+                for (let year = 1945; year <= 2024; year++) {
+                    let score;
+                    
+
+                    if (year < 1961) {
+                        score = 3 + Math.random() * 2;
+                    } else if (year < 1987) {
+                        score = -6 + Math.random() * 2;
+                    } else if (year < 1993) {
+                        score = -2 + Math.random() * 4;
+                    } else if (year < 2008) {
+                        score = 6 + Math.random() * 2;
+                    } else {
+                        score = 7 + Math.random() * 1.5;
+                    }
+                    
+                    data.push({
+                        year: year,
+                        democracy_score: Math.round(score * 10) / 10,
+                        country: 'South Korea',
+                        data_sources: ['sample'],
+                        indicators: {}
+                    });
+                }
+                return data;
+            }
+
+
+            async init() {
+                this.setupDOM();
+                this.setupEventListeners();
+                
+                // Show initial loading state
+                this.showInitialLoadingState();
+                
+                try {
+                    // Load data with proper error handling
+                    await this.loadRealData();
+                    
+                    // Only proceed if data is actually loaded
+                    if (this.parameters.dataLoaded && this.data && this.data.length > 0) {
+                        this.showTutorialAuto();
+                        this.updateScene();
+                    } else {
+                        throw new Error('Data validation failed after loading');
+                    }
+                } catch (error) {
+                    console.error('Initialization failed:', error);
+                    this.showInitializationError(error.message);
+                }
+            }
+
+
+            setupDOM() {
+
+                const sceneNav = d3.select('#scene-navigation');
+                sceneNav.selectAll('.scene-btn')
+                    .data(this.scenes)
+                    .enter()
+                    .append('button')
+                    .attr('class', 'scene-btn')
+                    .attr('id', (d, i) => `scene-btn-${i}`)
+                    .text((d, i) => `${i + 1}. ${d.title}`)
+                    .on('click', (event, d, i) => {
+                        const index = this.scenes.indexOf(d);
+                        this.goToScene(index);
+                    });
+
+
+                const progressIndicator = d3.select('#progress-indicator');
+                progressIndicator.selectAll('.progress-dot')
+                    .data(this.scenes)
+                    .enter()
+                    .append('div')
+                    .attr('class', 'progress-dot')
+                    .attr('id', (d, i) => `progress-dot-${i}`);
+
+
+                const tutorialIndicators = d3.select('#tutorial-indicators');
+                tutorialIndicators.selectAll('.tutorial-dot')
+                    .data(this.tutorialMessages)
+                    .enter()
+                    .append('div')
+                    .attr('class', 'tutorial-dot');
+            }
+
+
+            setupEventListeners() {
+
+                d3.select('#prev-btn').on('click', () => this.previousScene());
+                d3.select('#next-btn').on('click', () => this.nextScene());
+                d3.select('#explore-btn').on('click', () => this.transitionToGlass());
+
+
+                d3.select('#stem-badge').on('click', () => this.setPhase('stem'));
+                d3.select('#glass-badge').on('click', () => this.setPhase('glass'));
+
+
+                d3.select('#help-btn').on('click', () => this.showTutorial());
+
+
+                d3.select('#tutorial-close').on('click', () => this.closeTutorial());
+                d3.select('#tutorial-next').on('click', () => this.nextTutorialStep());
+
+
+                d3.select('body').on('keydown', (event) => {
+                    if (event.key === 'ArrowLeft') this.previousScene();
+                    if (event.key === 'ArrowRight') this.nextScene();
+                    if (event.key === 'Escape') this.closeTutorial();
+                    if (event.key === 'h' || event.key === 'H' || event.key === 'F1') {
+                        event.preventDefault();
+                        this.showTutorial();
+                    }
+                });
+            }
+
+
+            goToScene(sceneIndex) {
+                // Prevent scene changes while data is loading or if there's an error
+                if (this.parameters.dataLoading) {
+                    console.log('Cannot change scene while data is loading');
+                    return;
+                }
+                
+                if (!this.parameters.dataLoaded || !this.data || this.data.length === 0) {
+                    console.warn('Cannot change scene - data not available');
+                    return;
+                }
+                
+                if (sceneIndex >= 0 && sceneIndex < this.scenes.length) {
+                    this.parameters.completedScenes.add(this.parameters.currentScene);
+                    this.parameters.currentScene = sceneIndex;
+                    this.updateScene();
+                }
+            }
+
+            nextScene() {
+                if (this.parameters.currentScene < this.scenes.length - 1) {
+                    this.goToScene(this.parameters.currentScene + 1);
+                }
+            }
+
+            previousScene() {
+                if (this.parameters.currentScene > 0) {
+                    this.goToScene(this.parameters.currentScene - 1);
+                }
+            }
+
+
+            updateScene() {
+                // Enhanced data validation before proceeding
+                if (this.parameters.dataLoading) {
+                    console.log('Data still loading, skipping scene update');
+                    return;
+                }
+                
+                if (this.parameters.dataError) {
+                    console.error('Data error detected, cannot update scene:', this.parameters.dataError);
+                    return;
+                }
+                
+                if (!this.parameters.dataLoaded || !this.data || this.data.length === 0) {
+                    console.warn('Data not available for scene update');
+                    return;
+                }
+
+                const scene = this.scenes[this.parameters.currentScene];
+                
+
+                d3.select('#scene-title').text(scene.title);
+                d3.select('#scene-subtitle').text(scene.subtitle);
+                d3.select('#scene-message').text(scene.message);
+                d3.select('#time-period').text(`${scene.timeRange[0]} - ${scene.timeRange[1]}`);
+                d3.select('#focus-indicator').text(scene.indicator.replace('_', ' ').toUpperCase());
+
+
+                // Update navigation buttons with data loading state consideration
+                const isDataReady = this.parameters.dataLoaded && !this.parameters.dataLoading && !this.parameters.dataError;
+                
+                d3.select('#prev-btn')
+                    .property('disabled', this.parameters.currentScene === 0 || !isDataReady);
+                
+                if (this.parameters.currentScene === this.scenes.length - 1) {
+                    d3.select('#next-btn').style('display', 'none');
+                    d3.select('#explore-btn')
+                        .style('display', 'inline-block')
+                        .property('disabled', !isDataReady);
+                } else {
+                    d3.select('#next-btn')
+                        .style('display', 'inline-block')
+                        .property('disabled', !isDataReady);
+                    d3.select('#explore-btn').style('display', 'none');
+                }
+
+
+                d3.selectAll('.scene-btn')
+                    .classed('active', false)
+                    .classed('completed', (d, i) => this.parameters.completedScenes.has(i))
+                    .property('disabled', !isDataReady);
+                
+                d3.select(`#scene-btn-${this.parameters.currentScene}`)
+                    .classed('active', true);
+
+
+                d3.selectAll('.progress-dot')
+                    .classed('active', false)
+                    .classed('completed', (d, i) => this.parameters.completedScenes.has(i));
+                
+                d3.select(`#progress-dot-${this.parameters.currentScene}`)
+                    .classed('active', true);
+
+
+                this.updateEventList(scene);
+
+
+                this.drawVisualization(scene);
+            }
+
+
+            updateEventList(scene) {
+                const eventList = d3.select('#event-list');
+                eventList.selectAll('.event-item').remove();
+
+                eventList.selectAll('.event-item')
+                    .data(scene.annotations)
+                    .enter()
+                    .append('li')
+                    .attr('class', d => `event-item ${d.type}`)
+                    .text(d => `${d.year}: ${d.text}`)
+                    .on('click', (event, d) => this.showAnnotationDetail(d));
+            }
+
+
+            showAnnotationDetail(annotation) {
+                this.parameters.selectedAnnotation = annotation;
+                
+                const detailDiv = d3.select('#annotation-details');
+                detailDiv.style('display', 'block')
+                    .html(`
+                        <div class="annotation-detail">
+                            <h4>${annotation.year}: ${annotation.text}</h4>
+                            <p>${annotation.description}</p>
+                            <button onclick="narrativeViz.closeAnnotationDetail()" style="float: right; margin-top: 10px; padding: 5px 10px; background: #667eea; color: white; border: none; border-radius: 4px; cursor: pointer;">Close</button>
+                        </div>
+                    `);
+            }
+
+            closeAnnotationDetail() {
+                this.parameters.selectedAnnotation = null;
+                d3.select('#annotation-details').style('display', 'none');
+            }
+
+
+            drawVisualization(scene) {
+                d3.select('#chart-container').selectAll('*').remove();
+
+                // Enhanced data validation
+                if (this.parameters.dataLoading) {
+                    d3.select('#chart-container').append('div')
+                        .attr('class', 'loading-spinner')
+                        .html('<div class="spinner"></div><div class="loading-text">Loading visualization data...</div>');
+                    return;
+                }
+                
+                if (this.parameters.dataError) {
+                    d3.select('#chart-container').append('div')
+                        .style('display', 'flex')
+                        .style('align-items', 'center')
+                        .style('justify-content', 'center')
+                        .style('height', '100%')
+                        .style('color', '#e74c3c')
+                        .html(`<div>⚠️ Data Error: ${this.parameters.dataError}</div>`);
+                    return;
+                }
+
+                if (!this.data || this.data.length === 0) {
+                    d3.select('#chart-container').append('div')
+                        .attr('class', 'loading-spinner')
+                        .html('<div class="spinner"></div><div class="loading-text">No data available</div>');
+                    return;
+                }
+
+                const container = d3.select('#chart-container');
+                const containerRect = container.node().getBoundingClientRect();
+                const margin = { top: 60, right: 60, bottom: 60, left: 80 };
+                const width = containerRect.width - margin.left - margin.right;
+                const height = containerRect.height - margin.top - margin.bottom;
+
+                const svg = container.append('svg')
+                    .attr('width', containerRect.width)
+                    .attr('height', containerRect.height);
+
+                const g = svg.append('g')
+                    .attr('transform', `translate(${margin.left},${margin.top})`);
+
+
+                const sceneData = this.data.filter(d => 
+                    d.year >= scene.timeRange[0] && d.year <= scene.timeRange[1]
+                );
+
+                if (sceneData.length === 0) {
+                    g.append('text')
+                        .attr('x', width / 2)
+                        .attr('y', height / 2)
+                        .attr('text-anchor', 'middle')
+                        .style('font-size', '14px')
+                        .style('fill', '#666')
+                        .text('No data available for this time period');
+                    return;
+                }
+
+
+                const xScale = d3.scaleLinear()
+                    .domain(scene.timeRange)
+                    .range([0, width]);
+
+                const yScale = d3.scaleLinear()
+                    .domain(d3.extent(sceneData, d => d[scene.indicator]))
+                    .nice()
+                    .range([height, 0]);
+
+
+                g.append('g')
+                    .attr('class', 'grid')
+                    .attr('transform', `translate(0,${height})`)
+                    .call(d3.axisBottom(xScale)
+                        .tickSize(-height)
+                        .tickFormat('')
+                    );
+
+                g.append('g')
+                    .attr('class', 'grid')
+                    .call(d3.axisLeft(yScale)
+                        .tickSize(-width)
+                        .tickFormat('')
+                    );
+
+
+                g.append('g')
+                    .attr('transform', `translate(0,${height})`)
+                    .call(d3.axisBottom(xScale).tickFormat(d3.format('d')));
+
+                g.append('g')
+                    .call(d3.axisLeft(yScale));
+
+
+                g.append('text')
+                    .attr('class', 'axis-label')
+                    .attr('transform', 'rotate(-90)')
+                    .attr('y', 0 - margin.left)
+                    .attr('x', 0 - (height / 2))
+                    .attr('dy', '1em')
+                    .style('text-anchor', 'middle')
+                    .text('Democracy Score (-10 to +10)');
+
+                g.append('text')
+                    .attr('class', 'axis-label')
+                    .attr('transform', `translate(${width / 2}, ${height + margin.bottom})`)
+                    .style('text-anchor', 'middle')
+                    .text('Year');
+
+
+                const line = d3.line()
+                    .x(d => xScale(d.year))
+                    .y(d => yScale(d[scene.indicator]))
+                    .curve(d3.curveMonotoneX);
+
+
+                const area = d3.area()
+                    .x(d => xScale(d.year))
+                    .y0(height)
+                    .y1(d => yScale(d[scene.indicator]))
+                    .curve(d3.curveMonotoneX);
+
+
+                g.append('path')
+                    .datum(sceneData)
+                    .attr('class', 'main-area')
+                    .attr('d', area);
+
+
+                const path = g.append('path')
+                    .datum(sceneData)
+                    .attr('class', 'main-line')
+                    .attr('d', line);
+
+
+                const totalLength = path.node().getTotalLength();
+                path
+                    .attr('stroke-dasharray', totalLength + ' ' + totalLength)
+                    .attr('stroke-dashoffset', totalLength)
+                    .transition()
+                    .duration(1500)
+                    .ease(d3.easeLinear)
+                    .attr('stroke-dashoffset', 0);
+
+
+                g.selectAll('.data-point')
+                    .data(sceneData)
+                    .enter()
+                    .append('circle')
+                    .attr('class', 'data-point')
+                    .attr('cx', d => xScale(d.year))
+                    .attr('cy', d => yScale(d[scene.indicator]))
+                    .attr('r', 4)
+                    .attr('fill', '#667eea')
+                    .on('mouseover', (event, d) => this.showTooltip(event, d, scene.indicator))
+                    .on('mouseout', () => this.hideTooltip())
+                    .on('click', (event, d) => {
+                        if (this.parameters.showTutorial && this.parameters.tutorialStep === 1) {
+                            this.nextTutorialStep();
+                        }
+                    });
+
+
+                this.addAnnotations(g, scene, xScale, yScale, sceneData);
+            }
+
+
+            addAnnotations(g, scene, xScale, yScale, sceneData) {
+                const eventMarkers = scene.annotations
+                    .map(ann => {
+                        const dataPoint = sceneData.find(d => d.year === ann.year);
+                        if (!dataPoint) return null;
+                        return { ...ann, dataPoint };
+                    })
+                    .filter(ann => ann !== null);
+                const markerGroup = g.append("g").attr("class", "event-markers");
+                
+                markerGroup.selectAll('.event-marker')
+                    .data(eventMarkers)
+                    .enter()
+                    .append('circle')
+                    .attr('class', 'event-marker')
+                    .attr('cx', d => xScale(d.year))
+                    .attr('cy', d => yScale(d.dataPoint[scene.indicator]))
+                    .attr('r', 6)
+                    .attr('fill', d => this.getAnnotationColor(d.type))
+                    .attr('stroke', 'white')
+                    .attr('stroke-width', 2)
+                    .style('cursor', 'pointer')
+                    .style('opacity', 0)
+                    .transition()
+                    .duration(800)
+                    .delay((d, i) => i * 200)
+                    .style('opacity', 1)
+                    .on('end', function() {
+                        d3.select(this)
+                            .transition()
+                            .duration(2000)
+                            .ease(d3.easeLinear)
+                            .attr('r', 8)
+                            .transition()
+                            .duration(2000)
+                            .ease(d3.easeLinear)
+                            .attr('r', 6)
+                            .on('end', function repeat() {
+                                d3.select(this)
+                                    .transition()
+                                    .duration(3000)
+                                    .ease(d3.easeSinInOut)
+                                    .attr('r', 7)
+                                    .transition()
+                                    .duration(3000)
+                                    .ease(d3.easeSinInOut)
+                                    .attr('r', 6)
+                                    .on('end', repeat);
+                            });
+                    });
+
+
+                markerGroup.selectAll('.event-marker')
+                    .on('mouseover', (event, d) => {
+
+                        d3.select(event.target)
+                            .transition()
+                            .duration(200)
+                            .attr('r', 10)
+                            .attr('stroke-width', 3);
+
+                        this.showEventTooltip(event, d);
+                    })
+                    .on('mouseout', (event, d) => {
+
+                        d3.select(event.target)
+                            .transition()
+                            .duration(200)
+                            .attr('r', 6)
+                            .attr('stroke-width', 2);
+
+                        this.hideTooltip();
+                    })
+                    .on('click', (event, d) => {
+                        this.showAnnotationDetail(d);
+                        if (this.parameters.showTutorial && this.parameters.tutorialStep === 2) {
+                            this.nextTutorialStep();
+                        }
+                    });
+
+                markerGroup.selectAll('.event-year-label')
+                    .data(eventMarkers.filter((d, i) => i < 3))
+                    .enter()
+                    .append('text')
+                    .attr('class', 'event-year-label')
+                    .attr('x', d => xScale(d.year))
+                    .attr('y', d => yScale(d.dataPoint[scene.indicator]) - 15)
+                    .attr('text-anchor', 'middle')
+                    .style('font-size', '10px')
+                    .style('font-weight', 'bold')
+                    .style('fill', d => this.getAnnotationColor(d.type))
+                    .style('text-shadow', '1px 1px 2px white, -1px -1px 2px white, 1px -1px 2px white, -1px 1px 2px white')
+                    .style('opacity', 0)
+                    .text(d => d.year)
+                    .transition()
+                    .duration(1000)
+                    .delay((d, i) => i * 300 + 500)
+                    .style('opacity', 0.8);
+            }
+
+
+            adjustAnnotationPositions(annotations, chartWidth, chartHeight = 400) {
+                const minDistance = 80;
+                const labelHeight = 40;
+                const margin = 20;
+                annotations.sort((a, b) => a.x - b.x);
+
+                for (let i = 0; i < annotations.length; i++) {
+                    const current = annotations[i];
+
+                    const maxUpward = -(current.y - margin);
+                    const maxDownward = chartHeight - current.y - margin - labelHeight;
+
+                    let preferredDy = -60;
+                    if (current.y < chartHeight * 0.3) {
+                        preferredDy = Math.min(60, maxDownward);
+                    } else {
+                        preferredDy = Math.max(-80, maxUpward);
+                    }
+
+                    const isEven = i % 2 === 0;
+                    current.dy = isEven ? preferredDy : (preferredDy > 0 ? preferredDy + 20 : preferredDy - 20);
+
+                    current.dy = Math.max(maxUpward, Math.min(maxDownward, current.dy));
+
+                    if (current.x < chartWidth * 0.3) {
+                        current.dx = 60;
+                    } else if (current.x > chartWidth * 0.7) {
+                        current.dx = -60;
+                    } else {
+                        current.dx = isEven ? 50 : -50;
+                    }
+
+                    if (i > 0) {
+                        const previous = annotations[i-1];
+                        const distance = Math.abs(current.x - previous.x);
+                        
+                        if (distance < minDistance) {
+                            const verticalSeparation = 50;
+                            if (Math.abs(current.dy - previous.dy) < verticalSeparation) {
+                                let newDy;
+                                if (current.dy > 0) {
+                                    newDy = previous.dy + verticalSeparation;
+                                } else {
+                                    newDy = previous.dy - verticalSeparation;
+                                }
+
+                                newDy = Math.max(maxUpward, Math.min(maxDownward, newDy));
+                                current.dy = newDy;
+                            }
+                        }
+                    }
+
+                    if (current.y + current.dy < margin) {
+                        current.dy = -current.y + margin + 10;
+                    } else if (current.y + current.dy > chartHeight - margin - labelHeight) {
+                        current.dy = chartHeight - current.y - margin - labelHeight - 10;
+                    }
+                }
+            }
+
+
+            adjustAnnotationOverflow(annotationGroup, chartHeight) {
+                const margin = 10;
+                
+                annotationGroup.selectAll('.annotation').each(function() {
+                    const annotation = d3.select(this);
+                    const noteGroup = annotation.select('.annotation-note');
+                    
+                    if (!noteGroup.empty()) {
+                        const bbox = noteGroup.node().getBBox();
+                        const transform = noteGroup.attr('transform');
+                        
+                        if (transform) {
+                            const translate = transform.match(/translate\(([^,]+),([^)]+)\)/);
+                            if (translate) {
+                                const x = parseFloat(translate[1]);
+                                let y = parseFloat(translate[2]);
+                                if (y + bbox.height > chartHeight - margin) {
+                                    const newY = chartHeight - bbox.height - margin;
+                                    noteGroup.attr('transform', `translate(${x},${newY})`);
+                                }
+
+                                if (y < margin) {
+                                    noteGroup.attr('transform', `translate(${x},${margin})`);
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+
+
+            getEventPriority(year, type) {
+
+                const majorEvents = {
+                    1961: 10, // Military Coup
+                    1987: 10, // June Uprising - most important
+                    2016: 9,  // Candlelight Revolution
+                    1972: 8,  // Yushin Constitution
+                    1980: 8,  // Gwangju Uprising
+                    1998: 7,  // First Opposition Victory
+                    1993: 6,  // Civilian Government
+                    2002: 5,  // Peaceful Power Transfer
+                    2008: 4,  // Conservative Return
+                    2017: 4   // Democratic Renewal
+                };
+
+                let priority = majorEvents[year] || 3;
+
+                if (type === 'positive') priority += 1;
+                if (type === 'negative') priority += 0.5;
+                
+                return priority;
+            }
+
+
+            getAnnotationColor(type) {
+                switch (type) {
+                    case 'positive': return '#27ae60';
+                    case 'negative': return '#e74c3c';
+                    case 'neutral': return '#f39c12';
+                    default: return '#95a5a6';
+                }
+            }
+
+
+            showTooltip(event, d, indicator) {
+                const tooltip = d3.select('#tooltip');
+                let tooltipContent = `
+                    <strong>Year:</strong> ${d.year}<br>
+                    <strong>Democracy Score:</strong> ${d[indicator]}
+                `;
+
+
+                if (d.data_sources && d.data_sources.length > 0 && !d.data_sources.includes('sample')) {
+                    tooltipContent += `<br><strong>Sources:</strong> ${d.data_sources.join(', ')}`;
+                }
+
+                tooltip.style('opacity', 1)
+                    .html(tooltipContent)
+                    .style('left', (event.pageX + 10) + 'px')
+                    .style('top', (event.pageY - 10) + 'px');
+            }
+
+
+            showEventTooltip(event, eventData) {
+                const tooltip = d3.select('#tooltip');
+                const typeEmoji = {
+                    'positive': '✅',
+                    'negative': '❌', 
+                    'neutral': '⚡'
+                };
+                
+                let tooltipContent = `
+                    <div style="border-left: 4px solid ${this.getAnnotationColor(eventData.type)}; padding-left: 8px;">
+                        <strong>${typeEmoji[eventData.type] || '📌'} ${eventData.year}: ${eventData.text}</strong><br>
+                        <em>${eventData.description}</em><br>
+                        <small style="color: #666; margin-top: 5px; display: block;">
+                            Impact: ${eventData.type.toUpperCase()}`;
+                
+                // Add democracy score if dataPoint exists (for guided story)
+                if (eventData.dataPoint && eventData.dataPoint.democracy_score !== undefined) {
+                    tooltipContent += `<br>Democracy Score: ${eventData.dataPoint.democracy_score}`;
+                }
+                
+                tooltipContent += `
+                        </small>
+                    </div>
+                `;
+
+                tooltip.style('opacity', 1)
+                    .html(tooltipContent)
+                    .style('left', (event.pageX + 10) + 'px')
+                    .style('top', (event.pageY - 10) + 'px')
+                    .style('max-width', '280px')
+                    .style('white-space', 'normal');
+            }
+
+            hideTooltip() {
+                d3.select('#tooltip').style('opacity', 0);
+            }
+
+
+            showTutorial() {
+
+                this.parameters.tutorialStep = 0;
+                this.parameters.showTutorial = true;
+                d3.select('#tutorial-overlay').classed('visible', true);
+
+                if (this.parameters.narrativePhase === 'glass') {
+                    this.showGlassTutorial();
+                } else {
+                    this.updateTutorialContent();
+                }
+            }
+
+            showGlassTutorial() {
+
+                d3.select('#tutorial-title').text('Free Exploration Mode');
+                d3.select('#tutorial-message').text('Select indicators to compare multiple democracy measures. Use time range controls to focus on specific periods. Toggle indicators on/off in the legend!');
+                d3.select('#tutorial-hint').text('Use arrow keys to navigate phases, ESC to close, H for help');
+                d3.select('#tutorial-step').text('Free Exploration Guide');
+
+                d3.select('#tutorial-indicators').style('display', 'none');
+                d3.select('#tutorial-next').text('Got it!');
+            }
+
+
+            showTutorialAuto() {
+                if (this.parameters.currentScene === 0 && this.parameters.showTutorial) {
+                    d3.select('#tutorial-overlay').classed('visible', true);
+                    this.updateTutorialContent();
+                }
+            }
+
+            updateTutorialContent() {
+                const tutorial = this.tutorialMessages[this.parameters.tutorialStep];
+                d3.select('#tutorial-title').text(tutorial.title);
+                d3.select('#tutorial-message').text(tutorial.message);
+                d3.select('#tutorial-hint').text(tutorial.hint);
+                d3.select('#tutorial-step').text(`Step ${this.parameters.tutorialStep + 1} of ${this.tutorialMessages.length}`);
+
+
+                d3.select('#tutorial-indicators').style('display', 'flex');
+
+                d3.selectAll('.tutorial-dot')
+                    .classed('active', (d, i) => i === this.parameters.tutorialStep);
+
+
+                const nextBtn = d3.select('#tutorial-next');
+                if (this.parameters.tutorialStep === this.tutorialMessages.length - 1) {
+                    nextBtn.text('Got it!');
+                } else {
+                    nextBtn.text('Next');
+                }
+            }
+
+            nextTutorialStep() {
+                if (this.parameters.tutorialStep < this.tutorialMessages.length - 1) {
+                    this.parameters.tutorialStep++;
+                    this.updateTutorialContent();
+                } else {
+                    this.closeTutorial();
+                }
+            }
+
+            closeTutorial() {
+                this.parameters.showTutorial = false;
+                d3.select('#tutorial-overlay').classed('visible', false);
+            }
+
+
+            setPhase(phase) {
+                if (phase !== this.parameters.narrativePhase) {
+                    this.parameters.narrativePhase = phase;
+                    this.updatePhaseDisplay();
+                    
+                    if (phase === 'glass') {
+                        this.transitionToGlass();
+                    } else if (phase === 'stem') {
+                        this.transitionToStem();
+                    }
+                }
+            }
+
+            updatePhaseDisplay() {
+                d3.selectAll('.phase-badge').classed('active', false).classed('inactive', true);
+                d3.select(`#${this.parameters.narrativePhase}-badge`)
+                    .classed('active', true)
+                    .classed('inactive', false);
+            }
+
+            transitionToGlass() {
+
+                const transition = d3.select('#phase-transition');
+                transition.select('div').text('Transitioning to Free Exploration Mode...');
+                transition.classed('active', true);
+
+                setTimeout(() => {
+                    this.parameters.narrativePhase = 'glass';
+                    this.updatePhaseDisplay();
+                    this.initGlassPhase();
+                    transition.classed('active', false);
+                }, 1500);
+            }
+
+            transitionToStem() {
+
+                const transition = d3.select('#phase-transition');
+                transition.select('div').text('Returning to Guided Story Mode...');
+                transition.classed('active', true);
+
+                setTimeout(() => {
+                    this.parameters.narrativePhase = 'stem';
+                    this.updatePhaseDisplay();
+                    this.initStemPhase();
+                    transition.classed('active', false);
+                }, 1500);
+            }
+
+
+            initStemPhase() {
+                // Restore scene navigation
+                d3.select('.scene-navigation').style('display', 'flex');
+
+                // Restore scene info structure for guided story
+                d3.select('#scene-info').html(`
+                    <div class="scene-title" id="scene-title">Loading Real Data...</div>
+                    <div class="scene-subtitle" id="scene-subtitle"></div>
+                    <div class="scene-message" id="scene-message"></div>
+                `);
+
+                // Restore info panel structure
+                d3.select('.info-panel').html(`
+                    <div class="info-section">
+                        <h3>Scene Information</h3>
+                        <div id="scene-details">
+                            <p><strong>Time Period:</strong> <span id="time-period">-</span></p>
+                            <p><strong>Focus Indicator:</strong> <span id="focus-indicator">-</span></p>
+                        </div>
+                    </div>
+
+                    <div class="info-section">
+                        <h3>Key Events</h3>
+                        <ul class="event-list" id="event-list">
+                        </ul>
+                    </div>
+
+                    <div id="annotation-details" style="display: none;">
+                    </div>
+                `);
+
+                // Restore controls structure
+                d3.select('.controls').html(`
+                    <div class="progress-indicator" id="progress-indicator">
+                    </div>
+                    <div class="nav-buttons">
+                        <button class="nav-btn secondary" id="prev-btn">← Previous</button>
+                        <button class="nav-btn primary" id="next-btn">Next →</button>
+                        <button class="nav-btn success" id="explore-btn" style="display: none;">Explore Freely →</button>
+                    </div>
+                `);
+
+                // Rebuild progress indicators
+                const progressIndicator = d3.select('#progress-indicator');
+                progressIndicator.selectAll('.progress-dot').remove();
+                progressIndicator.selectAll('.progress-dot')
+                    .data(this.scenes)
+                    .enter()
+                    .append('div')
+                    .attr('class', 'progress-dot')
+                    .attr('id', (d, i) => `progress-dot-${i}`);
+
+                // Reattach event listeners for navigation
+                d3.select('#prev-btn').on('click', () => this.previousScene());
+                d3.select('#next-btn').on('click', () => this.nextScene());
+                d3.select('#explore-btn').on('click', () => this.transitionToGlass());
+
+                // Update current scene to refresh all content
+                this.updateScene();
+            }
+
+
+            initGlassPhase() {
+
+                this.closeTutorial();
+
+
+                d3.select('.scene-navigation').style('display', 'none');
+
+                d3.select('#scene-info').html(`
+                    <div class="scene-title">Free Exploration Mode - Democracy Indicators Comparison</div>
+                    <div class="scene-subtitle">Compare Multiple Democracy Measures Over Time</div>
+                    <div class="scene-message">Select different indicators to see how various measures of democracy evolved in South Korea. Each line represents a different dataset's perspective on democratic development.</div>
+                `);
+
+                const minYear = d3.min(this.data, d => d.year);
+                const maxYear = d3.max(this.data, d => d.year) || 2024;
+                
+                d3.select('.controls').html(`
+                    <div class="time-slider-container">
+                        <h4>📅 Time Period: 2000 - 2020</h4>
+                        <div class="time-range-inputs">
+                            <label>Start:</label>
+                            <input type="number" id="start-year" min="${minYear}" max="${maxYear}" value="2000">
+                            <label>End:</label>
+                            <input type="number" id="end-year" min="${minYear}" max="${maxYear}" value="2020">
+                            <button class="nav-btn secondary" onclick="narrativeViz.updateTimeRange()">Update Range</button>
+                        </div>
+                    </div>
+                    <div style="display: flex; justify-content: flex-end;">
+                        <button class="nav-btn secondary" onclick="narrativeViz.setPhase('stem')">← Back to Story</button>
+                    </div>
+                `);
+
+
+                this.setupIndicatorControls();
+                this.updateGlassVisualizationMultiIndicator();
+                this.updateGlassEventList();
+            }
+
+            setupIndicatorControls() {
+                const infoPanel = d3.select('.info-panel');
+                
+                infoPanel.html(`
+                    <div class="indicators-panel">
+                        <h4>📊 Democracy Indicators</h4>
+                        <div class="indicator-checkboxes" id="indicator-checkboxes">
+                        </div>
+                    </div>
+                    
+                    <div class="legend">
+                        <h4>📈 Chart Legend</h4>
+                        <div class="legend-items" id="legend-items">
+                        </div>
+                    </div>
+                    
+                    <div class="info-section">
+                        <h3>Historical Timeline</h3>
+                        <ul class="event-list" id="event-list">
+                        </ul>
+                    </div>
+                    
+                    <div id="annotation-details" style="display: none;">
+                    </div>
+                `);
+
+                const checkboxContainer = d3.select('#indicator-checkboxes');
+                const legendContainer = d3.select('#legend-items');
+
+                Object.entries(this.indicatorConfig).forEach(([key, config]) => {
+                    const isActive = this.parameters.activeIndicators.has(key);
+                    
+                    const checkboxDiv = checkboxContainer.append('div')
+                        .attr('class', 'indicator-checkbox');
+                    
+                    checkboxDiv.append('input')
+                        .attr('type', 'checkbox')
+                        .attr('id', `checkbox-${key}`)
+                        .property('checked', isActive)
+                        .on('change', (event) => {
+                            if (event.target.checked) {
+                                this.parameters.activeIndicators.add(key);
+                            } else {
+                                this.parameters.activeIndicators.delete(key);
+                            }
+                            this.updateGlassVisualizationMultiIndicator();
+                            this.updateLegend();
+                        });
+                    
+                    const label = checkboxDiv.append('label')
+                        .attr('for', `checkbox-${key}`)
+                        .text(config.name);
+                    
+                    label.insert('span', ':first-child')
+                        .attr('class', 'indicator-color')
+                        .style('background-color', config.color);
+                    
+                    const legendItem = legendContainer.append('div')
+                        .attr('class', `legend-item ${isActive ? '' : 'disabled'}`)
+                        .attr('id', `legend-${key}`)
+                        .style('cursor', 'pointer')
+                        .on('click', () => {
+                            const checkbox = d3.select(`#checkbox-${key}`);
+                            const currentValue = checkbox.property('checked');
+                            checkbox.property('checked', !currentValue);
+                            
+                            if (!currentValue) {
+                                this.parameters.activeIndicators.add(key);
+                            } else {
+                                this.parameters.activeIndicators.delete(key);
+                            }
+                            this.updateGlassVisualizationMultiIndicator();
+                            this.updateLegend();
+                        });
+                    
+                    const legendLine = legendItem.append('div')
+                        .attr('class', `legend-line ${config.strokeStyle === 'dashed' ? 'dashed' : ''}`)
+                        .style('background-color', config.strokeStyle === 'solid' ? config.color : 'transparent')
+                        .style('color', config.color);
+                    
+                    legendItem.append('span')
+                        .text(config.name);
+                });
+            }
+
+            updateLegend() {
+                Object.keys(this.indicatorConfig).forEach(key => {
+                    const isActive = this.parameters.activeIndicators.has(key);
+                    d3.select(`#legend-${key}`)
+                        .classed('disabled', !isActive);
+                    d3.select(`#checkbox-${key}`)
+                        .property('checked', isActive);
+                });
+            }
+
+            updateTimeRange() {
+                const startYear = +d3.select('#start-year').property('value');
+                const endYear = +d3.select('#end-year').property('value');
+                
+                if (startYear >= endYear) {
+                    alert('Start year must be before end year');
+                    return;
+                }
+                
+                this.parameters.timeRange = [startYear, endYear];
+                
+                d3.select('.time-slider-container h4')
+                    .text(`📅 Time Period: ${startYear} - ${endYear}`);
+                
+                this.updateGlassVisualizationMultiIndicator();
+            }
+
+            updateGlassVisualizationMultiIndicator() {
+                d3.select('#chart-container').selectAll('*').remove();
+
+                // Enhanced data validation for glass mode
+                if (this.parameters.dataLoading) {
+                    d3.select('#chart-container').append('div')
+                        .attr('class', 'loading-spinner')
+                        .html('<div class="spinner"></div><div class="loading-text">Loading multi-indicator data...</div>');
+                    return;
+                }
+                
+                if (this.parameters.dataError) {
+                    d3.select('#chart-container').append('div')
+                        .style('display', 'flex')
+                        .style('align-items', 'center')
+                        .style('justify-content', 'center')
+                        .style('height', '100%')
+                        .style('color', '#e74c3c')
+                        .html(`<div>⚠️ Data Error: ${this.parameters.dataError}</div>`);
+                    return;
+                }
+
+                if (!this.data || this.data.length === 0) {
+                    d3.select('#chart-container').append('div')
+                        .attr('class', 'loading-spinner')
+                        .html('<div class="spinner"></div><div class="loading-text">No data available</div>');
+                    return;
+                }
+
+                const container = d3.select('#chart-container');
+                const containerRect = container.node().getBoundingClientRect();
+                const margin = { top: 60, right: 60, bottom: 60, left: 80 };
+                const width = containerRect.width - margin.left - margin.right;
+                const height = containerRect.height - margin.top - margin.bottom;
+
+                const svg = container.append('svg')
+                    .attr('width', containerRect.width)
+                    .attr('height', containerRect.height);
+
+                const g = svg.append('g')
+                    .attr('transform', `translate(${margin.left},${margin.top})`);
+
+                const [startYear, endYear] = this.parameters.timeRange;
+                const timeFilteredData = this.data.filter(d => d.year >= startYear && d.year <= endYear);
+
+                if (timeFilteredData.length === 0) {
+                    g.append('text')
+                        .attr('x', width / 2)
+                        .attr('y', height / 2)
+                        .attr('text-anchor', 'middle')
+                        .style('font-size', '14px')
+                        .style('fill', '#666')
+                        .text('No data available for selected time period');
+                    return;
+                }
+
+                const activeIndicators = Array.from(this.parameters.activeIndicators);
+                if (activeIndicators.length === 0) {
+                    g.append('text')
+                        .attr('x', width / 2)
+                        .attr('y', height / 2)
+                        .attr('text-anchor', 'middle')
+                        .style('font-size', '14px')
+                        .style('fill', '#666')
+                        .text('Select at least one indicator to display');
+                    return;
+                }
+
+                const xScale = d3.scaleLinear()
+                    .domain([startYear, endYear])
+                    .range([0, width]);
+
+                let allValues = [];
+                activeIndicators.forEach(indicator => {
+                    timeFilteredData.forEach(d => {
+                        if (d.indicators && d.indicators[indicator] && 
+                            d.indicators[indicator].normalized_value !== null &&
+                            d.indicators[indicator].normalized_value !== undefined) {
+                            allValues.push(d.indicators[indicator].normalized_value);
+                        }
+                    });
+                });
+
+                if (allValues.length === 0) {
+                    g.append('text')
+                        .attr('x', width / 2)
+                        .attr('y', height / 2)
+                        .attr('text-anchor', 'middle')
+                        .style('font-size', '14px')
+                        .style('fill', '#666')
+                        .text('No indicator data available for selected period');
+                    return;
+                }
+
+                const yScale = d3.scaleLinear()
+                    .domain(d3.extent(allValues))
+                    .nice()
+                    .range([height, 0]);
+
+                g.append('g')
+                    .attr('class', 'grid')
+                    .attr('transform', `translate(0,${height})`)
+                    .call(d3.axisBottom(xScale).tickSize(-height).tickFormat(''));
+
+                g.append('g')
+                    .attr('class', 'grid')
+                    .call(d3.axisLeft(yScale).tickSize(-width).tickFormat(''));
+
+                g.append('g')
+                    .attr('transform', `translate(0,${height})`)
+                    .call(d3.axisBottom(xScale).tickFormat(d3.format('d')));
+
+                g.append('g')
+                    .call(d3.axisLeft(yScale));
+
+                g.append('text')
+                    .attr('class', 'axis-label')
+                    .attr('transform', 'rotate(-90)')
+                    .attr('y', 0 - margin.left)
+                    .attr('x', 0 - (height / 2))
+                    .attr('dy', '1em')
+                    .style('text-anchor', 'middle')
+                    .text('Normalized Democracy Score (-10 to +10)');
+
+                g.append('text')
+                    .attr('class', 'axis-label')
+                    .attr('transform', `translate(${width / 2}, ${height + margin.bottom})`)
+                    .style('text-anchor', 'middle')
+                    .text('Year');
+
+                activeIndicators.forEach(indicator => {
+                    const config = this.indicatorConfig[indicator];
+                    if (!config) return;
+
+                    const indicatorData = timeFilteredData
+                        .filter(d => d.indicators && d.indicators[indicator] && 
+                               d.indicators[indicator].normalized_value !== null &&
+                               d.indicators[indicator].normalized_value !== undefined)
+                        .map(d => ({
+                            year: d.year,
+                            value: d.indicators[indicator].normalized_value,
+                            rawValue: d.indicators[indicator].raw_value,
+                            name: d.indicators[indicator].name,
+                            dataset: d.indicators[indicator].dataset
+                        }))
+                        .sort((a, b) => a.year - b.year);
+
+                    if (indicatorData.length === 0) return;
+
+                    const line = d3.line()
+                        .x(d => xScale(d.year))
+                        .y(d => yScale(d.value))
+                        .curve(d3.curveMonotoneX);
+
+                    const linePath = g.append('path')
+                        .datum(indicatorData)
+                        .attr('fill', 'none')
+                        .attr('stroke', config.color)
+                        .attr('stroke-width', config.strokeWidth)
+                        .attr('d', line);
+
+                    if (config.strokeStyle === 'dashed') {
+                        linePath.attr('stroke-dasharray', '5,5');
+                    }
+
+                    g.selectAll(`.data-point-${indicator}`)
+                        .data(indicatorData)
+                        .enter()
+                        .append('circle')
+                        .attr('class', `data-point-${indicator}`)
+                        .attr('cx', d => xScale(d.year))
+                        .attr('cy', d => yScale(d.value))
+                        .attr('r', 3)
+                        .attr('fill', config.color)
+                        .attr('stroke', 'white')
+                        .attr('stroke-width', 1)
+                        .style('cursor', 'pointer')
+                        .on('mouseover', (event, d) => {
+                            d3.select(event.target).transition().duration(200).attr('r', 5);
+                            this.showIndicatorTooltip(event, d, config.name);
+                        })
+                        .on('mouseout', (event, d) => {
+                            d3.select(event.target).transition().duration(200).attr('r', 3);
+                            this.hideTooltip();
+                        });
+                });
+
+                this.addGlassEventMarkers(g, xScale, yScale, timeFilteredData, allValues, width, height);
+
+                d3.select('#time-period').text(`${startYear} - ${endYear}`);
+                d3.select('#focus-indicator').text(`${activeIndicators.length} INDICATORS SELECTED`);
+            }
+
+            showIndicatorTooltip(event, d, indicatorName) {
+                const tooltip = d3.select('#tooltip');
+                let tooltipContent = `
+                    <div style="padding: 8px;">
+                        <strong>${indicatorName}</strong><br>
+                        <strong>Year:</strong> ${d.year}<br>
+                        <strong>Normalized Score:</strong> ${d.value.toFixed(2)}<br>
+                        <strong>Raw Value:</strong> ${d.rawValue}<br>
+                        <strong>Dataset:</strong> ${d.dataset}
+                    </div>
+                `;
+
+                tooltip.style('opacity', 1)
+                    .html(tooltipContent)
+                    .style('left', (event.pageX + 10) + 'px')
+                    .style('top', (event.pageY - 10) + 'px')
+                    .style('max-width', '280px')
+                    .style('white-space', 'normal');
+            }
+
+
+
+            addGlassEventMarkers(g, xScale, yScale, timeFilteredData, allValues, width, height) {
+                const [startYear, endYear] = this.parameters.timeRange;
+                
+                const allEvents = [];
+                this.scenes.forEach(scene => {
+                    scene.annotations.forEach(ann => {
+                        if (!allEvents.find(e => e.year === ann.year && e.text === ann.text)) {
+                            allEvents.push(ann);
+                        }
+                    });
+                });
+
+                const additionalEvents = [
+                    { year: 1945, text: 'Liberation from Japan', type: 'positive', description: 'Korea liberated from Japanese colonial rule, beginning the path to independence.' },
+                    { year: 1948, text: 'Republic of Korea Established', type: 'positive', description: 'South Korea officially established as an independent republic.' },
+                    { year: 1950, text: 'Korean War Begins', type: 'negative', description: 'Korean War breaks out, devastating the peninsula and affecting democratic development.' },
+                    { year: 1953, text: 'Korean War Armistice', type: 'neutral', description: 'Korean War ends in armistice, division of Korea solidified.' },
+                    { year: 1960, text: 'April Revolution', type: 'positive', description: 'Student-led uprising overthrows Syngman Rhee\'s authoritarian government.' },
+                    { year: 1997, text: 'Asian Financial Crisis', type: 'negative', description: 'Economic crisis tests South Korean democratic institutions.' },
+                    { year: 2000, text: 'First Inter-Korean Summit', type: 'positive', description: 'Historic summit between North and South Korean leaders.' },
+                    { year: 2003, text: 'Roh Moo-hyun Presidency', type: 'positive', description: 'Progressive president continues democratic consolidation.' },
+                    { year: 2012, text: 'Park Geun-hye Election', type: 'neutral', description: 'First female president elected, daughter of former dictator Park Chung-hee.' },
+                    { year: 2022, text: 'Yoon Suk-yeol Presidency', type: 'neutral', description: 'Conservative candidate wins presidency in tight election.' }
+                ];
+
+                additionalEvents.forEach(event => {
+                    if (!allEvents.find(e => e.year === event.year)) {
+                        allEvents.push(event);
+                    }
+                });
+
+                const eventsInRange = allEvents.filter(event => 
+                    event.year >= startYear && event.year <= endYear
+                ).sort((a, b) => a.year - b.year);
+
+                if (eventsInRange.length === 0) return;
+
+                const maxEvents = Math.min(8, eventsInRange.length);
+                const prioritizedEvents = eventsInRange
+                    .map(event => ({
+                        ...event,
+                        priority: this.getEventPriority(event.year, event.type)
+                    }))
+                    .sort((a, b) => b.priority - a.priority)
+                    .slice(0, maxEvents)
+                    .sort((a, b) => a.year - b.year);
+
+                const timelineY = -20;
+                const markerY = timelineY;
+                const labelY = timelineY - 15;
+
+                const markerGroup = g.append('g').attr('class', 'glass-event-markers');
+
+                markerGroup.append('line')
+                    .attr('class', 'timeline-line')
+                    .attr('x1', 0)
+                    .attr('x2', width)
+                    .attr('y1', timelineY)
+                    .attr('y2', timelineY)
+                    .attr('stroke', '#333')
+                    .attr('stroke-width', 2)
+                    .style('opacity', 0.8);
+
+                markerGroup.selectAll('.glass-event-marker')
+                    .data(prioritizedEvents)
+                    .enter()
+                    .append('circle')
+                    .attr('class', 'glass-event-marker')
+                    .attr('cx', d => xScale(d.year))
+                    .attr('cy', markerY)
+                    .attr('r', 6)
+                    .attr('fill', d => this.getAnnotationColor(d.type))
+                    .attr('stroke', 'white')
+                    .attr('stroke-width', 2)
+                    .style('cursor', 'pointer')
+                    .style('opacity', 0.9)
+                    .on('mouseover', (event, d) => {
+                        d3.select(event.target)
+                            .transition()
+                            .duration(200)
+                            .attr('r', 9)
+                            .attr('stroke-width', 3);
+                        
+                        this.showEventTooltip(event, d);
+                    })
+                    .on('mouseout', (event, d) => {
+                        d3.select(event.target)
+                            .transition()
+                            .duration(200)
+                            .attr('r', 6)
+                            .attr('stroke-width', 2);
+                        
+                        this.hideTooltip();
+                    })
+                    .on('click', (event, d) => {
+                        this.showAnnotationDetail(d);
+                    });
+
+                markerGroup.selectAll('.glass-event-year-label')
+                    .data(prioritizedEvents)
+                    .enter()
+                    .append('text')
+                    .attr('class', 'glass-event-year-label')
+                    .attr('x', d => xScale(d.year))
+                    .attr('y', labelY)
+                    .attr('text-anchor', 'middle')
+                    .style('font-size', '10px')
+                    .style('font-weight', 'bold')
+                    .style('fill', '#333')
+                    .style('opacity', 0.8)
+                    .text(d => d.year)
+                    .style('pointer-events', 'none');
+
+                markerGroup.selectAll('.glass-event-line')
+                    .data(prioritizedEvents)
+                    .enter()
+                    .append('line')
+                    .attr('class', 'glass-event-line')
+                    .attr('x1', d => xScale(d.year))
+                    .attr('x2', d => xScale(d.year))
+                    .attr('y1', timelineY + 6)
+                    .attr('y2', height)
+                    .attr('stroke', d => this.getAnnotationColor(d.type))
+                    .attr('stroke-width', 1)
+                    .attr('stroke-dasharray', '3,3')
+                    .style('opacity', 0.4)
+                    .style('pointer-events', 'none');
+            }
+
+
+            updateGlassEventList() {
+
+                const allEvents = [];
+                this.scenes.forEach(scene => {
+                    scene.annotations.forEach(ann => {
+
+                        if (!allEvents.find(e => e.year === ann.year && e.text === ann.text)) {
+                            allEvents.push(ann);
+                        }
+                    });
+                });
+
+
+                const additionalEvents = [
+                    { year: 1945, text: 'Liberation from Japan', type: 'positive', description: 'Korea liberated from Japanese colonial rule, beginning the path to independence.' },
+                    { year: 1948, text: 'Republic of Korea Established', type: 'positive', description: 'South Korea officially established as an independent republic.' },
+                    { year: 1950, text: 'Korean War Begins', type: 'negative', description: 'Korean War breaks out, devastating the peninsula and affecting democratic development.' },
+                    { year: 1953, text: 'Korean War Armistice', type: 'neutral', description: 'Korean War ends in armistice, division of Korea solidified.' },
+                    { year: 1960, text: 'April Revolution', type: 'positive', description: 'Student-led uprising overthrows Syngman Rhee\'s authoritarian government.' },
+                    { year: 1997, text: 'Asian Financial Crisis', type: 'negative', description: 'Economic crisis tests South Korean democratic institutions.' },
+                    { year: 2000, text: 'First Inter-Korean Summit', type: 'positive', description: 'Historic summit between North and South Korean leaders.' },
+                    { year: 2003, text: 'Roh Moo-hyun Presidency', type: 'positive', description: 'Progressive president continues democratic consolidation.' },
+                    { year: 2012, text: 'Park Geun-hye Election', type: 'neutral', description: 'First female president elected, daughter of former dictator Park Chung-hee.' },
+                    { year: 2022, text: 'Yoon Suk-yeol Presidency', type: 'neutral', description: 'Conservative candidate wins presidency in tight election.' }
+                ];
+
+
+                additionalEvents.forEach(event => {
+                    if (!allEvents.find(e => e.year === event.year)) {
+                        allEvents.push(event);
+                    }
+                });
+
+                const [startYear, endYear] = this.parameters.timeRange;
+                const filteredEvents = allEvents
+                    .filter(event => event.year >= startYear && event.year <= endYear)
+                    .sort((a, b) => a.year - b.year);
+
+
+                const eventList = d3.select('#event-list');
+                eventList.selectAll('.event-item').remove();
+
+                eventList.selectAll('.event-item')
+                    .data(filteredEvents)
+                    .enter()
+                    .append('li')
+                    .attr('class', d => `event-item ${d.type}`)
+                    .html(d => `
+                        <strong>${d.year}</strong>: ${d.text}
+                        <br><small style="opacity: 0.8; font-style: italic;">${d.description}</small>
+                    `)
+                    .on('click', (event, d) => {
+                        this.showAnnotationDetail(d);
+                    })
+                    .style('cursor', 'pointer')
+                    .on('mouseover', function() {
+                        d3.select(this).style('transform', 'translateX(5px)');
+                    })
+                    .on('mouseout', function() {
+                        d3.select(this).style('transform', 'translateX(0px)');
+                    });
+            }
+        }
+
+
+        let narrativeViz;
+
+        document.addEventListener('DOMContentLoaded', function() {
+            narrativeViz = new NarrativeVisualization();
+        });
+    </script>
+</body>
+</html>
